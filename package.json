@@ -10,8 +10,13 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^7.5.2",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@google/generative-ai": "^0.24.1",
+    "@mui/icons-material": "^9.1.1",
+    "@mui/material": "^9.1.1",
     "@mui/material-nextjs": "^9.0.1",
+    "@mui/system": "^9.1.1",
     "@prisma/client": "^6.8.0",
     "axios": "^1.17.0",
     "framer-motion": "^12.40.0",
