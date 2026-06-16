@@ -22,7 +22,7 @@ import Link from "next/link";
 import MailRoundedIcon from '@mui/icons-material/MailRounded';
 import axios from "axios";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useSignIn } from "@clerk/nextjs/legacy";
+import { useSignIn } from "@clerk/nextjs";
 import Divider from "@mui/material/Divider";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
@@ -139,9 +139,8 @@ const LoginPage = () => {
     <Box
       sx={{
         minHeight: "100vh",
-        width: "100vw",
+        width: "100%",
         position: "relative",
-        overflowY: "auto",
         display: "flex",
         alignItems: "center",
         justifyContent: { xs: "center", md: "flex-start" },
@@ -172,17 +171,15 @@ const LoginPage = () => {
       >
         <ArrowBackIcon />
       </IconButton>
-      {/* Background Image with Zoom Animation */}
       <Box
         sx={{
           position: "fixed",
           top: 0,
           left: 0,
-          width: "100vw",
-          height: "100vh",
+          width: "100%",
+          height: "100%",
           zIndex: 1,
-          animation: `${backgroundZoom} 25s ease-in-out infinite`,
-          transformOrigin: "center center",
+          overflow: "hidden",
         }}
       >
         <Image
@@ -194,6 +191,8 @@ const LoginPage = () => {
           style={{
             objectFit: "cover",
             objectPosition: "center",
+            animation: `${backgroundZoom} 25s ease-in-out infinite`,
+            transformOrigin: "center center",
           }}
         />
       </Box>
@@ -204,8 +203,8 @@ const LoginPage = () => {
           position: "fixed",
           top: 0,
           left: 0,
-          width: "100vw",
-          height: "100vh",
+          width: "100%",
+          height: "100%",
           background: "radial-gradient(circle at center, rgba(25, 118, 210, 0.08), transparent 70%)",
           zIndex: 2,
           pointerEvents: "none",

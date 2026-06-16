@@ -22,8 +22,14 @@ import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import CircularProgress from '@mui/material/CircularProgress';
+import { usePathname } from 'next/navigation';
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname === "/login" || pathname === "/register") {
+    return null;
+  }
+
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });

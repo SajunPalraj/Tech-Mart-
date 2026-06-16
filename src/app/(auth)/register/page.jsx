@@ -28,7 +28,7 @@ import Image from "next/image";
 import loginBg from "@/assets/Dashboard/loginbg.jpg";
 import loginavatar from "@/assets/Dashboard/Login-Avatar.png";
 
-import { useSignUp, useSignIn } from "@clerk/nextjs/legacy";
+import { useSignUp, useSignIn } from "@clerk/nextjs";
 
 // Define smooth zoom animation
 const backgroundZoom = keyframes`
@@ -95,7 +95,7 @@ const RegisterUserPage = () => {
       return;
     }
     try {
-      await signIn.authenticateWithRedirect({
+      await signUp.authenticateWithRedirect({
         strategy: "oauth_google",
         redirectUrl: "/sso-callback",
         redirectUrlComplete: "/",
@@ -225,9 +225,8 @@ const RegisterUserPage = () => {
       <Box
         sx={{
           minHeight: "100vh",
-          width: "100vw",
+          width: "100%",
           position: "relative",
-          overflowY: "auto",
           display: "flex",
           alignItems: "center",
           justifyContent: { xs: "center", md: "flex-start" },
@@ -261,11 +260,10 @@ const RegisterUserPage = () => {
             position: "fixed",
             top: 0,
             left: 0,
-            width: "100vw",
-            height: "100vh",
+            width: "100%",
+            height: "100%",
             zIndex: 1,
-            animation: `${backgroundZoom} 25s ease-in-out infinite`,
-            transformOrigin: "center center",
+            overflow: "hidden",
           }}
         >
           <Image
@@ -277,6 +275,8 @@ const RegisterUserPage = () => {
             style={{
               objectFit: "cover",
               objectPosition: "center",
+              animation: `${backgroundZoom} 25s ease-in-out infinite`,
+              transformOrigin: "center center",
             }}
           />
         </Box>
@@ -285,8 +285,8 @@ const RegisterUserPage = () => {
             position: "fixed",
             top: 0,
             left: 0,
-            width: "100vw",
-            height: "100vh",
+            width: "100%",
+            height: "100%",
             background: "radial-gradient(circle at center, rgba(25, 118, 210, 0.08), transparent 70%)",
             zIndex: 2,
             pointerEvents: "none",
@@ -428,9 +428,8 @@ const RegisterUserPage = () => {
     <Box
       sx={{
         minHeight: "100vh",
-        width: "100vw",
+        width: "100%",
         position: "relative",
-        overflowY: "auto",
         display: "flex",
         alignItems: "center",
         justifyContent: { xs: "center", md: "flex-start" },
@@ -465,11 +464,10 @@ const RegisterUserPage = () => {
           position: "fixed",
           top: 0,
           left: 0,
-          width: "100vw",
-          height: "100vh",
+          width: "100%",
+          height: "100%",
           zIndex: 1,
-          animation: `${backgroundZoom} 25s ease-in-out infinite`,
-          transformOrigin: "center center",
+          overflow: "hidden",
         }}
       >
         <Image
@@ -481,6 +479,8 @@ const RegisterUserPage = () => {
           style={{
             objectFit: "cover",
             objectPosition: "center",
+            animation: `${backgroundZoom} 25s ease-in-out infinite`,
+            transformOrigin: "center center",
           }}
         />
       </Box>
@@ -489,8 +489,8 @@ const RegisterUserPage = () => {
           position: "fixed",
           top: 0,
           left: 0,
-          width: "100vw",
-          height: "100vh",
+          width: "100%",
+          height: "100%",
           background: "radial-gradient(circle at center, rgba(25, 118, 210, 0.08), transparent 70%)",
           zIndex: 2,
           pointerEvents: "none",
