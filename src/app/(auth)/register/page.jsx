@@ -46,7 +46,7 @@ const backgroundZoom = keyframes`
 const RegisterUserPage = () => {
   const { isLoaded: isSignUpLoaded, signUp, setActive } = useSignUp();
   const { isLoaded: isSignInLoaded, signIn } = useSignIn();
-  const isLoaded = isSignUpLoaded && isSignInLoaded;
+  const isLoaded = (isSignUpLoaded ?? !!signUp) && (isSignInLoaded ?? !!signIn);
   console.log("RegisterUserPage render: isLoaded =", isLoaded, "signUp =", signUp);
   
   const [showPassword, setShowPassword] = useState(false);

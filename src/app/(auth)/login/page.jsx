@@ -40,7 +40,8 @@ const backgroundZoom = keyframes`
 `;
 
 const LoginPage = () => {
-  const { isLoaded, signIn, setActive } = useSignIn();
+  const { isLoaded: isSignInLoaded, signIn, setActive } = useSignIn();
+  const isLoaded = isSignInLoaded ?? !!signIn;
   console.log("LoginPage render: isLoaded =", isLoaded, "signIn =", signIn);
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
