@@ -118,13 +118,13 @@ const LoginPage = () => {
 
     setLoading(true);
     try {
-      const { error } = await signIn.create({
+      const { error } = await signIn.password({
         identifier: email,
         password: password,
       });
 
       if (error) {
-        showAlert(error.longMessage || "Invalid email or password.", "error");
+        showAlert(error.longMessage || error.message || "Invalid email or password.", "error");
         return;
       }
 

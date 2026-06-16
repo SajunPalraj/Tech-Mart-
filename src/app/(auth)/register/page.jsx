@@ -172,21 +172,21 @@ const RegisterUserPage = () => {
 
     setLoading(true);
     try {
-      const { error } = await signUp.create({
+      const { error } = await signUp.password({
         emailAddress: email,
         password: password,
         firstName: username,
       });
 
       if (error) {
-        showAlert(error.longMessage || "Failed to initialize registration.", "error");
+        showAlert(error.longMessage || error.message || "Failed to initialize registration.", "error");
         return;
       }
 
       // Prepare email verification
       const { error: prepareError } = await signUp.verifications.sendEmailCode();
       if (prepareError) {
-        showAlert(prepareError.longMessage || "Failed to send verification code.", "error");
+        showAlert(prepareError.longMessage || prepareError.message || "Failed to send verification code.", "error");
         return;
       }
 
@@ -216,7 +216,7 @@ const RegisterUserPage = () => {
       });
 
       if (error) {
-        showAlert(error.longMessage || "Invalid verification code.", "error");
+        showAlert(error.longMessage || error.message || "Invalid verification code.", "error");
         return;
       }
 
