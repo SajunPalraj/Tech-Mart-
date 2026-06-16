@@ -339,7 +339,7 @@ const RegisterUserPage = () => {
             A 6-digit code was sent to <strong>{email}</strong>. Enter it below to complete registration.
           </Typography>
 
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 3, width: "100%" }}>
+          <Box component="form" onSubmit={handleVerify} sx={{ display: "flex", flexDirection: "column", gap: 3, width: "100%" }}>
             <TextField
               id="verification_code"
               label="Verification Code"
@@ -377,9 +377,9 @@ const RegisterUserPage = () => {
             />
 
             <Button
+              type="submit"
               variant="contained"
-              onClick={handleVerify}
-              disabled={loading}
+              disabled={loading || !isLoaded}
               sx={{
                 background: "linear-gradient(135deg, #2453d4 0%, #4f46e5 100%)",
                 color: 'white',
@@ -542,7 +542,7 @@ const RegisterUserPage = () => {
           Join Tech Mart & explore endless tech!
         </Typography>
 
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 1.75, width: "100%", px: { xs: 1, sm: 2 } }}>
+        <Box component="form" onSubmit={handleRegister} sx={{ display: "flex", flexDirection: "column", gap: 1.75, width: "100%", px: { xs: 1, sm: 2 } }}>
           {/* Username Field */}
           <TextField
             id="user_name"
@@ -802,9 +802,9 @@ const RegisterUserPage = () => {
             />
 
             <Button
+              type="submit"
               variant="contained"
-              onClick={handleRegister}
-              disabled={loading}
+              disabled={loading || !isLoaded}
               sx={{
                 background: "linear-gradient(135deg, #2453d4 0%, #4f46e5 100%)",
                 color: "white",

@@ -275,7 +275,7 @@ const LoginPage = () => {
           }}
         />
 
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2, width: "100%", px: { xs: 1, sm: 2 } }}>
+        <Box component="form" onSubmit={handleLogin} sx={{ display: "flex", flexDirection: "column", gap: 2, width: "100%", px: { xs: 1, sm: 2 } }}>
           {/* Email Field */}
           <TextField
             id="email"
@@ -412,9 +412,9 @@ const LoginPage = () => {
             />
 
             <Button
+              type="submit"
               variant="contained"
-              onClick={handleLogin}
-              disabled={loading}
+              disabled={loading || !isLoaded}
               sx={{
                 background: "linear-gradient(135deg, #2453d4 0%, #4f46e5 100%)",
                 color: 'white',

@@ -52,7 +52,6 @@ export default function RootLayout({ children }) {
               </AppRouterCacheProvider>
             </CartProvider>
           </AuthProvider>
-          <div id="clerk-captcha" style={{ display: "none" }} />
         </ClerkProvider>
       </body>
     </html>
