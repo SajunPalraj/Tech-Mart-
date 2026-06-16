@@ -28,7 +28,7 @@ import Image from "next/image";
 import loginBg from "@/assets/Dashboard/loginbg.jpg";
 import loginavatar from "@/assets/Dashboard/Login-Avatar.png";
 
-import { useSignUp, useSignIn } from "@clerk/nextjs";
+import { useSignUp, useSignIn, useClerk } from "@clerk/nextjs";
 
 // Define smooth zoom animation
 const backgroundZoom = keyframes`
@@ -44,9 +44,10 @@ const backgroundZoom = keyframes`
 `;
 
 const RegisterUserPage = () => {
-  const { isLoaded: isSignUpLoaded, signUp, setActive } = useSignUp();
-  const { isLoaded: isSignInLoaded, signIn } = useSignIn();
-  const isLoaded = isSignUpLoaded && isSignInLoaded;
+  const { signUp } = useSignUp();
+  const { signIn } = useSignIn();
+  const { setActive } = useClerk();
+  const isLoaded = signUp !== null && signIn !== null;
   console.log("RegisterUserPage render: isLoaded =", isLoaded, "signUp =", signUp);
   
   const [showPassword, setShowPassword] = useState(false);
@@ -95,14 +96,18 @@ const RegisterUserPage = () => {
       return;
     }
     try {
-      await signUp.authenticateWithRedirect({
+      const { error } = await signUp.sso({
         strategy: "oauth_google",
-        redirectUrl: "/sso-callback",
-        redirectUrlComplete: "/",
+        redirectUrl: "/",
+        redirectCallbackUrl: "/sso-callback",
       });
+      if (error) {
+        console.error("Clerk Google Register Error:", error);
+        showAlert(error.longMessage || "Failed to initialize Google registration.", "error");
+      }
     } catch (err) {
       console.error("Clerk Google Register Error:", err);
-      showAlert(err.errors?.[0]?.longMessage || "Failed to initialize Google registration.", "error");
+      showAlert("Failed to initialize Google registration.", "error");
     }
   };
 
@@ -167,20 +172,29 @@ const RegisterUserPage = () => {
 
     setLoading(true);
     try {
-      await signUp.create({
+      const { error } = await signUp.create({
         emailAddress: email,
         password: password,
         firstName: username,
       });
 
+      if (error) {
+        showAlert(error.longMessage || "Failed to initialize registration.", "error");
+        return;
+      }
+
       // Prepare email verification
-      await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
+      const { error: prepareError } = await signUp.verifications.sendEmailCode();
+      if (prepareError) {
+        showAlert(prepareError.longMessage || "Failed to send verification code.", "error");
+        return;
+      }
+
       showAlert("Verification code sent to your email!", "success");
-      
       setVerifying(true);
     } catch (err) {
-      const errMsg = err.errors?.[0]?.longMessage || "Failed to initialize registration.";
-      showAlert(errMsg, "error");
+      console.error("Register unexpected error:", err);
+      showAlert("Failed to initialize registration.", "error");
     } finally {
       setLoading(false);
     }
@@ -197,23 +211,27 @@ const RegisterUserPage = () => {
 
     setLoading(true);
     try {
-      const completeSignUp = await signUp.attemptEmailAddressVerification({
+      const { error } = await signUp.verifications.verifyEmailCode({
         code: verificationCode,
       });
 
-      if (completeSignUp.status === "complete") {
-        await setActive({ session: completeSignUp.createdSessionId });
+      if (error) {
+        showAlert(error.longMessage || "Invalid verification code.", "error");
+        return;
+      }
+
+      if (signUp.status === "complete") {
+        await signUp.finalize();
         showAlert("Registration verified! Redirecting...", "success");
         setTimeout(() => {
           window.location.href = "/";
         }, 1500);
       } else {
-        console.error(completeSignUp);
         showAlert("Verification incomplete. Please retry.", "error");
       }
     } catch (err) {
-      const errMsg = err.errors?.[0]?.longMessage || "Invalid verification code.";
-      showAlert(errMsg, "error");
+      console.error("Verification unexpected error:", err);
+      showAlert("Invalid verification code.", "error");
     } finally {
       setLoading(false);
     }

@@ -22,7 +22,7 @@ import Link from "next/link";
 import MailRoundedIcon from '@mui/icons-material/MailRounded';
 import axios from "axios";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useSignIn } from "@clerk/nextjs";
+import { useSignIn, useClerk } from "@clerk/nextjs";
 import Divider from "@mui/material/Divider";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
@@ -40,8 +40,9 @@ const backgroundZoom = keyframes`
 `;
 
 const LoginPage = () => {
-  const { isLoaded: isSignInLoaded, signIn, setActive } = useSignIn();
-  const isLoaded = isSignInLoaded;
+  const { signIn } = useSignIn();
+  const { setActive } = useClerk();
+  const isLoaded = signIn !== null;
   console.log("LoginPage render: isLoaded =", isLoaded, "signIn =", signIn);
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -74,14 +75,18 @@ const LoginPage = () => {
       return;
     }
     try {
-      await signIn.authenticateWithRedirect({
+      const { error } = await signIn.sso({
         strategy: "oauth_google",
-        redirectUrl: "/sso-callback",
-        redirectUrlComplete: "/",
+        redirectUrl: "/",
+        redirectCallbackUrl: "/sso-callback",
       });
+      if (error) {
+        console.error("Clerk Google Login Error:", error);
+        showAlert(error.longMessage || "Failed to initialize Google login.", "error");
+      }
     } catch (err) {
       console.error("Clerk Google Login Error:", err);
-      showAlert(err.errors?.[0]?.longMessage || "Failed to initialize Google login.", "error");
+      showAlert("Failed to initialize Google login.", "error");
     }
   };
 
@@ -113,14 +118,18 @@ const LoginPage = () => {
 
     setLoading(true);
     try {
-      const result = await signIn.create({
-        placeholder: "custom", // prevent typescript warnings or empty fields
+      const { error } = await signIn.create({
         identifier: email,
         password: password,
       });
 
-      if (result.status === "complete") {
-        await setActive({ session: result.createdSessionId });
+      if (error) {
+        showAlert(error.longMessage || "Invalid email or password.", "error");
+        return;
+      }
+
+      if (signIn.status === "complete") {
+        await signIn.finalize();
         showAlert("Login successful! Redirecting...", "success");
         setTimeout(() => {
           window.location.href = "/";
@@ -129,8 +138,8 @@ const LoginPage = () => {
         showAlert("Secondary verification factor required.", "warning");
       }
     } catch (err) {
-      const errMsg = err.errors?.[0]?.longMessage || "Invalid email or password.";
-      showAlert(errMsg, "error");
+      console.error("Login unexpected error:", err);
+      showAlert("An unexpected error occurred. Please try again.", "error");
     } finally {
       setLoading(false);
     }
