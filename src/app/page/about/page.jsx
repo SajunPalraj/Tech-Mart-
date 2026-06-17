@@ -10,6 +10,7 @@ import Link from "next/link";
 import aboutusImg1 from "@/assets/Pages/aboutus.webp";
 import aboutusImg2 from "@/assets/Pages/aboutus2.webp";
 import aboutusImg3 from "@/assets/Pages/aboutus3.webp";
+import Image from "next/image";
 
 function AboutUsPage() {
   return (
@@ -107,11 +108,10 @@ function AboutUsPage() {
               },
             }}
           >
-            <Box
-              component="img"
-              src={aboutusImg1.src}
+            <Image
+              src={aboutusImg1}
               alt="Our Mission"
-              sx={{ width: "100%", height: "auto", display: "block" }}
+              style={{ width: "100%", height: "auto", display: "block" }}
             />
           </Box>
 
@@ -185,11 +185,10 @@ function AboutUsPage() {
               },
             }}
           >
-            <Box
-              component="img"
-              src={aboutusImg2.src}
+            <Image
+              src={aboutusImg2}
               alt="Our Story"
-              sx={{ width: "100%", height: "auto", display: "block" }}
+              style={{ width: "100%", height: "auto", display: "block" }}
             />
           </Box>
 
@@ -263,11 +262,10 @@ function AboutUsPage() {
               },
             }}
           >
-            <Box
-              component="img"
-              src={aboutusImg3.src}
+            <Image
+              src={aboutusImg3}
               alt="Our Values"
-              sx={{ width: "100%", height: "auto", display: "block" }}
+              style={{ width: "100%", height: "auto", display: "block" }}
             />
           </Box>
 

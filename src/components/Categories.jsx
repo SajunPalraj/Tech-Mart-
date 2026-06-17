@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Image from 'next/image';
 import IconButton from '@mui/material/IconButton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -306,12 +307,13 @@ export default function Categories() {
 
             {/* Product Image */}
             <Box sx={{ position: 'relative', height: '60%', width: '100%', bgcolor: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden', p: 2 }}>
-              <Box
+              <Image
                 className="product-image"
-                component="img"
                 src={product.image}
                 alt={product.title}
-                sx={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain', objectPosition: 'center', mixBlendMode: 'multiply', transition: 'transform 0.4s ease' }}
+                fill
+                sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 300px"
+                style={{ objectFit: 'contain', objectPosition: 'center', mixBlendMode: 'multiply', transition: 'transform 0.4s ease' }}
               />
             </Box>
 

@@ -14,6 +14,7 @@ import Divider from "@mui/material/Divider";
 import CircularProgress from "@mui/material/CircularProgress";
 import Skeleton from "@mui/material/Skeleton";
 import Tooltip from "@mui/material/Tooltip";
+import Image from "next/image";
 
 // Icons
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -242,7 +243,10 @@ export default function ProductDetailPage({ params }) {
                 height: { xs: "300px", sm: "400px", md: "460px" },
                 width: "100%",
                 position: "relative",
-                overflow: "hidden"
+                overflow: "hidden",
+                "&:hover .product-detail-image": {
+                  transform: "scale(1.08)"
+                }
               }}
             >
               {/* Product Wishlist toggle overlay */}
@@ -269,19 +273,17 @@ export default function ProductDetailPage({ params }) {
                 </Typography>
               </Box>
 
-              <Box
-                component="img"
+              <Image
                 src={product.image}
                 alt={product.title}
-                sx={{ 
-                  maxHeight: "100%", 
-                  maxWidth: "100%", 
+                fill
+                priority
+                sizes="(max-width: 600px) 100vw, 460px"
+                style={{ 
                   objectFit: "contain",
                   transition: "transform 0.5s ease",
-                  "&:hover": {
-                    transform: "scale(1.08)"
-                  }
                 }}
+                className="product-detail-image"
               />
             </Paper>
 
@@ -666,12 +668,13 @@ export default function ProductDetailPage({ params }) {
 
                   {/* Image container */}
                   <Box sx={{ position: "relative", height: "180px", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", overflow: "hidden", p: 2, mt: 2 }}>
-                    <Box
+                    <Image
                       className="product-image"
-                      component="img"
                       src={p.image}
                       alt={p.title}
-                      sx={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", mixBlendMode: "multiply", transition: "transform 0.4s ease" }}
+                      fill
+                      sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 220px"
+                      style={{ objectFit: "contain", mixBlendMode: "multiply", transition: "transform 0.4s ease" }}
                     />
                   </Box>
 

@@ -29,8 +29,8 @@ import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import ShieldIcon from "@mui/icons-material/Shield";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 
-// Assets
 import contactusImg1 from "@/assets/Pages/contactus.webp";
+import Image from "next/image";
 
 function ContactUsPage() {
   const [formData, setFormData] = useState({
@@ -313,13 +313,15 @@ function ContactUsPage() {
                   transition: "transform 0.4s ease",
                   "&:hover": { transform: "scale(1.01)" },
                   flexShrink: 0,
+                  position: "relative",
                 }}
               >
-                <Box
-                  component="img"
-                  src={contactusImg1.src}
+                <Image
+                  src={contactusImg1}
                   alt="Contact Customer Support"
-                  sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  fill
+                  sizes="(max-width: 600px) 100vw, (max-width: 900px) 35vw, 380px"
+                  style={{ objectFit: "cover" }}
                 />
               </Box>
 

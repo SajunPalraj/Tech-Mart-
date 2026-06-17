@@ -23,7 +23,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "Home 12 – Tech Mart",
+  title: "Tech Mart - Premium Electronics & Gadgets",
   description: "Tech Mart homepage replica built with Next.js",
 };
 

@@ -13,13 +13,14 @@ import slider2 from '@/assets/slider2.png';
 import slider3 from '@/assets/slider3.png';
 import slider4 from '@/assets/slider4.png';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function ImageSlider() {
   const slides = [
     {
       id: 1,
-      img: slider2.src,
+      img: slider2,
       title: 'Which Smartphone is Right For You?',
       subtitle: 'Mei doctus principes interes',
       priceLabel: 'STARTING AT',
@@ -27,7 +28,7 @@ export default function ImageSlider() {
     },
     {
       id: 2,
-      img: slider3.src,
+      img: slider3,
       title: 'Discover Powerful Laptops',
       subtitle: 'Performance and design combined',
       priceLabel: 'STARTING AT',
@@ -35,7 +36,7 @@ export default function ImageSlider() {
     },
     {
       id: 3,
-      img: slider4.src,
+      img: slider4,
       title: 'Top Accessories for Your Devices',
       subtitle: 'Quality you can rely on',
       priceLabel: 'STARTING AT',
@@ -96,8 +97,27 @@ export default function ImageSlider() {
               overflow: 'hidden',
             }}
           >
-            <Box sx={{ position: 'absolute', inset: 0, backgroundImage: `url(${s.img})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', transition: 'transform 1200ms ease', transform: isActive ? 'scale(1)' : 'scale(1.05)', zIndex: 0 }}>
-              <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 100%)', opacity: isActive ? 1 : 0, transition: 'opacity 1200ms ease' }} />
+            <Box 
+              sx={{ 
+                position: 'absolute', 
+                inset: 0, 
+                zIndex: 0,
+                transition: 'transform 2400ms cubic-bezier(0.25, 1, 0.5, 1)', 
+                transform: isActive ? 'scale(1)' : 'scale(1.05)',
+              }}
+            >
+              <Image
+                src={s.img}
+                alt={s.title}
+                fill
+                priority={i === 0}
+                sizes="100vw"
+                style={{
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                }}
+              />
+              <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 100%)', opacity: isActive ? 1 : 0, transition: 'opacity 1200ms ease', zIndex: 1 }} />
             </Box>
 
             <Box sx={{ width: '100%', maxWidth: 1400, display: 'flex', gap: 2, px: { xs: 6, sm: 10, md: 12 }, boxSizing: 'border-box', position: 'relative', zIndex: 1 }}>

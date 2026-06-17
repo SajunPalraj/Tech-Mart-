@@ -32,6 +32,7 @@ import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import axios from "axios";
 
 const categories = ["All", "GPU", "CPU", "RAM", "Laptops", "Monitors", "ACCESSORIES"];
@@ -410,14 +411,13 @@ function ProductsContent() {
                     >
                       {/* Product Image Panel */}
                       <Box sx={{ position: "relative", height: "200px", width: "100%", bgcolor: "transparent", display: "flex", justifyContent: "center", alignItems: "center", overflow: "hidden", p: 2, mt: 3 }}>
-                        <Box
+                        <Image
                           className="product-image"
-                          component="img"
                           src={product.image}
                           alt={product.title}
-                          sx={{ 
-                            maxHeight: "100%", 
-                            maxWidth: "100%", 
+                          fill
+                          sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 300px"
+                          style={{ 
                             objectFit: "contain", 
                             objectPosition: "center", 
                             mixBlendMode: "multiply", 

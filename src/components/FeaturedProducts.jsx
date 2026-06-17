@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -189,12 +190,13 @@ export default function FeaturedProducts() {
                   style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%', flexGrow: 1 }}
                 >
                   <Box sx={{ position: 'relative', height: '60%', width: '100%', bgcolor: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden', p: 2 }}>
-                    <Box 
+                    <Image 
                       className="product-image"
-                      component="img" 
                       src={product.image} 
                       alt={product.title}
-                      sx={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain', objectPosition: 'center', mixBlendMode: 'multiply', transition: 'transform 0.4s ease' }} 
+                      fill
+                      sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 20vw"
+                      style={{ objectFit: 'contain', objectPosition: 'center', mixBlendMode: 'multiply', transition: 'transform 0.4s ease' }} 
                     />
                   </Box>
 

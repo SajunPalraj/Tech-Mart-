@@ -4,6 +4,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import keyboard from "@/assets/keyboard.png";
+import Image from 'next/image';
 
 export default function BrandPanel() {
   return (
@@ -117,13 +118,12 @@ export default function BrandPanel() {
           alignItems: 'center',
           minHeight: { xs: 180, md: 'auto' },
         }}>
-          <Box
-            component="img"
-            src={keyboard.src}
+          <Image
+            src={keyboard}
             alt="Tech Mart keyboard F-17"
-            sx={{
-              width: '100%',
-              height: '100%',
+            fill
+            sizes="(max-width: 900px) 100vw, 50vw"
+            style={{
               objectFit: 'cover',
               objectPosition: 'center',
             }}

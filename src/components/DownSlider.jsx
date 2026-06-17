@@ -10,11 +10,13 @@ import sliderdown1 from '@/assets/sliderdown1.jpg';
 import sliderdown from '@/assets/sliderdown.jpg';
 import sliderdown2 from "@/assets/sliderdown2.jpg";
 
+import Image from 'next/image';
+
 export default function DownSlider() {
   const slides = [
     {
       id: 1,
-      img: sliderdown1.src,
+      img: sliderdown1,
       title: 'Cameras & Lenses',
       subtitle: 'MEDIA PRO CX70 2QF-621',
       priceLabel: 'STARTING AT',
@@ -22,7 +24,7 @@ export default function DownSlider() {
     },
     {
       id: 2,
-      img: sliderdown.src,
+      img: sliderdown,
       title: 'Memory & Storage',
       subtitle: 'HIGH PERFORMANCE RGB RAM',
       priceLabel: 'STARTING AT',
@@ -30,7 +32,7 @@ export default function DownSlider() {
     },
     {
       id: 3,
-      img: sliderdown2.src,
+      img: sliderdown2,
       title: 'Gaming Accessories',
       subtitle: 'PRO MECHANICAL KEYBOARD',
       priceLabel: 'STARTING AT',
@@ -96,15 +98,22 @@ export default function DownSlider() {
               sx={{
                 position: 'absolute',
                 inset: 0,
-                backgroundImage: `url(${s.img})`,
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
                 transition: 'transform 2400ms cubic-bezier(0.25, 1, 0.5, 1)',
                 transform: isActive ? 'scale(1)' : 'scale(1.05)',
                 zIndex: 0,
               }}
             >
+              <Image
+                src={s.img}
+                alt={s.title}
+                fill
+                priority={i === 0}
+                sizes="100vw"
+                style={{
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                }}
+              />
               {/* Premium dark gradient overlay for text readability */}
               <Box
                 sx={{
@@ -113,6 +122,7 @@ export default function DownSlider() {
                   background: 'linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.2) 100%)',
                   opacity: isActive ? 1 : 0,
                   transition: 'opacity 1200ms ease',
+                  zIndex: 1,
                 }}
               />
             </Box>

@@ -3,6 +3,7 @@
 import Box from '@mui/material/Box';
 import React, { useState } from 'react'
 import logo from '@/assets/logo.png'
+import Image from 'next/image';
 import Typography from '@mui/material/Typography';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import IconButton from '@mui/material/IconButton';
@@ -120,7 +121,18 @@ function Navbar() {
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', px: { xs: 2, sm: 4, md: 6 } }}>
         <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center', gap: 3, justifyContent: 'center' }}>
           <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-            <Box component="img" src={logo.src} alt="logo" sx={{height:{lg:150,md:150,sm:75}, cursor: 'pointer'}} />
+            <Box sx={{ height: { lg: 150, md: 150, sm: 75 }, display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+              <Image 
+                src={logo} 
+                alt="logo" 
+                priority
+                style={{
+                  height: '100%',
+                  width: 'auto',
+                  objectFit: 'contain',
+                }}
+              />
+            </Box>
           </Link>
           {navItems.map((item, index) => {
             const targetHref = item === "Home" 
@@ -380,7 +392,18 @@ function Navbar() {
           <AppBar position="static" elevation={0} color='transparent' sx={{ backgroundColor: 'transparent' }}>
             <Toolbar sx={{ px: 2 }}>
               <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-                <Box component="img" src={logo.src} alt="logo" height="75" sx={{ cursor: 'pointer' }} />
+                <Box sx={{ height: 75, display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                  <Image 
+                    src={logo} 
+                    alt="logo" 
+                    priority
+                    style={{
+                      height: '100%',
+                      width: 'auto',
+                      objectFit: 'contain',
+                    }}
+                  />
+                </Box>
               </Link>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 1.5, ml: 'auto' }}>
                 <IconButton onClick={handleMobileSearchToggle} sx={{ color: 'black', borderRadius: 2, '&:hover': { backgroundColor: 'rgba(0,0,0,0.04)' } }}>
