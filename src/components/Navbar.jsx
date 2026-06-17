@@ -22,7 +22,7 @@ import LaptopMacOutlinedIcon from '@mui/icons-material/LaptopMacOutlined';
 import MemoryOutlinedIcon from '@mui/icons-material/MemoryOutlined';
 import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
 import Link from 'next/link';
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 // Material UI new imports
 import Badge from '@mui/material/Badge';
@@ -33,9 +33,11 @@ import Avatar from '@mui/material/Avatar';
 // Context imports
 import { useAuth } from "@/context/AuthContext";
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
 
 const navItems = [
   'Home',
+  'Products',
   'About',
   'Contact Us',
   'Terms and Condition'
@@ -47,9 +49,15 @@ function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeMobileItem, setActiveMobileItem] = useState('Home');
 
+  // Search input state
+  const [navbarSearch, setNavbarSearch] = useState("");
+
   // Context hook calls
   const { user, logout } = useAuth();
   const { cartCount, cartTotal } = useCart();
+  const { wishlistCount } = useWishlist();
+
+  const isAdmin = user?.email === "sajunpalraj2004@gmail.com";
 
   // Desktop user menu state
   const [anchorEl, setAnchorEl] = useState(null);
@@ -62,6 +70,7 @@ function Navbar() {
   };
 
   const pathname = usePathname();
+  const router = useRouter();
 
   if (
     pathname === "/login" ||
@@ -95,14 +104,30 @@ function Navbar() {
     setMobileSearchOpen(false);
   };
 
+  // Search form submit handler
+  const handleSearchSubmit = (e) => {
+    if (e) e.preventDefault();
+    if (navbarSearch.trim() !== "") {
+      router.push(`/products?search=${encodeURIComponent(navbarSearch)}`);
+      setNavbarSearch(""); // reset navbar input after search
+      setMobileSearchOpen(false);
+    }
+  };
+
   return (
     <>
     <Box sx={{ width: '100%', position: 'sticky', top: 0, zIndex: 1300, bgcolor: 'white', display: { xs: "none", sm: 'block' } }}>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', px: { xs: 2, sm: 4, md: 6 } }}>
         <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center', gap: 3, justifyContent: 'center' }}>
-          <Box component="img" src={logo.src} alt="logo" sx={{height:{lg:150,md:150,sm:75}}} />
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <Box component="img" src={logo.src} alt="logo" sx={{height:{lg:150,md:150,sm:75}, cursor: 'pointer'}} />
+          </Link>
           {navItems.map((item, index) => {
-            const targetHref = item === "Home" ? "/" : `/page/${item.toLowerCase().replace(/\s+/g, '-')}`;
+            const targetHref = item === "Home" 
+              ? "/" 
+              : item === "Products" 
+                ? "/products" 
+                : `/page/${item.toLowerCase().replace(/\s+/g, '-')}`;
             const isActive = pathname === targetHref;
             return (
               <Link 
@@ -163,22 +188,77 @@ function Navbar() {
                 <Typography variant="h6" component="div" sx={{display:{ xs: 'none', sm: 'block' }, fontSize: '14px', fontWeight: 'bold', cursor: 'pointer' }} onClick={handleMenuToggle}>
                   Shop by Category
                 </Typography>
-                <Box sx={{ display: menuOpen ? 'block' : 'none', position: 'absolute', top: '100%', left: 0, mt: 1, width: 220, bgcolor: 'white', borderRadius: 2, boxShadow: '0 12px 30px rgba(0,0,0,0.18)', zIndex: 20 }}>
-                  {[{name:'Monitors', icon: <MonitorOutlinedIcon />}, {name:'Laptops', icon: <LaptopMacOutlinedIcon />}, {name:'CPU', icon: <MemoryOutlinedIcon />}, {name:'Graphics Card', icon: <MemoryOutlinedIcon />}, {name:'Other Accessories', icon: <AccountTreeOutlinedIcon />}].map((item, index) => (
-                    <Box key={index} sx={{ px: 2, py: 2.05, fontSize: 16,fontFamily:"inherit",fontWeight:500, color: 'black',bgcolor:'white', borderColor:"white",'&:hover': { bgcolor: '#2453d4ff',color:'white' }, cursor: 'pointer',display:"flex",alignItems:'center',justifyContent:'space-between',borderBottom:"1px solid #2453d4ff",border:"3px solid #2453d4ff",borderTop:'3px solid white' }}>
-                     {item.name}
-                      {item.icon}
-                      
-                    </Box>
+                <Box sx={{ 
+                  display: menuOpen ? 'block' : 'none', 
+                  position: 'absolute', 
+                  top: '100%', 
+                  left: 0, 
+                  mt: 1.5, 
+                  width: 240, 
+                  bgcolor: 'white', 
+                  borderRadius: 3, 
+                  boxShadow: '0 10px 25px rgba(0,0,0,0.1)', 
+                  border: '1px solid #e2e8f0',
+                  overflow: 'hidden',
+                  zIndex: 20 
+                }}>
+                  {[
+                    {name:'Monitors', icon: <MonitorOutlinedIcon fontSize="small" />, query: "Monitors"}, 
+                    {name:'Laptops', icon: <LaptopMacOutlinedIcon fontSize="small" />, query: "Laptops"}, 
+                    {name:'CPU', icon: <MemoryOutlinedIcon fontSize="small" />, query: "CPU"}, 
+                    {name:'Graphics Card', icon: <MemoryOutlinedIcon fontSize="small" />, query: "GPU"}, 
+                    {name:'Other Accessories', icon: <AccountTreeOutlinedIcon fontSize="small" />, query: "ACCESSORIES"}
+                  ].map((item, index) => (
+                    <Link 
+                      key={index} 
+                      href={`/products?category=${encodeURIComponent(item.query)}`}
+                      style={{ textDecoration: 'none' }}
+                      onClick={handleMenuClose}
+                    >
+                      <Box sx={{ 
+                        px: 2.5, 
+                        py: 1.75, 
+                        fontSize: 14,
+                        fontFamily: "var(--font-montserrat)",
+                        fontWeight: 700, 
+                        color: '#334155',
+                        bgcolor: 'white',
+                        display: "flex",
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        borderBottom: index === 4 ? "none" : "1px solid #f1f5f9",
+                        transition: "all 0.2s ease",
+                        "& svg": { color: "#64748b", transition: "color 0.2s ease" },
+                        '&:hover': { 
+                          bgcolor: 'rgba(36, 83, 212, 0.05)',
+                          color: '#2453d4',
+                          "& svg": { color: "#2453d4" }
+                        }, 
+                        cursor: 'pointer'
+                      }}>
+                        {item.name}
+                        {item.icon}
+                      </Box>
+                    </Link>
                   ))}
                 </Box>
               </Box>
             </ClickAwayListener>
 
             <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', minWidth: 280 }}>
-              <Box sx={{ display: {xs: 'none', sm: 'flex'}, alignItems: 'center', width: '100%', maxWidth: 620, bgcolor: 'white', borderRadius: '999px', px: 2, py: 0.9, boxShadow: '0 10px 24px rgba(0,0,0,0.08)' }}>
-                <InputBase fullWidth placeholder="Multiuse USB Cable Phone/Laptop/Desc" sx={{ fontSize: 14, color: '#333' }} />
-                <IconButton sx={{ color: '#2453d4', p: 1.25 }}>
+              <Box 
+                component="form" 
+                onSubmit={handleSearchSubmit}
+                sx={{ display: {xs: 'none', sm: 'flex'}, alignItems: 'center', width: '100%', maxWidth: 620, bgcolor: 'white', borderRadius: '999px', px: 2, py: 0.9, boxShadow: '0 10px 24px rgba(0,0,0,0.08)' }}
+              >
+                <InputBase 
+                  fullWidth 
+                  value={navbarSearch}
+                  onChange={(e) => setNavbarSearch(e.target.value)}
+                  placeholder="Type to search tech products..." 
+                  sx={{ fontSize: 14, color: '#333' }} 
+                />
+                <IconButton type="submit" sx={{ color: '#2453d4', p: 1.25 }}>
                   <SearchIcon />
                 </IconButton>
               </Box>
@@ -238,11 +318,17 @@ function Navbar() {
                       </Typography>
                     </Box>
                     <MenuItem component={Link} href="/profile" onClick={handleUserMenuClose} sx={{ py: 1.25, px: 2, fontSize: '14px', fontFamily: 'var(--font-montserrat)', fontWeight: 600, '&:hover': { bgcolor: 'rgba(36, 83, 212, 0.08)' } }}>
-                      My Profile
+                      {isAdmin ? "Admin Dashboard" : "My Profile"}
                     </MenuItem>
-                    <MenuItem component={Link} href="/profile?tab=cart" onClick={handleUserMenuClose} sx={{ py: 1.25, px: 2, fontSize: '14px', fontFamily: 'var(--font-montserrat)', fontWeight: 600, '&:hover': { bgcolor: 'rgba(36, 83, 212, 0.08)' } }}>
-                      My Cart
-                    </MenuItem>
+                    {!isAdmin ? (
+                      <MenuItem component={Link} href="/profile?tab=cart" onClick={handleUserMenuClose} sx={{ py: 1.25, px: 2, fontSize: '14px', fontFamily: 'var(--font-montserrat)', fontWeight: 600, '&:hover': { bgcolor: 'rgba(36, 83, 212, 0.08)' } }}>
+                        My Cart
+                      </MenuItem>
+                    ) : (
+                      <MenuItem component={Link} href="/profile?tab=add-product" onClick={handleUserMenuClose} sx={{ py: 1.25, px: 2, fontSize: '14px', fontFamily: 'var(--font-montserrat)', fontWeight: 600, '&:hover': { bgcolor: 'rgba(36, 83, 212, 0.08)' } }}>
+                        Add Product
+                      </MenuItem>
+                    )}
                     <MenuItem onClick={handleLogout} sx={{ py: 1.25, px: 2, fontSize: '14px', color: 'error.main', fontFamily: 'var(--font-montserrat)', fontWeight: 600, '&:hover': { bgcolor: 'error.light', color: 'error.contrastText' } }}>
                       Logout
                     </MenuItem>
@@ -255,20 +341,33 @@ function Navbar() {
                   </Box>
                 </Link>
               )}
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '50%', bgcolor: 'rgba(255,255,255,0.16)', cursor: 'pointer', transition: 'transform 120ms ease, background-color 120ms ease', '&:hover': { bgcolor: 'rgba(255,255,255,0.24)' }, '&:active': { transform: 'scale(0.92)' } }}>
-                <FavoriteBorderIcon />
-              </Box>
-              <Link style={{color:"white", textDecoration:"none"}} href="/profile?tab=cart">
+              <Link style={{color:"white", textDecoration:"none"}} href="/wishlist">
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '50%', bgcolor: 'rgba(255,255,255,0.16)', position: 'relative', cursor: 'pointer', transition: 'transform 120ms ease, background-color 120ms ease', '&:hover': { bgcolor: 'rgba(255,255,255,0.24)' }, '&:active': { transform: 'scale(0.92)' } }}>
-                  <ShoppingCartCheckoutIcon />
-                  <Box sx={{ position: 'absolute', top: -6, right: -6, width: 20, height: 20, borderRadius: '50%', bgcolor: '#ff3d00', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontFamily: 'var(--font-montserrat)', fontWeight: 800 }}>
-                    {cartCount}
-                  </Box>
+                  <FavoriteBorderIcon />
+                  {wishlistCount > 0 && (
+                    <Box sx={{ position: 'absolute', top: -6, right: -6, width: 20, height: 20, borderRadius: '50%', bgcolor: '#e91e63', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontFamily: 'var(--font-montserrat)', fontWeight: 800 }}>
+                      {wishlistCount}
+                    </Box>
+                  )}
                 </Box>
               </Link>
-              <Typography variant="h6" component="div" sx={{ fontSize: '16px', fontWeight: 'bold', fontFamily: 'var(--font-montserrat)' }}>
-                ${cartTotal.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 })}
-              </Typography>
+              {!isAdmin && (
+                <>
+                  <Link style={{color:"white", textDecoration:"none"}} href="/profile?tab=cart">
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '50%', bgcolor: 'rgba(255,255,255,0.16)', position: 'relative', cursor: 'pointer', transition: 'transform 120ms ease, background-color 120ms ease', '&:hover': { bgcolor: 'rgba(255,255,255,0.24)' }, '&:active': { transform: 'scale(0.92)' } }}>
+                      <ShoppingCartCheckoutIcon />
+                      {cartCount > 0 && (
+                        <Box sx={{ position: 'absolute', top: -6, right: -6, width: 20, height: 20, borderRadius: '50%', bgcolor: '#ff3d00', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontFamily: 'var(--font-montserrat)', fontWeight: 800 }}>
+                          {cartCount}
+                        </Box>
+                      )}
+                    </Box>
+                  </Link>
+                  <Typography variant="h6" component="div" sx={{ fontSize: '16px', fontWeight: 'bold', fontFamily: 'var(--font-montserrat)' }}>
+                    ${cartTotal.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 })}
+                  </Typography>
+                </>
+              )}
             </Box>
           </Box>
 
@@ -280,27 +379,39 @@ function Navbar() {
       <Box sx={{ display: { xs: 'block', sm: 'none' }, position: 'sticky', top: 0, zIndex: 1300, bgcolor: 'white' }}>
           <AppBar position="static" elevation={0} color='transparent' sx={{ backgroundColor: 'transparent' }}>
             <Toolbar sx={{ px: 2 }}>
-              <Box>
-                <Box component="img" src={logo.src} alt="logo" height="75" />
-              </Box>
+              <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+                <Box component="img" src={logo.src} alt="logo" height="75" sx={{ cursor: 'pointer' }} />
+              </Link>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 1.5, ml: 'auto' }}>
                 <IconButton onClick={handleMobileSearchToggle} sx={{ color: 'black', borderRadius: 2, '&:hover': { backgroundColor: 'rgba(0,0,0,0.04)' } }}>
                   <SearchIcon />
                 </IconButton>
-                <IconButton component={Link} href="/profile?tab=cart" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '50%', color: 'black' }}>
-                  <Badge badgeContent={cartCount} color="error">
-                    <ShoppingCartCheckoutIcon />
-                  </Badge>
-                </IconButton>
+                {!isAdmin && (
+                  <IconButton component={Link} href="/profile?tab=cart" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '50%', color: 'black' }}>
+                    <Badge badgeContent={cartCount} color="error">
+                      <ShoppingCartCheckoutIcon />
+                    </Badge>
+                  </IconButton>
+                )}
                 <IconButton onClick={handleMobileMenuToggle} sx={{ color: 'black', borderRadius: 2, '&:hover': { backgroundColor: 'rgba(0,0,0,0.04)' } }}>
                   {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
                 </IconButton>
               </Box>
             </Toolbar>
-            <Box sx={{ display: { xs: mobileSearchOpen ? 'flex' : 'none', sm: 'none' }, width: '100%', bgcolor: '#000', color: 'white', alignItems: 'center', px: 2, py: 1.5, gap: 2 }}>
+            <Box 
+              component="form"
+              onSubmit={handleSearchSubmit}
+              sx={{ display: { xs: mobileSearchOpen ? 'flex' : 'none', sm: 'none' }, width: '100%', bgcolor: '#000', color: 'white', alignItems: 'center', px: 2, py: 1.5, gap: 2 }}
+            >
               <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', bgcolor: '#111', borderRadius: '999px', px: 2, py: 1 }}>
                 <SearchIcon sx={{ color: 'white', mr: 1 }} />
-                <InputBase fullWidth placeholder="Type your search here..." sx={{ fontSize: 14, color: 'white' }} />
+                <InputBase 
+                  fullWidth 
+                  value={navbarSearch}
+                  onChange={(e) => setNavbarSearch(e.target.value)}
+                  placeholder="Type your search here..." 
+                  sx={{ fontSize: 14, color: 'white' }} 
+                />
               </Box>
               <IconButton onClick={handleMobileSearchClose} sx={{ color: 'white', p: 1.25 }}>
                 <CloseIcon />
@@ -324,7 +435,11 @@ function Navbar() {
             transform: mobileMenuOpen ? 'translateY(0)' : 'translateY(-10px)',
           }}>
             {navItems.map((item, index) => {
-              const targetHref = item === "Home" ? "/" : `/page/${item.toLowerCase().replace(/\s+/g, '-')}`;
+              const targetHref = item === "Home" 
+                ? "/" 
+                : item === "Products" 
+                  ? "/products" 
+                  : `/page/${item.toLowerCase().replace(/\s+/g, '-')}`;
               const isActive = pathname === targetHref;
               return (
                 <Link
@@ -382,31 +497,53 @@ function Navbar() {
                     }}
                   >
                     <Typography variant="body1" sx={{ fontSize: 16 }}>
-                      My Profile ({user.fullName || user.username})
+                      {isAdmin ? "Admin Dashboard" : `My Profile (${user.fullName || user.username})`}
                     </Typography>
                     <Box sx={{ color: 'inherit', fontSize: 18 }}>&rsaquo;</Box>
                   </Box>
                 </Link>
 
-                <Link href="/profile?tab=cart" style={{ textDecoration: 'none' }}>
-                  <Box
-                    onClick={() => setMobileMenuOpen(false)}
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      color: '#111',
-                      fontWeight: 500,
-                      px: 2, py: 2, borderRadius: 2, mb: 1,
-                      '&:hover': { backgroundColor: 'rgba(36, 83, 212, 0.08)', color: '#2453d4' },
-                    }}
-                  >
-                    <Typography variant="body1" sx={{ fontSize: 16 }}>
-                      My Cart ({cartCount} items)
-                    </Typography>
-                    <Box sx={{ color: 'inherit', fontSize: 18 }}>&rsaquo;</Box>
-                  </Box>
-                </Link>
+                {!isAdmin ? (
+                  <Link href="/profile?tab=cart" style={{ textDecoration: 'none' }}>
+                    <Box
+                      onClick={() => setMobileMenuOpen(false)}
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        color: '#111',
+                        fontWeight: 500,
+                        px: 2, py: 2, borderRadius: 2, mb: 1,
+                        '&:hover': { backgroundColor: 'rgba(36, 83, 212, 0.08)', color: '#2453d4' },
+                      }}
+                    >
+                      <Typography variant="body1" sx={{ fontSize: 16 }}>
+                        My Cart ({cartCount} items)
+                      </Typography>
+                      <Box sx={{ color: 'inherit', fontSize: 18 }}>&rsaquo;</Box>
+                    </Box>
+                  </Link>
+                ) : (
+                  <Link href="/profile?tab=add-product" style={{ textDecoration: 'none' }}>
+                    <Box
+                      onClick={() => setMobileMenuOpen(false)}
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        color: '#111',
+                        fontWeight: 500,
+                        px: 2, py: 2, borderRadius: 2, mb: 1,
+                        '&:hover': { backgroundColor: 'rgba(36, 83, 212, 0.08)', color: '#2453d4' },
+                      }}
+                    >
+                      <Typography variant="body1" sx={{ fontSize: 16 }}>
+                        Add Product
+                      </Typography>
+                      <Box sx={{ color: 'inherit', fontSize: 18 }}>&rsaquo;</Box>
+                    </Box>
+                  </Link>
+                )}
 
                 <Box
                   onClick={handleLogout}

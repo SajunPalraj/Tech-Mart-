@@ -15,7 +15,7 @@ const clerkHandler = clerkMiddleware(async (auth, request) => {
     const path = req.nextUrl.pathname;
     
     // Explicit list of public base paths
-    if (path === '/' || path === '/login' || path === '/register' || path === '/sso-callback') {
+    if (path === '/' || path === '/login' || path === '/register' || path === '/sso-callback' || path === '/products') {
       return true;
     }
     

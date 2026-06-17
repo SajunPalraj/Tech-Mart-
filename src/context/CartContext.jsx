@@ -1,10 +1,12 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useAuth } from './AuthContext';
 
 const CartContext = createContext(undefined);
 
 export function CartProvider({ children }) {
+  const { user, loading } = useAuth();
   const [cartItems, setCartItems] = useState([]);
   const [isInitialized, setIsInitialized] = useState(false);
 
@@ -28,9 +30,22 @@ export function CartProvider({ children }) {
     }
   }, [cartItems, isInitialized]);
 
+  // Clear cart when user logs out (after auth has finished loading)
+  useEffect(() => {
+    if (isInitialized && !loading && !user) {
+      setCartItems([]);
+      localStorage.removeItem("cart");
+    }
+  }, [user, loading, isInitialized]);
+
   const addToCart = (item) => {
-    // Standardize price as a number, removing '$' and commas
-    const itemPriceString = typeof item.price === 'string' ? item.price.replace(/[$,]/g, '') : item.price;
+    if (!user) {
+      alert("Only logged-in users can add items to the cart. Redirecting to login...");
+      window.location.href = "/login";
+      return;
+    }
+    // Standardize price as a number, removing '$', '₹' and commas
+    const itemPriceString = typeof item.price === 'string' ? item.price.replace(/[$,₹]/g, '') : item.price;
     const priceNum = parseFloat(itemPriceString) || 0;
 
     setCartItems((prevItems) => {
@@ -70,11 +85,12 @@ export function CartProvider({ children }) {
     setCartItems([]);
   };
 
-  const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-  const cartTotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const displayCartItems = user ? cartItems : [];
+  const cartCount = user ? cartItems.reduce((acc, item) => acc + item.quantity, 0) : 0;
+  const cartTotal = user ? cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0) : 0;
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart, cartCount, cartTotal }}>
+    <CartContext.Provider value={{ cartItems: displayCartItems, addToCart, removeFromCart, updateQuantity, clearCart, cartCount, cartTotal }}>
       {children}
     </CartContext.Provider>
   );

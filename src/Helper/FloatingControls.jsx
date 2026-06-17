@@ -8,10 +8,13 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Badge from '@mui/material/Badge';
 import Link from 'next/link';
 import { useCart } from "@/context/CartContext";
+import { useAuth } from '@/context/AuthContext';
 
 export default function FloatingControls() {
+  const { user } = useAuth();
   const { cartCount } = useCart();
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const isAdmin = user?.email === "sajunpalraj2004@gmail.com";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,41 +71,43 @@ export default function FloatingControls() {
       </IconButton>
 
       {/* Cart Button */}
-      <Link href="/profile?tab=cart" style={{ textDecoration: 'none', color: 'inherit' }}>
-        <Badge 
-          badgeContent={cartCount} 
-          color="error"
-          sx={{
-            '& .MuiBadge-badge': {
-              right: 4,
-              top: 4,
-              border: '2px solid white',
-              padding: '0 4px',
-              fontFamily: 'var(--font-montserrat)',
-              fontWeight: 800,
-              fontSize: '0.65rem'
-            }
-          }}
-        >
-          <IconButton
+      {!isAdmin && (
+        <Link href="/profile?tab=cart" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Badge 
+            badgeContent={cartCount} 
+            color="error"
             sx={{
-              width: 50,
-              height: 50,
-              bgcolor: '#2453d4',
-              color: 'white',
-              boxShadow: '0 6px 20px rgba(36, 83, 212, 0.3)',
-              transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)',
-              '&:hover': {
-                bgcolor: '#1c42a5',
-                transform: 'scale(1.05) translateY(-2px)',
-                boxShadow: '0 10px 25px rgba(36, 83, 212, 0.4)'
+              '& .MuiBadge-badge': {
+                right: 4,
+                top: 4,
+                border: '2px solid white',
+                padding: '0 4px',
+                fontFamily: 'var(--font-montserrat)',
+                fontWeight: 800,
+                fontSize: '0.65rem'
               }
             }}
           >
-            <ShoppingCartOutlinedIcon />
-          </IconButton>
-        </Badge>
-      </Link>
+            <IconButton
+              sx={{
+                width: 50,
+                height: 50,
+                bgcolor: '#2453d4',
+                color: 'white',
+                boxShadow: '0 6px 20px rgba(36, 83, 212, 0.3)',
+                transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                '&:hover': {
+                  bgcolor: '#1c42a5',
+                  transform: 'scale(1.05) translateY(-2px)',
+                  boxShadow: '0 10px 25px rgba(36, 83, 212, 0.4)'
+                }
+              }}
+            >
+              <ShoppingCartOutlinedIcon />
+            </IconButton>
+          </Badge>
+        </Link>
+      )}
 
       {/* Chat Bot Button */}
       <IconButton

@@ -40,3 +40,18 @@ model Subscriber {
   email     String   @unique
   createdAt DateTime @default(now())
 }
+
+model Product {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String?
+  price       Float
+  rating      Float    @default(5.0)
+  category    String
+  image       String   // Static path URL or Base64 string
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("exisiting_items")
+}
+

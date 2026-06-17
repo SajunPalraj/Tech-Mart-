@@ -13,6 +13,8 @@ import slider2 from '@/assets/slider2.png';
 import slider3 from '@/assets/slider3.png';
 import slider4 from '@/assets/slider4.png';
 
+import Link from 'next/link';
+
 export default function ImageSlider() {
   const slides = [
     {
@@ -21,7 +23,7 @@ export default function ImageSlider() {
       title: 'Which Smartphone is Right For You?',
       subtitle: 'Mei doctus principes interes',
       priceLabel: 'STARTING AT',
-      price: '$1,000',
+      price: '₹79,999',
     },
     {
       id: 2,
@@ -29,7 +31,7 @@ export default function ImageSlider() {
       title: 'Discover Powerful Laptops',
       subtitle: 'Performance and design combined',
       priceLabel: 'STARTING AT',
-      price: '$1,299',
+      price: '₹91,217',
     },
     {
       id: 3,
@@ -37,7 +39,7 @@ export default function ImageSlider() {
       title: 'Top Accessories for Your Devices',
       subtitle: 'Quality you can rely on',
       priceLabel: 'STARTING AT',
-      price: '$29',
+      price: '₹999',
     },
   ];
 
@@ -122,9 +124,11 @@ export default function ImageSlider() {
 
                 {/* Buy Now Button */}
                 <Box sx={{ mt: { xs: 1.5, sm: 3 }, opacity: isActive ? 1 : 0, transform: isActive ? 'translateY(0)' : 'translateY(40px)', transition: 'opacity 1000ms ease 1000ms, transform 1000ms cubic-bezier(0.25, 1, 0.5, 1) 1000ms' }}>
-                  <Button variant="contained" disableElevation sx={{ fontFamily: 'var(--font-montserrat)', textTransform: 'uppercase', letterSpacing: 1, bgcolor: '#2453d4', color: '#fff', '&:hover': { bgcolor: '#1c42a5' }, px: 4, py: 1.5, borderRadius: '999px', fontWeight: 800 }}>
-                    Explore Now 
-                  </Button>
+                  <Link href="/products" style={{ textDecoration: 'none' }}>
+                    <Button variant="contained" disableElevation sx={{ fontFamily: 'var(--font-montserrat)', textTransform: 'uppercase', letterSpacing: 1, bgcolor: '#2453d4', color: '#fff', '&:hover': { bgcolor: '#1c42a5' }, px: 4, py: 1.5, borderRadius: '999px', fontWeight: 800 }}>
+                      Explore Now 
+                    </Button>
+                  </Link>
                 </Box>
 
                 {/* Hollow Dots */}

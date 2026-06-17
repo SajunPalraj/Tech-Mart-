@@ -6,12 +6,14 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Rating from '@mui/material/Rating';
 
-// Import Cart Context
+// Import Contexts
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
 
 // Import CPU images
 import cpu1 from '@/assets/Products/CPU/cpu1.webp';
@@ -59,116 +61,130 @@ import ram7 from '@/assets/Products/RAM/RAM7.webp';
 
 export default function Categories() {
   const { addToCart } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
   const [activeTab, setActiveTab] = useState('GPU');
 
   const products = {
     GPU: [
-      { id: 1, title: 'NVIDIA GeForce RTX 4090 24GB', price: '$1,599', rating: 5.0, image: gpu1.src },
-      { id: 2, title: 'NVIDIA GeForce RTX 4080 Super 16GB', price: '$999', rating: 4.8, image: gpu2.src },
-      { id: 3, title: 'AMD Radeon RX 7900 XTX 24GB', price: '$929', rating: 4.7, image: gpu3.src },
-      { id: 4, title: 'NVIDIA GeForce RTX 4070 Ti Super 16GB', price: '$799', rating: 4.6, image: gpu4.src },
-      { id: 5, title: 'AMD Radeon RX 7800 XT 16GB', price: '$499', rating: 4.5, image: gpu5.src },
-      { id: 6, title: 'NVIDIA GeForce RTX 4060 Ti 8GB', price: '$389', rating: 4.3, image: gpu6.src },
-      { id: 7, title: 'Intel Arc A770 16GB', price: '$299', rating: 4.1, image: gpu7.src },
+      { id: 1, title: 'NVIDIA GeForce RTX 4090 24GB', price: '₹1,32,717', rating: 5.0, image: gpu1.src },
+      { id: 2, title: 'NVIDIA GeForce RTX 4080 Super 16GB', price: '₹82,917', rating: 4.8, image: gpu2.src },
+      { id: 3, title: 'AMD Radeon RX 7900 XTX 24GB', price: '₹77,107', rating: 4.7, image: gpu3.src },
+      { id: 4, title: 'NVIDIA GeForce RTX 4070 Ti Super 16GB', price: '₹66,317', rating: 4.6, image: gpu4.src },
+      { id: 5, title: 'AMD Radeon RX 7800 XT 16GB', price: '₹41,417', rating: 4.5, image: gpu5.src },
+      { id: 6, title: 'NVIDIA GeForce RTX 4060 Ti 8GB', price: '₹32,287', rating: 4.3, image: gpu6.src },
+      { id: 7, title: 'Intel Arc A770 16GB', price: '₹24,817', rating: 4.1, image: gpu7.src },
     ],
     CPU: [
-      { id: 8, title: 'Intel Core i9-14900K Desktop Processor', price: '$529', rating: 4.8, image: cpu1.src },
-      { id: 9, title: 'AMD Ryzen 9 7950X3D 16-Core Processor', price: '$569', rating: 4.9, image: cpu2.src },
-      { id: 10, title: 'Intel Core i7-14700K Desktop Processor', price: '$389', rating: 4.7, image: cpu3.src },
-      { id: 11, title: 'AMD Ryzen 7 7800X3D 8-Core Processor', price: '$349', rating: 4.9, image: cpu4.src },
-      { id: 12, title: 'Intel Core i5-14600K Desktop Processor', price: '$299', rating: 4.5, image: cpu5.src },
-      { id: 13, title: 'AMD Ryzen 5 7600X 6-Core Processor', price: '$199', rating: 4.4, image: cpu6.src },
-      { id: 14, title: 'AMD Ryzen 9 5900X 12-Core Processor', price: '$289', rating: 4.6, image: cpu7.src },
+      { id: 8, title: 'Intel Core i9-14900K Desktop Processor', price: '₹43,907', rating: 4.8, image: cpu1.src },
+      { id: 9, title: 'AMD Ryzen 9 7950X3D 16-Core Processor', price: '₹47,227', rating: 4.9, image: cpu2.src },
+      { id: 10, title: 'Intel Core i7-14700K Desktop Processor', price: '₹32,287', rating: 4.7, image: cpu3.src },
+      { id: 11, title: 'AMD Ryzen 7 7800X3D 8-Core Processor', price: '₹28,967', rating: 4.9, image: cpu4.src },
+      { id: 12, title: 'Intel Core i5-14600K Desktop Processor', price: '₹24,817', rating: 4.5, image: cpu5.src },
+      { id: 13, title: 'AMD Ryzen 5 7600X 6-Core Processor', price: '₹16,517', rating: 4.4, image: cpu6.src },
+      { id: 14, title: 'AMD Ryzen 9 5900X 12-Core Processor', price: '₹23,987', rating: 4.6, image: cpu7.src },
     ],
     RAM: [
-      { id: 30, title: 'Corsair Vengeance RGB 32GB (2x16GB) DDR5 6000MHz', price: '$119', rating: 4.8, image: ram1.src },
-      { id: 31, title: 'G.Skill Trident Z5 RGB 32GB (2x16GB) DDR5 6400MHz', price: '$124', rating: 4.9, image: ram2.src },
-      { id: 32, title: 'Kingston Fury Beast RGB 16GB (2x8GB) DDR5 5200MHz', price: '$69', rating: 4.5, image: ram3.src },
-      { id: 33, title: 'Crucial Pro 64GB (2x32GB) DDR5 5600MHz', price: '$189', rating: 4.7, image: ram4.src },
-      { id: 34, title: 'Teamgroup T-Force Delta RGB 32GB (2x16GB) DDR5 6000MHz', price: '$109', rating: 4.6, image: ram5.src },
-      { id: 35, title: 'Patriot Viper Venom 32GB (2x16GB) DDR5 5600MHz', price: '$94', rating: 4.4, image: ram6.src },
-      { id: 36, title: 'Corsair Dominator Titanium 32GB (2x16GB) DDR5 7200MHz', price: '$179', rating: 4.8, image: ram7.src },
+      { id: 30, title: 'Corsair Vengeance RGB 32GB (2x16GB) DDR5 6000MHz', price: '₹9,877', rating: 4.8, image: ram1.src },
+      { id: 31, title: 'G.Skill Trident Z5 RGB 32GB (2x16GB) DDR5 6400MHz', price: '₹10,292', rating: 4.9, image: ram2.src },
+      { id: 32, title: 'Kingston Fury Beast RGB 16GB (2x8GB) DDR5 5200MHz', price: '₹5,727', rating: 4.5, image: ram3.src },
+      { id: 33, title: 'Crucial Pro 64GB (2x32GB) DDR5 5600MHz', price: '₹15,687', rating: 4.7, image: ram4.src },
+      { id: 34, title: 'Teamgroup T-Force Delta RGB 32GB (2x16GB) DDR5 6000MHz', price: '₹9,047', rating: 4.6, image: ram5.src },
+      { id: 35, title: 'Patriot Viper Venom 32GB (2x16GB) DDR5 5600MHz', price: '₹7,802', rating: 4.4, image: ram6.src },
+      { id: 36, title: 'Corsair Dominator Titanium 32GB (2x16GB) DDR5 7200MHz', price: '₹14,857', rating: 4.8, image: ram7.src },
     ],
     Laptops: [
-      { id: 40, title: 'ASUS ROG Zephyrus G14 Gaming Laptop', price: '$1,499', rating: 4.8, image: laptop1.src },
-      { id: 41, title: 'MSI Raider GE78 HX Gaming Laptop', price: '$2,199', rating: 4.9, image: laptop2.src },
-      { id: 42, title: 'Lenovo Legion Pro 5 Gaming Laptop', price: '$1,249', rating: 4.6, image: laptop3.src },
-      { id: 43, title: 'Acer Predator Helios 16 Gaming Laptop', price: '$1,399', rating: 4.5, image: laptop4.src },
-      { id: 44, title: 'HP Omen 16 Gaming Laptop', price: '$1,149', rating: 4.4, image: laptop5.src },
-      { id: 45, title: 'GIGABYTE AORUS 15 Gaming Laptop', price: '$1,099', rating: 4.3, image: laptop6.src },
-      { id: 46, title: 'Razer Blade 16 Gaming Laptop', price: '$2,899', rating: 4.9, image: laptop7.src },
+      { id: 40, title: 'ASUS ROG Zephyrus G14 Gaming Laptop', price: '₹1,24,417', rating: 4.8, image: laptop1.src },
+      { id: 41, title: 'MSI Raider GE78 HX Gaming Laptop', price: '₹1,82,517', rating: 4.9, image: laptop2.src },
+      { id: 42, title: 'Lenovo Legion Pro 5 Gaming Laptop', price: '₹1,03,667', rating: 4.6, image: laptop3.src },
+      { id: 43, title: 'Acer Predator Helios 16 Gaming Laptop', price: '₹1,16,117', rating: 4.5, image: laptop4.src },
+      { id: 44, title: 'HP Omen 16 Gaming Laptop', price: '₹95,367', rating: 4.4, image: laptop5.src },
+      { id: 45, title: 'GIGABYTE AORUS 15 Gaming Laptop', price: '₹91,217', rating: 4.3, image: laptop6.src },
+      { id: 46, title: 'Razer Blade 16 Gaming Laptop', price: '₹2,40,617', rating: 4.9, image: laptop7.src },
     ],
     Monitors: [
-      { id: 15, title: 'ASUS ROG Swift 32" OLED 4K Gaming Monitor', price: '$1,299', rating: 4.9, image: mon1.src },
-      { id: 16, title: 'Samsung Odyssey G9 49" Curved Gaming Monitor', price: '$1,199', rating: 4.8, image: mon2.src },
-      { id: 17, title: 'LG UltraGear 27" QHD Nano IPS Monitor', price: '$349', rating: 4.7, image: mon3.src },
-      { id: 18, title: 'Dell UltraSharp 34" Curved USB-C Monitor', price: '$749', rating: 4.6, image: mon4.src },
-      { id: 20, title: 'MSI Optix 32" Curved Gaming Monitor', price: '$279', rating: 4.4, image: mon5.src },
-      { id: 21, title: 'Gigabyte M27Q 27" 170Hz KVM Monitor', price: '$299', rating: 4.7, image: mon6.src },
+      { id: 15, title: 'ASUS ROG Swift 32" OLED 4K Gaming Monitor', price: '₹1,07,817', rating: 4.9, image: mon1.src },
+      { id: 16, title: 'Samsung Odyssey G9 49" Curved Gaming Monitor', price: '₹99,517', rating: 4.8, image: mon2.src },
+      { id: 17, title: 'LG UltraGear 27" QHD Nano IPS Monitor', price: '₹28,967', rating: 4.7, image: mon3.src },
+      { id: 18, title: 'Dell UltraSharp 34" Curved USB-C Monitor', price: '₹62,167', rating: 4.6, image: mon4.src },
+      { id: 20, title: 'MSI Optix 32" Curved Gaming Monitor', price: '₹23,157', rating: 4.4, image: mon5.src },
+      { id: 21, title: 'Gigabyte M27Q 27" 170Hz KVM Monitor', price: '₹24,817', rating: 4.7, image: mon6.src },
     ]
   };
 
   return (
     <Box sx={{ py: 8, bgcolor: '#f3f6fb', overflow: 'hidden' }}>
       {/* Title */}
-     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1.5, mb: 4 }}>
-  <Typography 
-    variant="h3" 
-    component="h2"
-    sx={{ 
-      fontFamily: 'var(--font-montserrat)',
-      fontWeight: 900, 
-      textTransform: 'uppercase', 
-      letterSpacing: '3px',
-      color: '#6a9cff',           // Light blue like in the image
-    }}
-  >
-    SHOP BY
-  </Typography>
+      <Box sx={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        gap: { xs: 1, sm: 1.5 }, 
+        flexWrap: 'wrap',
+        mb: 4 
+      }}>
+        <Typography 
+          variant="h3" 
+          component="h2"
+          sx={{ 
+            fontFamily: 'var(--font-montserrat)',
+            fontWeight: 900, 
+            textTransform: 'uppercase', 
+            letterSpacing: { xs: '1.5px', sm: '3px' },
+            fontSize: { xs: '1.8rem', sm: '2.5rem', md: '3rem' },
+            color: '#6a9cff',           // Light blue like in the image
+          }}
+        >
+          SHOP BY
+        </Typography>
 
-  <Box
-    sx={{
-      backgroundColor: '#2453d4',   // Strong blue background
-      px: 3,
-      py: 1.2,
-      borderRadius: '4px',
-      display: 'inline-flex',
-      alignItems: 'center',
-    }}
-  >
-    <Typography 
-      variant="h3" 
-      component="h2"
-      sx={{ 
-        fontFamily: 'var(--font-montserrat)',
-        fontWeight: 900, 
-        textTransform: 'uppercase', 
-        letterSpacing: '3px',
-        color: '#ffffff',           // White text
-        borderRadius:"4px",
-      }}
-    >
-      CATEGORY
-    </Typography>
-  </Box>
-</Box>
+        <Box
+          sx={{
+            backgroundColor: '#2453d4',   // Strong blue background
+            px: { xs: 2, sm: 3 },
+            py: { xs: 0.8, sm: 1.2 },
+            borderRadius: '4px',
+            display: 'inline-flex',
+            alignItems: 'center',
+          }}
+        >
+          <Typography 
+            variant="h3" 
+            component="h2"
+            sx={{ 
+              fontFamily: 'var(--font-montserrat)',
+              fontWeight: 900, 
+              textTransform: 'uppercase', 
+              letterSpacing: { xs: '1.5px', sm: '3px' },
+              fontSize: { xs: '1.8rem', sm: '2.5rem', md: '3rem' },
+              color: '#ffffff',           // White text
+              borderRadius:"4px",
+            }}
+          >
+            CATEGORY
+          </Typography>
+        </Box>
+      </Box>
       {/* Tabs */}
       <Box sx={{
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: { xs: 'flex-start', sm: 'center' },
         alignItems: 'center',
-        flexWrap: 'wrap',
-        gap: { xs: 0.5, sm: 1 },
+        flexWrap: { xs: 'nowrap', sm: 'wrap' },
+        overflowX: { xs: 'auto', sm: 'visible' },
+        gap: { xs: 1, sm: 1 },
         mb: 6,
-        px: 1.5,
+        px: { xs: 2.5, sm: 1.5 },
         py: 0.8,
-        width: 'fit-content',
+        width: { xs: '100%', sm: 'fit-content' },
+        maxWidth: '100%',
         mx: 'auto',
         bgcolor: 'rgba(255, 255, 255, 0.9)',
         backdropFilter: 'blur(8px)',
-        borderRadius: '999px',
+        borderRadius: { xs: '16px', sm: '999px' },
         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.05)',
         border: '1px solid rgba(224, 224, 224, 0.6)',
+        scrollbarWidth: 'none',
+        '&::-webkit-scrollbar': { display: 'none' },
       }}>
         {['GPU', 'CPU', 'RAM', 'Laptops', 'Monitors'].map((tab) => {
           const isActive = activeTab === tab;
@@ -191,6 +207,7 @@ export default function Categories() {
                 color: isActive ? 'white' : '#666',
                 boxShadow: isActive ? '0 8px 24px rgba(36, 83, 212, 0.3)' : 'none',
                 transform: isActive ? 'scale(1.03)' : 'none',
+                flexShrink: 0,
                 '&:hover': {
                   bgcolor: isActive ? '#1c42a5' : 'rgba(36, 83, 212, 0.06)',
                   color: isActive ? 'white' : '#2453d4',
@@ -266,8 +283,20 @@ export default function Categories() {
                 {activeTab}
               </Typography>
               <Box sx={{ display: 'flex', gap: 0.5 }}>
-                <IconButton size="small" sx={{ bgcolor: 'rgba(255,255,255,0.8)', '&:hover': { bgcolor: 'white', color: '#e91e63' } }}>
-                  <FavoriteBorderIcon fontSize="small" />
+                <IconButton 
+                  size="small" 
+                  onClick={() => toggleWishlist(product)}
+                  sx={{ 
+                    bgcolor: isInWishlist(product.title) ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.8)', 
+                    color: isInWishlist(product.title) ? '#e91e63' : 'inherit',
+                    '&:hover': { bgcolor: 'white', color: '#e91e63' } 
+                  }}
+                >
+                  {isInWishlist(product.title) ? (
+                    <FavoriteIcon fontSize="small" />
+                  ) : (
+                    <FavoriteBorderIcon fontSize="small" />
+                  )}
                 </IconButton>
                 <IconButton size="small" sx={{ bgcolor: 'rgba(255,255,255,0.8)', '&:hover': { bgcolor: 'white', color: '#2453d4' } }}>
                   <CompareArrowsIcon fontSize="small" />

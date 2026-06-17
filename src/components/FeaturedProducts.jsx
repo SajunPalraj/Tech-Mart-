@@ -5,12 +5,14 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Rating from '@mui/material/Rating';
 
-// Import Cart Context
+// Import Contexts
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
 
 // Import Accessories images
 import acc1 from '@/assets/Products/Accessories/product-1.jpg';
@@ -24,61 +26,62 @@ import acc8 from '@/assets/Products/Accessories/RAM.webp';
 
 export default function FeaturedProducts() {
   const { addToCart } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
   const item = [
     {
       title: 'Fixed-Wing Hybrid Surveillance Drone VW',
-      category: '3D PRINTERS',
+      category: 'ACCESSORIES',
       image: acc1.src,
-      price: '$1,450',
+      price: '₹1,20,350',
       rating: 4.5,
     },
     {
       title: 'Over-Ear Headphones FX-9901 Orange',
-      category: '3D PRINTERS',
+      category: 'ACCESSORIES',
       image: acc2.src,
-      price: '$890',
+      price: '₹73,870',
       rating: 4.0,
     },
     {
       title: 'Smartphone LS-589662 Midnight Black',
-      category: '3D PRINTERS',
+      category: 'ACCESSORIES',
       image: acc3.src,
-      price: '$770',
+      price: '₹63,910',
       rating: 5.0,
     },
     {
       title: 'Smart Robotic Vacuum Cleaner FZP-550',
-      category: '3D PRINTERS',
+      category: 'ACCESSORIES',
       image: acc4.src,
-      price: '$440',
+      price: '₹36,520',
       rating: 3.5,
     },
     {
       title: 'High-Airflow Tempered Glass Computer Case',
-      category: '3D PRINTERS',
+      category: 'ACCESSORIES',
       image: acc5.src,
-      price: '$3,850',
+      price: '₹3,19,550',
       rating: 4.8,
     },
     {
       title: 'Wireless Gaming Mouse X-Pro 2',
       category: 'ACCESSORIES',
       image: acc6.src,
-      price: '$120',
+      price: '₹9,960',
       rating: 4.2,
     },
     {
       title: '4K Ultra HD Action Camera Z-Cam',
-      category: 'CAMERAS',
+      category: 'ACCESSORIES',
       image: acc7.src,
-      price: '$299',
+      price: '₹24,817',
       rating: 4.6,
     },
     {
       title: 'Noise-Canceling Bluetooth Earbuds Pro',
-      category: 'AUDIO',
+      category: 'ACCESSORIES',
       image: acc8.src,
-      price: '$199',
+      price: '₹16,517',
       rating: 4.9,
     },
   ];
@@ -132,8 +135,20 @@ export default function FeaturedProducts() {
                 {product.category}
               </Typography>
               <Box sx={{ display: 'flex', gap: 0.5 }}>
-                <IconButton size="small" sx={{ bgcolor: 'rgba(255,255,255,0.8)', '&:hover': { bgcolor: 'white', color: '#e91e63' } }}>
-                  <FavoriteBorderIcon fontSize="small" />
+                <IconButton 
+                  size="small" 
+                  onClick={() => toggleWishlist(product)}
+                  sx={{ 
+                    bgcolor: isInWishlist(product.title) ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.8)', 
+                    color: isInWishlist(product.title) ? '#e91e63' : 'inherit',
+                    '&:hover': { bgcolor: 'white', color: '#e91e63' } 
+                  }}
+                >
+                  {isInWishlist(product.title) ? (
+                    <FavoriteIcon fontSize="small" />
+                  ) : (
+                    <FavoriteBorderIcon fontSize="small" />
+                  )}
                 </IconButton>
                 <IconButton size="small" sx={{ bgcolor: 'rgba(255,255,255,0.8)', '&:hover': { bgcolor: 'white', color: '#2453d4' } }}>
                   <CompareArrowsIcon fontSize="small" />

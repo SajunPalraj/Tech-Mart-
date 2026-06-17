@@ -29,6 +29,7 @@ export const metadata = {
 
 import { AuthProvider } from "@/context/AuthContext";
 import { CartProvider } from "@/context/CartContext";
+import { WishlistProvider } from "@/context/WishlistContext";
 import { ClerkProvider } from "@clerk/nextjs";
 
 export default function RootLayout({ children }) {
@@ -41,15 +42,17 @@ export default function RootLayout({ children }) {
         <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || "pk_test_c2V0dGxlZC1tdXR0LTg4LmNsZXJrLmFjY291bnRzLmRldiQ"}>
           <AuthProvider>
             <CartProvider>
-              <AppRouterCacheProvider>
-                <NextTopLoader color="blue" initialPosition={0.08} crawlSpeed={200} height={3} speed={200} showSpinner={false} easing="ease" />
-                <FloatingControls />
-                <Navbar />
-                <LayoutWrapper>
-                  {children}
-                </LayoutWrapper>
-                <Footer />
-              </AppRouterCacheProvider>
+              <WishlistProvider>
+                <AppRouterCacheProvider>
+                  <NextTopLoader color="blue" initialPosition={0.08} crawlSpeed={200} height={3} speed={200} showSpinner={false} easing="ease" />
+                  <FloatingControls />
+                  <Navbar />
+                  <LayoutWrapper>
+                    {children}
+                  </LayoutWrapper>
+                  <Footer />
+                </AppRouterCacheProvider>
+              </WishlistProvider>
             </CartProvider>
           </AuthProvider>
         </ClerkProvider>

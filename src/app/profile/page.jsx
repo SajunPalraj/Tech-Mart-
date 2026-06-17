@@ -19,9 +19,16 @@ import Tooltip from "@mui/material/Tooltip";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemText from "@mui/material/ListItemText";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
@@ -42,9 +49,12 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import InfoIcon from "@mui/icons-material/Info";
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import PeopleIcon from "@mui/icons-material/People";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 // Context
 import { useAuth } from "@/context/AuthContext";
@@ -60,20 +70,31 @@ function ProfileContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const fileInputRef = useRef(null);
+  const prodImageInputRef = useRef(null);
+
+  // Check if the current user is the admin
+  const isAdmin = user?.email === "sajunpalraj2004@gmail.com";
 
   // Read URL query parameter for initial tab
-  const initialTabVal = searchParams.get("tab") === "cart" ? 1 : searchParams.get("tab") === "shipping" ? 2 : 0;
+  const tabParam = searchParams.get("tab");
+  let initialTabVal = 0;
+  if (isAdmin) {
+    initialTabVal = tabParam === "add-product" ? 1 : tabParam === "members" ? 2 : 0;
+  } else {
+    initialTabVal = tabParam === "cart" ? 1 : tabParam === "shipping" ? 2 : 0;
+  }
+
   const [tabValue, setTabValue] = useState(initialTabVal);
 
-  // State management
+  // User details states
   const [dbUser, setDbUser] = useState(null);
   const [loadingDb, setLoadingDb] = useState(false);
   
-  // Edit mode toggles
+  // Edit mode toggles for user details
   const [editInfo, setEditInfo] = useState(false);
   const [editShipping, setEditShipping] = useState(false);
 
-  // Form states
+  // Personal/Shipping Form states
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [bio, setBio] = useState("");
@@ -88,13 +109,26 @@ function ProfileContent() {
   const [savingInfo, setSavingInfo] = useState(false);
   const [savingShipping, setSavingShipping] = useState(false);
 
+  // Admin specific form states for Adding Products
+  const [prodTitle, setProdTitle] = useState("");
+  const [prodDescription, setProdDescription] = useState("");
+  const [prodPrice, setProdPrice] = useState("");
+  const [prodRating, setProdRating] = useState("5.0");
+  const [prodCategory, setProdCategory] = useState("GPU");
+  const [prodImage, setProdImage] = useState("");
+  const [submittingProduct, setSubmittingProduct] = useState(false);
+
+  // Admin specific members list states
+  const [members, setMembers] = useState([]);
+  const [loadingMembers, setLoadingMembers] = useState(false);
+
   // Notifications
   const [snackbar, setSnackbar] = useState({ open: false, message: "", severity: "success" });
   
   // Checkout Success Dialog
   const [checkoutOpen, setCheckoutOpen] = useState(false);
 
-  // Redirect if logged out (after auth finish loading)
+  // Redirect if logged out (after auth finishes loading)
   useEffect(() => {
     if (!authLoading && !user) {
       router.push("/login");
@@ -103,11 +137,17 @@ function ProfileContent() {
 
   // Synchronize Tab selection when search param changes
   useEffect(() => {
-    const tabParam = searchParams.get("tab");
-    if (tabParam === "cart") setTabValue(1);
-    else if (tabParam === "shipping") setTabValue(2);
-    else setTabValue(0);
-  }, [searchParams]);
+    const p = searchParams.get("tab");
+    if (isAdmin) {
+      if (p === "add-product") setTabValue(1);
+      else if (p === "members") setTabValue(2);
+      else setTabValue(0);
+    } else {
+      if (p === "cart") setTabValue(1);
+      else if (p === "shipping") setTabValue(2);
+      else setTabValue(0);
+    }
+  }, [searchParams, isAdmin]);
 
   // Fetch complete user profile on mount / login
   useEffect(() => {
@@ -115,6 +155,13 @@ function ProfileContent() {
       fetchUserProfile();
     }
   }, [user?.id]);
+
+  // Load site members if admin switches to the members tab
+  useEffect(() => {
+    if (isAdmin && tabValue === 2) {
+      fetchMembers();
+    }
+  }, [isAdmin, tabValue]);
 
   const fetchUserProfile = async () => {
     setLoadingDb(true);
@@ -142,18 +189,31 @@ function ProfileContent() {
     }
   };
 
+  const fetchMembers = async () => {
+    setLoadingMembers(true);
+    try {
+      const res = await axios.get(`/API/members?adminEmail=${user.email}`);
+      setMembers(res.data.members || []);
+    } catch (err) {
+      console.error(err);
+      showNotification("Failed to load site members", "error");
+    } finally {
+      setLoadingMembers(false);
+    }
+  };
+
   const showNotification = (message, severity = "success") => {
     setSnackbar({ open: true, message, severity });
   };
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
-    // Sync tabs back to URL
-    const tabNames = ["profile", "cart", "shipping"];
-    router.replace(`/profile?tab=${tabNames[newValue]}`);
+    // Sync tabs back to URL without resetting the scroll position
+    const tabNames = isAdmin ? ["profile", "add-product", "members"] : ["profile", "cart", "shipping"];
+    router.replace(`/profile?tab=${tabNames[newValue]}`, { scroll: false });
   };
 
-  // Image upload and client-side compression (resizing to 256x256 max dimensions)
+  // Profile Avatar Upload uploader code
   const handleImageChange = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -266,6 +326,89 @@ function ProfileContent() {
     }
   };
 
+  // Submit handler for Admin Adding Products
+  const handleAddProduct = async (e) => {
+    e.preventDefault();
+    if (!prodTitle || !prodPrice || !prodCategory || !prodImage) {
+      showNotification("Please fill in all required fields: Title, Price, Category, and Image.", "warning");
+      return;
+    }
+
+    setSubmittingProduct(true);
+    try {
+      const res = await axios.post("/API/products", {
+        title: prodTitle,
+        description: prodDescription,
+        price: prodPrice,
+        rating: prodRating,
+        category: prodCategory,
+        image: prodImage,
+        adminEmail: user.email,
+      });
+
+      showNotification("Product successfully added to " + prodCategory + "!", "success");
+      
+      // Clear form inputs
+      setProdTitle("");
+      setProdDescription("");
+      setProdPrice("");
+      setProdRating("5.0");
+      setProdCategory("GPU");
+      setProdImage("");
+    } catch (err) {
+      console.error(err);
+      showNotification(err.response?.data?.error || "Failed to add product.", "error");
+    } finally {
+      setSubmittingProduct(false);
+    }
+  };
+
+  // Admin Product Image uploader file reader
+  const handleProductImageFile = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      showNotification("Please select a valid image file", "error");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const maxDim = 512; // Moderate dimension for standard product thumbnails
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > maxDim) {
+            height = Math.round((height * maxDim) / width);
+            width = maxDim;
+          }
+        } else {
+          if (height > maxDim) {
+            width = Math.round((width * maxDim) / height);
+            height = maxDim;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, width, height);
+
+        // Convert to base64
+        const base64Str = canvas.toDataURL("image/jpeg", 0.8);
+        setProdImage(base64Str);
+        showNotification("Product image uploaded and processed!", "success");
+      };
+      img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  };
+
   const handleCheckoutSubmit = () => {
     if (!address || !city || !zip || !country) {
       showNotification("Please complete your Shipping Details first!", "warning");
@@ -292,29 +435,42 @@ function ProfileContent() {
   }
 
   // Calculate pricing calculations
-  const shippingCost = cartTotal > 500 ? 0 : cartTotal > 0 ? 15 : 0;
+  const shippingCost = cartTotal > 41500 ? 0 : cartTotal > 0 ? 1245 : 0;
   const taxCost = cartTotal * 0.08;
   const grandTotal = cartTotal + shippingCost + taxCost;
 
   return (
-    <Box sx={{ minHeight: "100vh", bgcolor: "#f4f7f6", py: { xs: 4, md: 8 }, px: { xs: 2, sm: 4, md: 8, lg: 12 } }}>
-      <Grid container spacing={4} sx={{ alignItems: "flex-start" }}>
+    <Box sx={{ minHeight: "100vh", background: "linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #eff6ff 100%)", py: { xs: 4, md: 8 }, px: { xs: 2, sm: 4, md: 8, lg: 12 } }}>
+      <Box sx={{ 
+        display: "flex", 
+        flexDirection: { xs: "column", md: "row" }, 
+        flexWrap: "wrap", 
+        gap: 4, 
+        alignItems: "flex-start",
+        width: "100%"
+      }}>
         
         {/* Left column - User profile Summary overview */}
-        <Grid xs={12} lg={4}>
+        <Box sx={{ 
+          width: { xs: "100%", md: "calc(33.333% - 24px)" }, 
+          flexShrink: 0 
+        }}>
           <Card sx={{ 
-            borderRadius: 4, 
-            boxShadow: "0 10px 30px rgba(0,0,0,0.06)", 
+            borderRadius: 6, 
+            boxShadow: "0 20px 50px rgba(36, 83, 212, 0.05), 0 1px 3px rgba(0,0,0,0.01)", 
             overflow: "visible", 
-            border: "1px solid rgba(0,0,0,0.02)",
-            background: "linear-gradient(145deg, #ffffff 0%, #fafcff 100%)",
+            border: "1px solid rgba(255, 255, 255, 0.7)",
+            background: "rgba(255, 255, 255, 0.85)",
+            backdropFilter: "blur(20px)",
             position: "relative" 
           }}>
             <Box sx={{ 
-              height: 120, 
-              background: "linear-gradient(135deg, #2453d4 0%, #173898 100%)", 
-              borderTopLeftRadius: 16, 
-              borderTopRightRadius: 16 
+              height: 140, 
+              background: isAdmin 
+                ? "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)" // special slate/navy gradient for admin
+                : "linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)", // royal blue standard theme gradient
+              borderTopLeftRadius: 24, 
+              borderTopRightRadius: 24 
             }} />
             
             <CardContent sx={{ pt: 0, textAlign: "center", pb: 4 }}>
@@ -326,11 +482,16 @@ function ProfileContent() {
                     width: 140, 
                     height: 140, 
                     border: "5px solid #ffffff", 
-                    boxShadow: "0 8px 20px rgba(0,0,0,0.12)",
-                    bgcolor: "#e0e0e0",
-                    color: "#666",
+                    boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
+                    bgcolor: "#f1f5f9",
+                    color: "#475569",
                     fontSize: "4rem",
-                    fontWeight: 700
+                    fontWeight: 700,
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      transform: "scale(1.03)",
+                      borderColor: isAdmin ? "#0f172a" : "#2453d4",
+                    }
                   }}
                 >
                   {!dbUser?.avatar && dbUser?.username ? dbUser.username.charAt(0).toUpperCase() : <PersonIcon fontSize="inherit" />}
@@ -353,24 +514,65 @@ function ProfileContent() {
                       position: "absolute", 
                       bottom: 4, 
                       right: 4, 
-                      bgcolor: "#2453d4", 
+                      bgcolor: isAdmin ? "#0f172a" : "#2453d4", 
                       color: "white", 
-                      boxShadow: "0 4px 10px rgba(36,83,212,0.4)",
-                      "&:hover": { bgcolor: "#1a3eb3" },
+                      boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
+                      "&:hover": { bgcolor: isAdmin ? "#1e293b" : "#1a3eb3" },
                       width: 40,
                       height: 40
-                    }}
+                     }}
                   >
                     {uploadingImage ? <CircularProgress size={20} color="inherit" /> : <PhotoCameraIcon size="small" />}
                   </IconButton>
                 </Tooltip>
               </Box>
-
+ 
+              {/* Special Admin/User Badges */}
+              {isAdmin ? (
+                <Box sx={{ 
+                  display: "inline-flex", 
+                  alignItems: "center", 
+                  gap: 0.5, 
+                  bgcolor: "rgba(15, 23, 42, 0.08)", 
+                  color: "#0f172a", 
+                  px: 2.5, 
+                  py: 0.75, 
+                  borderRadius: "20px", 
+                  mb: 1.5,
+                  fontWeight: 800,
+                  fontSize: "0.75rem",
+                  textTransform: "uppercase",
+                  letterSpacing: 1.2,
+                  border: "1px solid rgba(15, 23, 42, 0.15)"
+                }}>
+                  <AdminPanelSettingsIcon fontSize="small" sx={{ color: "#0f172a" }} /> Site Administrator
+                </Box>
+              ) : (
+                <Box sx={{ 
+                  display: "inline-flex", 
+                  alignItems: "center", 
+                  gap: 0.5, 
+                  bgcolor: "rgba(37, 99, 235, 0.08)", 
+                  color: "#2563eb", 
+                  px: 2.5, 
+                  py: 0.75, 
+                  borderRadius: "20px", 
+                  mb: 1.5,
+                  fontWeight: 800,
+                  fontSize: "0.75rem",
+                  textTransform: "uppercase",
+                  letterSpacing: 1.2,
+                  border: "1px solid rgba(37, 99, 235, 0.15)"
+                }}>
+                  <PersonIcon fontSize="small" /> Tech Mart Member
+                </Box>
+              )}
+ 
               <Typography variant="h5" sx={{ fontWeight: 800, fontFamily: "var(--font-montserrat)", color: "#111" }}>
                 {dbUser?.fullName || dbUser?.username || "Guest User"}
               </Typography>
               <Typography variant="subtitle2" sx={{ color: "text.secondary", mt: 0.5, fontWeight: 500, display: "flex", alignItems: "center", justifyContent: "center", gap: 0.5 }}>
-                <EmailIcon fontSize="inherit" sx={{ color: "#2453d4" }} /> {dbUser?.email}
+                <EmailIcon fontSize="inherit" sx={{ color: isAdmin ? "#0f172a" : "#2453d4" }} /> {dbUser?.email}
               </Typography>
               
               {dbUser?.bio && (
@@ -380,106 +582,178 @@ function ProfileContent() {
               )}
               
               <Divider sx={{ my: 3 }} />
-
-              {/* Shopping summary list */}
-              <Grid container spacing={2} sx={{ mt: 1 }}>
-                <Grid xs={6} sx={{ borderRight: "1px solid #f0f0f0" }}>
-                  <Typography variant="h6" sx={{ fontWeight: 800, color: "#2453d4", fontFamily: "var(--font-montserrat)" }}>
-                    {cartCount}
+ 
+              {/* Shopping summary list or Admin Stats */}
+              {!isAdmin ? (
+                <>
+                  <Grid container spacing={2} sx={{ mt: 1 }}>
+                    <Grid item xs={6}>
+                      <Box sx={{ p: 2, bgcolor: "rgba(36, 83, 212, 0.03)", borderRadius: 4, border: "1px solid rgba(36, 83, 212, 0.05)" }}>
+                        <Typography variant="h5" sx={{ fontWeight: 900, color: "#2453d4", fontFamily: "var(--font-montserrat)" }}>
+                          {cartCount}
+                        </Typography>
+                        <Typography variant="caption" sx={{ color: "#64748b", fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5 }}>
+                          Cart Items
+                        </Typography>
+                      </Box>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Box sx={{ p: 2, bgcolor: "rgba(36, 83, 212, 0.03)", borderRadius: 4, border: "1px solid rgba(36, 83, 212, 0.05)" }}>
+                        <Typography variant="h5" sx={{ fontWeight: 900, color: "#2453d4", fontFamily: "var(--font-montserrat)" }}>
+                          ₹{cartTotal.toLocaleString("en-IN", { minimumFractionDigits: 0 })}
+                        </Typography>
+                        <Typography variant="caption" sx={{ color: "#64748b", fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5 }}>
+                          Cart Total
+                        </Typography>
+                      </Box>
+                    </Grid>
+                  </Grid>
+ 
+                  {/* Direct links to tabs */}
+                  <Box sx={{ mt: 4, display: "flex", flexDirection: "column", gap: 1.5 }}>
+                    <Button 
+                      variant="outlined" 
+                      onClick={() => handleTabChange(null, 1)}
+                      startIcon={<ShoppingCartIcon />}
+                      sx={{ 
+                        borderRadius: 3, 
+                        py: 1.25, 
+                        textTransform: "none", 
+                        fontWeight: 600, 
+                        color: "#2453d4", 
+                        borderColor: "rgba(36,83,212,0.25)",
+                        "&:hover": { borderColor: "#2453d4", bgcolor: "rgba(36,83,212,0.03)" }
+                      }}
+                    >
+                      View My Cart
+                    </Button>
+                    <Button 
+                      variant="outlined" 
+                      onClick={() => handleTabChange(null, 2)}
+                      startIcon={<LocalShippingIcon />}
+                      sx={{ 
+                        borderRadius: 3, 
+                        py: 1.25, 
+                        textTransform: "none", 
+                        fontWeight: 600, 
+                        color: "#666", 
+                        borderColor: "rgba(0,0,0,0.12)",
+                        "&:hover": { borderColor: "#111", bgcolor: "rgba(0,0,0,0.02)" }
+                      }}
+                    >
+                      Shipping Address
+                    </Button>
+                  </Box>
+                </>
+              ) : (
+                <>
+                  <Typography variant="body2" sx={{ fontWeight: 700, color: "text.secondary", mb: 2, textTransform: "uppercase", fontSize: "0.75rem", letterSpacing: 0.5 }}>
+                    Administrator Controls
                   </Typography>
-                  <Typography variant="caption" sx={{ color: "text.secondary", fontWeight: 600, textTransform: "uppercase" }}>
-                    Cart Items
-                  </Typography>
-                </Grid>
-                <Grid xs={6}>
-                  <Typography variant="h6" sx={{ fontWeight: 800, color: "#2453d4", fontFamily: "var(--font-montserrat)" }}>
-                    ${cartTotal.toLocaleString(undefined, { minimumFractionDigits: 0 })}
-                  </Typography>
-                  <Typography variant="caption" sx={{ color: "text.secondary", fontWeight: 600, textTransform: "uppercase" }}>
-                    Cart Total
-                  </Typography>
-                </Grid>
-              </Grid>
-
-              {/* Direct links to tabs */}
-              <Box sx={{ mt: 4, display: "flex", flexDirection: "column", gap: 1.5 }}>
-                <Button 
-                  variant="outlined" 
-                  onClick={() => handleTabChange(null, 1)}
-                  startIcon={<ShoppingCartIcon />}
-                  sx={{ 
-                    borderRadius: 3, 
-                    py: 1, 
-                    textTransform: "none", 
-                    fontWeight: 600, 
-                    color: "#2453d4", 
-                    borderColor: "rgba(36,83,212,0.25)",
-                    "&:hover": { borderColor: "#2453d4", bgcolor: "rgba(36,83,212,0.03)" }
-                  }}
-                >
-                  View My Cart
-                </Button>
-                <Button 
-                  variant="outlined" 
-                  onClick={() => handleTabChange(null, 2)}
-                  startIcon={<LocalShippingIcon />}
-                  sx={{ 
-                    borderRadius: 3, 
-                    py: 1, 
-                    textTransform: "none", 
-                    fontWeight: 600, 
-                    color: "#666", 
-                    borderColor: "rgba(0,0,0,0.12)",
-                    "&:hover": { borderColor: "#111", bgcolor: "rgba(0,0,0,0.02)" }
-                  }}
-                >
-                  Shipping Address
-                </Button>
-              </Box>
+                  <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
+                    <Button 
+                      variant="contained" 
+                      onClick={() => handleTabChange(null, 1)}
+                      startIcon={<AddIcon />}
+                      sx={{ 
+                        borderRadius: 3, 
+                        py: 1.25, 
+                        textTransform: "none", 
+                        fontWeight: 700, 
+                        bgcolor: "#0f172a",
+                        boxShadow: "0px 4px 12px rgba(15, 23, 42, 0.2)",
+                        "&:hover": { bgcolor: "#1e293b" }
+                      }}
+                    >
+                      Add New Product
+                    </Button>
+                    <Button 
+                      variant="outlined" 
+                      onClick={() => handleTabChange(null, 2)}
+                      startIcon={<PeopleIcon />}
+                      sx={{ 
+                        borderRadius: 3, 
+                        py: 1.25, 
+                        textTransform: "none", 
+                        fontWeight: 600, 
+                        color: "#0f172a", 
+                        borderColor: "rgba(15, 23, 42, 0.4)",
+                        "&:hover": { borderColor: "#0f172a", bgcolor: "rgba(15, 23, 42, 0.05)" }
+                      }}
+                    >
+                      View Site Members
+                    </Button>
+                  </Box>
+                </>
+              )}
             </CardContent>
           </Card>
-        </Grid>
-
+        </Box>
+ 
         {/* Right column - Dynamic Tabs container */}
-        <Grid xs={12} lg={8}>
+        <Box sx={{ 
+          width: { xs: "100%", md: "calc(66.667% - 24px)" }, 
+          flexGrow: 1 
+        }}>
           <Paper sx={{ 
-            borderRadius: 4, 
-            boxShadow: "0 10px 30px rgba(0,0,0,0.06)", 
+            borderRadius: 6, 
+            boxShadow: "0 20px 50px rgba(36, 83, 212, 0.05), 0 1px 3px rgba(0,0,0,0.01)", 
             overflow: "hidden", 
-            border: "1px solid rgba(0,0,0,0.02)" 
+            border: "1px solid rgba(255, 255, 255, 0.7)",
+            background: "rgba(255, 255, 255, 0.85)",
+            backdropFilter: "blur(20px)"
           }}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider", bgcolor: "white" }}>
-              <Tabs 
+            <Box sx={{ borderBottom: 1, borderColor: "rgba(0, 0, 0, 0.05)", bgcolor: "rgba(255, 255, 255, 0.5)" }}>
+               <Tabs 
                 value={tabValue} 
                 onChange={handleTabChange} 
                 aria-label="profile features tabs"
                 variant="fullWidth"
                 sx={{
                   "& .MuiTabs-indicator": {
-                    height: 3,
-                    bgcolor: "#2453d4",
-                    borderRadius: "3px 3px 0 0"
+                    height: 0,
                   },
                   "& .MuiTab-root": {
                     py: 2.2,
                     fontFamily: "var(--font-montserrat)",
                     fontWeight: 800,
-                    letterSpacing: 0.5,
-                    fontSize: { xs: "0.8rem", sm: "0.9rem" },
-                    color: "text.secondary",
-                    "&.Mui-selected": {
+                    letterSpacing: 0.8,
+                    fontSize: { xs: "0.75rem", sm: "0.85rem" },
+                    color: "#64748b",
+                    textTransform: "uppercase",
+                    margin: "6px",
+                    borderRadius: "12px",
+                    transition: "all 0.2s ease-in-out",
+                    "&:hover": {
+                      bgcolor: "rgba(36, 83, 212, 0.04)",
                       color: "#2453d4"
+                    },
+                    "&.Mui-selected": {
+                      bgcolor: isAdmin ? "#0f172a" : "#2453d4",
+                      color: "#ffffff !important",
+                      boxShadow: isAdmin 
+                        ? "0 4px 12px rgba(15, 23, 42, 0.2)" 
+                        : "0 4px 12px rgba(36, 83, 212, 0.2)",
                     }
                   }
                 }}
               >
                 <Tab icon={<PersonIcon fontSize="small" />} iconPosition="start" label="Information" />
-                <Tab icon={<ShoppingCartIcon fontSize="small" />} iconPosition="start" label={`My Cart (${cartCount})`} />
-                <Tab icon={<LocalShippingIcon fontSize="small" />} iconPosition="start" label="Shipping" />
+                {!isAdmin ? (
+                  [
+                    <Tab key="cart" icon={<ShoppingCartIcon fontSize="small" />} iconPosition="start" label={`My Cart (${cartCount})`} />,
+                    <Tab key="shipping" icon={<LocalShippingIcon fontSize="small" />} iconPosition="start" label="Shipping" />
+                  ]
+                ) : (
+                  [
+                    <Tab key="add" icon={<AddIcon fontSize="small" />} iconPosition="start" label="Add Products" />,
+                    <Tab key="members" icon={<PeopleIcon fontSize="small" />} iconPosition="start" label="Members List" />
+                  ]
+                )}
               </Tabs>
             </Box>
-
-            <Box sx={{ p: { xs: 3, sm: 4 }, bgcolor: "white" }}>
+ 
+            <Box sx={{ p: { xs: 3, sm: 4 }, bgcolor: "transparent" }}>
               {loadingDb ? (
                 <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", py: 8 }}>
                   <CircularProgress color="primary" />
@@ -491,7 +765,7 @@ function ProfileContent() {
                     <Box>
                       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 3 }}>
                         <Typography variant="h6" sx={{ fontWeight: 800, color: "#111", display: "flex", alignItems: "center", gap: 1 }}>
-                          <InfoIcon sx={{ color: "#2453d4" }} /> Personal Information
+                          <InfoIcon sx={{ color: isAdmin ? "#0f172a" : "#2453d4" }} /> Personal Information
                         </Typography>
                         
                         {!editInfo ? (
@@ -500,7 +774,15 @@ function ProfileContent() {
                             size="small"
                             onClick={() => setEditInfo(true)}
                             startIcon={<EditIcon />}
-                            sx={{ bgcolor: "#2453d4", borderRadius: 2, textTransform: "none", py: 0.8, px: 2, fontWeight: 600, "&:hover": { bgcolor: "#1a3eb3" } }}
+                            sx={{ 
+                              bgcolor: isAdmin ? "#e65100" : "#2453d4", 
+                              borderRadius: 2, 
+                              textTransform: "none", 
+                              py: 0.8, 
+                              px: 2, 
+                              fontWeight: 600, 
+                              "&:hover": { bgcolor: isAdmin ? "#b53d00" : "#1a3eb3" } 
+                            }}
                           >
                             Edit Profile
                           </Button>
@@ -530,7 +812,7 @@ function ProfileContent() {
                       </Box>
                       
                       <Grid container spacing={3}>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="Username"
                             value={dbUser?.username || ""}
@@ -540,7 +822,7 @@ function ProfileContent() {
                             slotProps={{ input: { sx: { bgcolor: "#fcfcfc", borderRadius: 2 } } }}
                           />
                         </Grid>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="Email Address"
                             value={dbUser?.email || ""}
@@ -550,7 +832,7 @@ function ProfileContent() {
                             slotProps={{ input: { sx: { bgcolor: "#fcfcfc", borderRadius: 2 } } }}
                           />
                         </Grid>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="Full Name"
                             value={fullName}
@@ -567,7 +849,7 @@ function ProfileContent() {
                             }}
                           />
                         </Grid>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="Phone Number"
                             value={phone}
@@ -584,7 +866,7 @@ function ProfileContent() {
                             }}
                           />
                         </Grid>
-                        <Grid xs={12}>
+                        <Grid item xs={12}>
                           <TextField
                             label="Biography / Short Bio"
                             value={bio}
@@ -607,8 +889,8 @@ function ProfileContent() {
                     </Box>
                   )}
 
-                  {/* TAB 2: SHOPPING CART */}
-                  {tabValue === 1 && (
+                  {/* USER TAB 2: SHOPPING CART */}
+                  {!isAdmin && tabValue === 1 && (
                     <Box>
                       {cartItems.length === 0 ? (
                         <Box sx={{ textAlign: "center", py: 8 }}>
@@ -621,7 +903,7 @@ function ProfileContent() {
                           </Typography>
                           <Button 
                             component={Link} 
-                            href="/" 
+                            href="/products" 
                             variant="contained" 
                             sx={{ bgcolor: "#2453d4", color: "white", borderRadius: "25px", px: 4, py: 1.25, fontWeight: 600, textTransform: "none", "&:hover": { bgcolor: "#1a3eb3" } }}
                           >
@@ -631,7 +913,7 @@ function ProfileContent() {
                       ) : (
                         <Grid container spacing={4}>
                           {/* Cart items list */}
-                          <Grid xs={12} lg={7}>
+                          <Grid item xs={12} lg={7}>
                             <Typography variant="h6" sx={{ fontWeight: 800, mb: 3, color: "#111", fontFamily: "var(--font-montserrat)" }}>
                               Items In Cart ({cartCount})
                             </Typography>
@@ -659,7 +941,7 @@ function ProfileContent() {
                                       </Typography>
                                       
                                       <Typography variant="body1" sx={{ color: "#2453d4", fontWeight: 800, mt: 1, fontFamily: "var(--font-montserrat)" }}>
-                                        ${item.price}
+                                        ₹{item.price?.toLocaleString("en-IN")}
                                       </Typography>
                                       
                                       {/* Quantity Adjuster */}
@@ -669,7 +951,7 @@ function ProfileContent() {
                                         </Typography>
                                         <IconButton 
                                           size="small" 
-                                          onClick={() => updateQuantity(item.title, item.quantity - 1)}
+                                          onClick={() => updateQuantity(item.title || item.id, item.quantity - 1)}
                                           sx={{ border: "1px solid #e0e0e0", p: 0.25 }}
                                         >
                                           <RemoveIcon fontSize="inherit" />
@@ -679,7 +961,7 @@ function ProfileContent() {
                                         </Typography>
                                         <IconButton 
                                           size="small" 
-                                          onClick={() => updateQuantity(item.title, item.quantity + 1)}
+                                          onClick={() => updateQuantity(item.title || item.id, item.quantity + 1)}
                                           sx={{ border: "1px solid #e0e0e0", p: 0.25 }}
                                         >
                                           <AddIcon fontSize="inherit" />
@@ -689,7 +971,7 @@ function ProfileContent() {
 
                                     {/* Delete icon */}
                                     <IconButton 
-                                      onClick={() => removeFromCart(item.title)}
+                                      onClick={() => removeFromCart(item.title || item.id)}
                                       sx={{ 
                                         position: "absolute", 
                                         top: 10, 
@@ -707,7 +989,7 @@ function ProfileContent() {
                           </Grid>
                           
                           {/* Cart Summary */}
-                          <Grid xs={12} lg={5}>
+                          <Grid item xs={12} lg={5}>
                             <Card sx={{ borderRadius: 3, border: "1px solid #e0e0e0", bgcolor: "#fcfcff", p: 3 }}>
                               <Typography variant="h6" sx={{ fontWeight: 800, mb: 3, color: "#111", fontFamily: "var(--font-montserrat)" }}>
                                 Order Summary
@@ -719,7 +1001,7 @@ function ProfileContent() {
                                     Subtotal ({cartCount} items)
                                   </Typography>
                                   <Typography variant="body2" sx={{ fontWeight: 700, fontFamily: "var(--font-montserrat)" }}>
-                                    ${cartTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                                    ₹{cartTotal.toLocaleString("en-IN", { minimumFractionDigits: 2 })}
                                   </Typography>
                                 </Box>
                                 
@@ -728,12 +1010,12 @@ function ProfileContent() {
                                     Shipping Fee
                                   </Typography>
                                   <Typography variant="body2" sx={{ fontWeight: 700, fontFamily: "var(--font-montserrat)", color: shippingCost === 0 ? "#4caf50" : "inherit" }}>
-                                    {shippingCost === 0 ? "FREE" : `$${shippingCost.toFixed(2)}`}
+                                    {shippingCost === 0 ? "FREE" : `₹${shippingCost.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`}
                                   </Typography>
                                 </Box>
                                 {shippingCost > 0 && (
                                   <Typography variant="caption" sx={{ color: "#2453d4", mt: -1, fontWeight: 500 }}>
-                                    Free shipping on orders over $500!
+                                    Free shipping on orders over ₹41,500!
                                   </Typography>
                                 )}
 
@@ -742,7 +1024,7 @@ function ProfileContent() {
                                     Estimated Tax (8%)
                                   </Typography>
                                   <Typography variant="body2" sx={{ fontWeight: 700, fontFamily: "var(--font-montserrat)" }}>
-                                    ${taxCost.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                                    ₹{taxCost.toLocaleString("en-IN", { minimumFractionDigits: 2 })}
                                   </Typography>
                                 </Box>
 
@@ -753,7 +1035,7 @@ function ProfileContent() {
                                     Grand Total
                                   </Typography>
                                   <Typography variant="h5" sx={{ fontWeight: 900, color: "#2453d4", fontFamily: "var(--font-montserrat)" }}>
-                                    ${grandTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                                    ₹{grandTotal.toLocaleString("en-IN", { minimumFractionDigits: 2 })}
                                   </Typography>
                                 </Box>
                                 
@@ -785,8 +1067,8 @@ function ProfileContent() {
                     </Box>
                   )}
 
-                  {/* TAB 3: SHIPPING DETAILS */}
-                  {tabValue === 2 && (
+                  {/* USER TAB 3: SHIPPING DETAILS */}
+                  {!isAdmin && tabValue === 2 && (
                     <Box>
                       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 3 }}>
                         <Typography variant="h6" sx={{ fontWeight: 800, color: "#111", display: "flex", alignItems: "center", gap: 1 }}>
@@ -829,7 +1111,7 @@ function ProfileContent() {
                       </Box>
 
                       <Grid container spacing={3}>
-                        <Grid xs={12}>
+                        <Grid item xs={12}>
                           <TextField
                             label="Street Address"
                             value={address}
@@ -841,7 +1123,7 @@ function ProfileContent() {
                             slotProps={{ input: { sx: { borderRadius: 2 } } }}
                           />
                         </Grid>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="City"
                             value={city}
@@ -853,7 +1135,7 @@ function ProfileContent() {
                             slotProps={{ input: { sx: { borderRadius: 2 } } }}
                           />
                         </Grid>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="State / Province / Region"
                             value={state}
@@ -865,7 +1147,7 @@ function ProfileContent() {
                             slotProps={{ input: { sx: { borderRadius: 2 } } }}
                           />
                         </Grid>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="ZIP / Postal Code"
                             value={zip}
@@ -877,7 +1159,7 @@ function ProfileContent() {
                             slotProps={{ input: { sx: { borderRadius: 2 } } }}
                           />
                         </Grid>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="Country"
                             value={country}
@@ -905,12 +1187,270 @@ function ProfileContent() {
                       </Box>
                     </Box>
                   )}
+
+                  {/* ADMIN TAB 2: ADD PRODUCT PANEL (Requirement 2.1, 5) */}
+                  {isAdmin && tabValue === 1 && (
+                    <Box component="form" onSubmit={handleAddProduct}>
+                      <Typography variant="h6" sx={{ fontWeight: 800, color: "#111", display: "flex", alignItems: "center", gap: 1, mb: 3 }}>
+                        <AddIcon sx={{ color: "#0f172a" }} /> Add Product to Catalog
+                      </Typography>
+
+                      <Grid container spacing={3}>
+                        <Grid item xs={12} sm={8}>
+                          <TextField
+                            label="Product Title"
+                            value={prodTitle}
+                            onChange={(e) => setProdTitle(e.target.value)}
+                            required
+                            fullWidth
+                            placeholder="e.g. NVIDIA GeForce RTX 5090 32GB"
+                            variant="outlined"
+                            slotProps={{ input: { sx: { borderRadius: 2 } } }}
+                          />
+                        </Grid>
+
+                        <Grid item xs={12} sm={4}>
+                          <FormControl fullWidth required>
+                            <InputLabel id="category-label">Category</InputLabel>
+                            <Select
+                              labelId="category-label"
+                              value={prodCategory}
+                              label="Category"
+                              onChange={(e) => setProdCategory(e.target.value)}
+                              sx={{ borderRadius: 2 }}
+                            >
+                              {["GPU", "CPU", "RAM", "Laptops", "Monitors", "ACCESSORIES"].map((cat) => (
+                                <MenuItem key={cat} value={cat}>{cat}</MenuItem>
+                              ))}
+                            </Select>
+                          </FormControl>
+                        </Grid>
+
+                        <Grid item xs={12} sm={6}>
+                          <TextField
+                            label="Price (₹)"
+                            type="number"
+                            value={prodPrice}
+                            onChange={(e) => setProdPrice(e.target.value)}
+                            required
+                            fullWidth
+                            placeholder="e.g. 15000"
+                            variant="outlined"
+                            slotProps={{ input: { sx: { borderRadius: 2 } } }}
+                          />
+                        </Grid>
+
+                        <Grid item xs={12} sm={6}>
+                          <FormControl fullWidth>
+                            <InputLabel id="rating-label">Rating (1.0 to 5.0)</InputLabel>
+                            <Select
+                              labelId="rating-label"
+                              value={prodRating}
+                              label="Rating (1.0 to 5.0)"
+                              onChange={(e) => setProdRating(e.target.value)}
+                              sx={{ borderRadius: 2 }}
+                            >
+                              {["5.0", "4.9", "4.8", "4.7", "4.6", "4.5", "4.4", "4.3", "4.2", "4.1", "4.0", "3.5", "3.0"].map((r) => (
+                                <MenuItem key={r} value={r}>{r} Stars</MenuItem>
+                              ))}
+                            </Select>
+                          </FormControl>
+                        </Grid>
+
+                        <Grid item xs={12}>
+                          <TextField
+                            label="Product Description"
+                            value={prodDescription}
+                            onChange={(e) => setProdDescription(e.target.value)}
+                            multiline
+                            rows={3}
+                            fullWidth
+                            placeholder="Describe product details, key specifications, warranty..."
+                            variant="outlined"
+                            slotProps={{ input: { sx: { borderRadius: 2 } } }}
+                          />
+                        </Grid>
+
+                        {/* Image selection and upload */}
+                        <Grid item xs={12}>
+                          <Card variant="outlined" sx={{ p: 2.5, borderRadius: 3, border: "1px dashed rgba(15, 23, 42, 0.4)", bgcolor: "#f8fafc" }}>
+                            <Grid container spacing={2} alignItems="center">
+                              <Grid item xs={12} md={7}>
+                                <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 1 }}>
+                                  Product Image
+                                </Typography>
+                                <Typography variant="caption" sx={{ color: "text.secondary", display: "block", mb: 2 }}>
+                                  Choose to upload a local image file (which will be converted to Base64) OR paste a remote direct image URL.
+                                </Typography>
+
+                                <Box sx={{ display: "flex", gap: 1.5, alignItems: "center", mb: 2 }}>
+                                  <input 
+                                    type="file" 
+                                    ref={prodImageInputRef} 
+                                    onChange={handleProductImageFile} 
+                                    accept="image/*" 
+                                    style={{ display: "none" }} 
+                                  />
+                                  <Button
+                                    variant="outlined"
+                                    onClick={() => prodImageInputRef.current?.click()}
+                                    startIcon={<CloudUploadIcon />}
+                                    sx={{ 
+                                      borderRadius: 2, 
+                                      textTransform: "none", 
+                                      color: "#0f172a", 
+                                      borderColor: "#0f172a",
+                                      "&:hover": { borderColor: "#1e293b", bgcolor: "rgba(15, 23, 42, 0.05)" }
+                                    }}
+                                  >
+                                    Upload Image
+                                  </Button>
+                                </Box>
+
+                                <TextField
+                                  label="Or Enter Image URL"
+                                  value={prodImage.startsWith("data:image") ? "Uploaded base64 file (" + prodImage.substring(0, 30) + "...)" : prodImage}
+                                  onChange={(e) => setProdImage(e.target.value)}
+                                  fullWidth
+                                  placeholder="e.g. https://images.com/product.png"
+                                  variant="outlined"
+                                  slotProps={{ input: { sx: { borderRadius: 2 } } }}
+                                />
+                              </Grid>
+
+                              <Grid item xs={12} md={5} sx={{ display: "flex", justifyContent: "center" }}>
+                                {prodImage ? (
+                                  <Box sx={{ textAlign: "center" }}>
+                                    <Box 
+                                      component="img" 
+                                      src={prodImage} 
+                                      alt="Product preview"
+                                      sx={{ 
+                                        maxHeight: 120, 
+                                        maxWidth: "100%", 
+                                        borderRadius: 2, 
+                                        boxShadow: "0 4px 10px rgba(0,0,0,0.1)", 
+                                        objectFit: "contain",
+                                        bgcolor: "#f9f9f9",
+                                        p: 1
+                                      }}
+                                    />
+                                    <Button 
+                                      size="small" 
+                                      color="error" 
+                                      onClick={() => setProdImage("")}
+                                      sx={{ display: "block", mt: 1, mx: "auto", textTransform: "none", fontWeight: 700 }}
+                                    >
+                                      Remove
+                                    </Button>
+                                  </Box>
+                                ) : (
+                                  <Box sx={{ 
+                                    width: 120, 
+                                    height: 120, 
+                                    borderRadius: 2, 
+                                    bgcolor: "#f2f2f2", 
+                                    display: "flex", 
+                                    alignItems: "center", 
+                                    justifyContent: "center",
+                                    border: "1px dashed #ccc"
+                                  }}>
+                                    <Typography variant="caption" sx={{ color: "text.secondary", fontWeight: 600 }}>
+                                      No Image
+                                    </Typography>
+                                  </Box>
+                                )}
+                              </Grid>
+                            </Grid>
+                          </Card>
+                        </Grid>
+                      </Grid>
+
+                      <Divider sx={{ my: 4 }} />
+                      
+                      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          disabled={submittingProduct}
+                          startIcon={submittingProduct ? <CircularProgress size={20} color="inherit" /> : <AddIcon />}
+                          sx={{ 
+                            bgcolor: "#0f172a", 
+                            color: "white", 
+                            borderRadius: "25px", 
+                            px: 5, 
+                            py: 1.5, 
+                            fontWeight: 700, 
+                            textTransform: "none",
+                            boxShadow: "0 6px 16px rgba(15, 23, 42, 0.25)",
+                            "&:hover": { bgcolor: "#1e293b" } 
+                          }}
+                        >
+                          {submittingProduct ? "Creating Product..." : "Create Product"}
+                        </Button>
+                      </Box>
+                    </Box>
+                  )}
+
+                  {/* ADMIN TAB 3: SITE MEMBERS (Requirement 2.2) */}
+                  {isAdmin && tabValue === 2 && (
+                    <Box>
+                      <Typography variant="h6" sx={{ fontWeight: 800, color: "#111", display: "flex", alignItems: "center", gap: 1, mb: 3 }}>
+                        <PeopleIcon sx={{ color: "#0f172a" }} /> Site Members Directory
+                      </Typography>
+
+                      {loadingMembers ? (
+                        <Box sx={{ display: "flex", justifyContent: "center", py: 8 }}>
+                          <CircularProgress sx={{ color: "#e65100" }} />
+                        </Box>
+                      ) : members.length === 0 ? (
+                        <Box sx={{ textAlign: "center", py: 6 }}>
+                          <Typography variant="body1" sx={{ color: "text.secondary" }}>
+                            No registered users found in the system.
+                          </Typography>
+                        </Box>
+                      ) : (
+                        <TableContainer component={Paper} sx={{ borderRadius: 3, boxShadow: "none", border: "1px solid #e0e0e0", overflow: "hidden" }}>
+                          <Table aria-label="site members directory table">
+                            <TableHead sx={{ bgcolor: "#fafafa" }}>
+                              <TableRow>
+                                <TableCell sx={{ fontWeight: 800, fontFamily: "var(--font-montserrat)" }}>Avatar</TableCell>
+                                <TableCell sx={{ fontWeight: 800, fontFamily: "var(--font-montserrat)" }}>Username</TableCell>
+                                <TableCell sx={{ fontWeight: 800, fontFamily: "var(--font-montserrat)" }}>Email</TableCell>
+                                <TableCell sx={{ fontWeight: 800, fontFamily: "var(--font-montserrat)" }}>Full Name</TableCell>
+                                <TableCell sx={{ fontWeight: 800, fontFamily: "var(--font-montserrat)" }}>Phone</TableCell>
+                                <TableCell sx={{ fontWeight: 800, fontFamily: "var(--font-montserrat)" }}>Joined</TableCell>
+                              </TableRow>
+                            </TableHead>
+                            <TableBody>
+                              {members.map((member) => (
+                                <TableRow key={member.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                                  <TableCell>
+                                    <Avatar src={member.avatar || ""} sx={{ width: 36, height: 36, bgcolor: "#0f172a", color: "white", fontSize: "0.95rem", fontWeight: 700 }}>
+                                      {!member.avatar && member.username ? member.username.charAt(0).toUpperCase() : ""}
+                                    </Avatar>
+                                  </TableCell>
+                                  <TableCell sx={{ fontWeight: 700, color: member.email === "sajunpalraj2004@gmail.com" ? "#0f172a" : "inherit" }}>
+                                    {member.username} {member.email === "sajunpalraj2004@gmail.com" && "(Admin)"}
+                                  </TableCell>
+                                  <TableCell>{member.email}</TableCell>
+                                  <TableCell>{member.fullName || "—"}</TableCell>
+                                  <TableCell>{member.phone || "—"}</TableCell>
+                                  <TableCell>{member.createdAt ? new Date(member.createdAt).toLocaleDateString() : "—"}</TableCell>
+                                </TableRow>
+                              ))}
+                            </TableBody>
+                          </Table>
+                        </TableContainer>
+                      )}
+                    </Box>
+                  )}
                 </>
               )}
             </Box>
           </Paper>
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
 
       {/* Checkout dialog confirmation */}
       <Dialog
@@ -926,7 +1466,7 @@ function ProfileContent() {
         <DialogContent>
           <DialogContentText id="checkout-dialog-description" sx={{ lineHeight: 1.6 }}>
             You are about to place an order for <strong>{cartCount} item(s)</strong>. 
-            The total cost is <strong>${grandTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong>.<br /><br />
+            The total cost is <strong>₹{grandTotal.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</strong>.<br /><br />
             Items will be shipped to:<br />
             <strong>{fullName || dbUser?.fullName || user.username}</strong><br />
             {address}, {city}, {state} {zip}, {country}
