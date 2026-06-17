@@ -224,7 +224,7 @@ function ContactUsPage() {
         {/* Contact Info Cards */}
         <Grid container spacing={3} sx={{ mb: 8 }}>
           {contactInfo.map((info, idx) => (
-            <Grid item xs={12} key={idx}>
+            <Grid xs={12} key={idx}>
               <Box
                 sx={{
                   bgcolor: "white",
@@ -290,7 +290,7 @@ function ContactUsPage() {
         {/* Replaced Layout: About Us Style Content (Left) + Form (Right) */}
         <Grid container spacing={6} sx={{ mb: 12 }}>
           {/* Left Side: Premium Image & Text Content Showcase */}
-          <Grid item xs={12}>
+          <Grid xs={12}>
             <Box
               sx={{
                 display: "flex",
@@ -397,7 +397,7 @@ function ContactUsPage() {
           </Grid>
 
           {/* Right Side: Message Form */}
-          <Grid item xs={12}>
+          <Grid xs={12}>
             <Box
               sx={{
                 bgcolor: "white",
@@ -432,7 +432,7 @@ function ContactUsPage() {
 
               <Box component="form" onSubmit={handleSubmit} noValidate>
                 <Grid container spacing={3}>
-                  <Grid item xs={12}>
+                  <Grid xs={12}>
                     <TextField
                       required
                       fullWidth
@@ -455,7 +455,7 @@ function ContactUsPage() {
                     />
                   </Grid>
                   
-                  <Grid item xs={12}>
+                  <Grid xs={12}>
                     <TextField
                       required
                       fullWidth
@@ -480,7 +480,7 @@ function ContactUsPage() {
                   </Grid>
 
                   {/* Dropdown Support Department Selector */}
-                  <Grid item xs={12}>
+                  <Grid xs={12}>
                     <FormControl fullWidth required error={!!formErrors.department}>
                       <InputLabel id="department-label" sx={{ "&.Mui-focused": { color: "#2453d4" } }}>Target Department</InputLabel>
                       <Select
@@ -506,7 +506,7 @@ function ContactUsPage() {
                     </FormControl>
                   </Grid>
 
-                  <Grid item xs={12}>
+                  <Grid xs={12}>
                     <TextField
                       required
                       fullWidth
@@ -529,7 +529,7 @@ function ContactUsPage() {
                     />
                   </Grid>
                   
-                  <Grid item xs={12}>
+                  <Grid xs={12}>
                     <TextField
                       required
                       fullWidth
@@ -554,7 +554,7 @@ function ContactUsPage() {
                     />
                   </Grid>
                   
-                  <Grid item xs={12}>
+                  <Grid xs={12}>
                     <Button
                       type="submit"
                       variant="contained"

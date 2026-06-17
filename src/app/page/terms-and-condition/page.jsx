@@ -196,7 +196,7 @@ export default function TermsAndConditionsPage() {
 
         <Grid container spacing={5}>
           {/* Left Navigation Menu (Desktop Only) */}
-          <Grid item xs={12} md={3} sx={{ display: { xs: "none", md: "block" } }}>
+          <Grid xs={12} md={3} sx={{ display: { xs: "none", md: "block" } }}>
             <Box sx={{ position: "sticky", top: 180, display: "flex", flexDirection: "column", gap: 1 }}>
               <Typography variant="subtitle2" sx={{ color: "#64748b", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", mb: 2, pl: 1.5 }}>
                 Documents Outline
@@ -232,7 +232,7 @@ export default function TermsAndConditionsPage() {
           </Grid>
 
           {/* Right Contents Area */}
-          <Grid item xs={12} md={9}>
+          <Grid xs={12} md={9}>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
               {filteredSections.length > 0 ? (
                 filteredSections.map((sec) => (

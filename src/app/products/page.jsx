@@ -158,9 +158,9 @@ function ProductsContent() {
 
       {/* Filter and Sort Toolbar */}
       <Paper sx={{ p: 3, borderRadius: 4, boxShadow: "0 8px 30px rgba(0,0,0,0.03)", border: "1px solid rgba(0,0,0,0.01)", mb: 6 }}>
-        <Grid container spacing={3} alignItems="center">
+        <Grid container spacing={3} sx={{ alignItems: "center" }}>
           {/* Search Input */}
-          <Grid item xs={12} md={5}>
+          <Grid xs={12} md={5}>
             <TextField
               label="Search Products"
               value={searchQuery}
@@ -182,7 +182,7 @@ function ProductsContent() {
           </Grid>
 
           {/* Category Dropdown (Mobile fallback filter) */}
-          <Grid item xs={12} sm={6} md={3.5}>
+          <Grid xs={12} sm={6} md={3.5}>
             <FormControl fullWidth>
               <InputLabel id="category-filter-label" sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
                 <FilterListIcon fontSize="small" /> Category
@@ -202,7 +202,7 @@ function ProductsContent() {
           </Grid>
 
           {/* Sort By Dropdown */}
-          <Grid item xs={12} sm={6} md={3.5}>
+          <Grid xs={12} sm={6} md={3.5}>
             <FormControl fullWidth>
               <InputLabel id="sort-select-label" sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
                 <SortIcon fontSize="small" /> Sort By

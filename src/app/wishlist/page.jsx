@@ -176,7 +176,7 @@ function WishlistContent() {
       {/* Grid of Wishlist items */}
       <Grid container spacing={4}>
         {wishlistItems.map((product, idx) => (
-          <Grid item xs={12} sm={6} md={4} key={product.title || idx}>
+          <Grid xs={12} sm={6} md={4} key={product.title || idx}>
             <Card
               sx={{
                 height: "100%",
