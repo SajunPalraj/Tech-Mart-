@@ -586,7 +586,7 @@ function ProfileContent() {
               {!isAdmin ? (
                 <>
                   <Grid container spacing={2} sx={{ mt: 1 }}>
-                    <Grid xs={6}>
+                    <Grid item xs={6}>
                       <Box sx={{ p: 2, bgcolor: "rgba(36, 83, 212, 0.03)", borderRadius: 4, border: "1px solid rgba(36, 83, 212, 0.05)" }}>
                         <Typography variant="h5" sx={{ fontWeight: 900, color: "#2453d4", fontFamily: "var(--font-montserrat)" }}>
                           {cartCount}
@@ -596,7 +596,7 @@ function ProfileContent() {
                         </Typography>
                       </Box>
                     </Grid>
-                    <Grid xs={6}>
+                    <Grid item xs={6}>
                       <Box sx={{ p: 2, bgcolor: "rgba(36, 83, 212, 0.03)", borderRadius: 4, border: "1px solid rgba(36, 83, 212, 0.05)" }}>
                         <Typography variant="h5" sx={{ fontWeight: 900, color: "#2453d4", fontFamily: "var(--font-montserrat)" }}>
                           ₹{cartTotal.toLocaleString("en-IN", { minimumFractionDigits: 0 })}
@@ -811,7 +811,7 @@ function ProfileContent() {
                       </Box>
                       
                       <Grid container spacing={3}>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="Username"
                             value={dbUser?.username || ""}
@@ -821,7 +821,7 @@ function ProfileContent() {
                             slotProps={{ input: { sx: { bgcolor: "#fcfcfc", borderRadius: 2 } } }}
                           />
                         </Grid>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="Email Address"
                             value={dbUser?.email || ""}
@@ -831,7 +831,7 @@ function ProfileContent() {
                             slotProps={{ input: { sx: { bgcolor: "#fcfcfc", borderRadius: 2 } } }}
                           />
                         </Grid>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="Full Name"
                             value={fullName}
@@ -848,7 +848,7 @@ function ProfileContent() {
                             }}
                           />
                         </Grid>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="Phone Number"
                             value={phone}
@@ -865,7 +865,7 @@ function ProfileContent() {
                             }}
                           />
                         </Grid>
-                        <Grid xs={12}>
+                        <Grid item xs={12}>
                           <TextField
                             label="Biography / Short Bio"
                             value={bio}
@@ -912,7 +912,7 @@ function ProfileContent() {
                       ) : (
                         <Grid container spacing={4}>
                           {/* Cart items list */}
-                          <Grid xs={12} lg={7}>
+                          <Grid item xs={12} lg={7}>
                             <Typography variant="h6" sx={{ fontWeight: 800, mb: 3, color: "#111", fontFamily: "var(--font-montserrat)" }}>
                               Items In Cart ({cartCount})
                             </Typography>
@@ -1110,7 +1110,7 @@ function ProfileContent() {
                       </Box>
 
                       <Grid container spacing={3}>
-                        <Grid xs={12}>
+                        <Grid item xs={12}>
                           <TextField
                             label="Street Address"
                             value={address}
@@ -1122,7 +1122,7 @@ function ProfileContent() {
                             slotProps={{ input: { sx: { borderRadius: 2 } } }}
                           />
                         </Grid>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="City"
                             value={city}
@@ -1134,7 +1134,7 @@ function ProfileContent() {
                             slotProps={{ input: { sx: { borderRadius: 2 } } }}
                           />
                         </Grid>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="State / Province / Region"
                             value={state}
@@ -1146,7 +1146,7 @@ function ProfileContent() {
                             slotProps={{ input: { sx: { borderRadius: 2 } } }}
                           />
                         </Grid>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="ZIP / Postal Code"
                             value={zip}
@@ -1158,7 +1158,7 @@ function ProfileContent() {
                             slotProps={{ input: { sx: { borderRadius: 2 } } }}
                           />
                         </Grid>
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="Country"
                             value={country}
@@ -1195,7 +1195,7 @@ function ProfileContent() {
                       </Typography>
 
                       <Grid container spacing={3}>
-                        <Grid xs={12} sm={8}>
+                        <Grid item xs={12} sm={8}>
                           <TextField
                             label="Product Title"
                             value={prodTitle}
@@ -1208,7 +1208,7 @@ function ProfileContent() {
                           />
                         </Grid>
 
-                        <Grid xs={12} sm={4}>
+                        <Grid item xs={12} sm={4}>
                           <FormControl fullWidth required>
                             <InputLabel id="category-label">Category</InputLabel>
                             <Select
@@ -1225,7 +1225,7 @@ function ProfileContent() {
                           </FormControl>
                         </Grid>
 
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <TextField
                             label="Price (₹)"
                             type="number"
@@ -1239,7 +1239,7 @@ function ProfileContent() {
                           />
                         </Grid>
 
-                        <Grid xs={12} sm={6}>
+                        <Grid item xs={12} sm={6}>
                           <FormControl fullWidth>
                             <InputLabel id="rating-label">Rating (1.0 to 5.0)</InputLabel>
                             <Select
@@ -1256,7 +1256,7 @@ function ProfileContent() {
                           </FormControl>
                         </Grid>
 
-                        <Grid xs={12}>
+                        <Grid item xs={12}>
                           <TextField
                             label="Product Description"
                             value={prodDescription}
@@ -1271,10 +1271,10 @@ function ProfileContent() {
                         </Grid>
 
                         {/* Image selection and upload */}
-                        <Grid xs={12}>
+                        <Grid item xs={12}>
                           <Card variant="outlined" sx={{ p: 2.5, borderRadius: 3, border: "1px dashed rgba(15, 23, 42, 0.4)", bgcolor: "#f8fafc" }}>
                             <Grid container spacing={2} sx={{ alignItems: "center" }}>
-                              <Grid xs={12} md={7}>
+                              <Grid item xs={12} md={7}>
                                 <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 1 }}>
                                   Product Image
                                 </Typography>
@@ -1317,7 +1317,7 @@ function ProfileContent() {
                                 />
                               </Grid>
 
-                              <Grid xs={12} md={5} sx={{ display: "flex", justifyContent: "center" }}>
+                              <Grid item xs={12} md={5} sx={{ display: "flex", justifyContent: "center" }}>
                                 {prodImage ? (
                                   <Box sx={{ textAlign: "center" }}>
                                     <Box 

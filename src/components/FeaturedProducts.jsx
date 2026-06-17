@@ -1,6 +1,8 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import axios from 'axios';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
@@ -27,6 +29,26 @@ import acc8 from '@/assets/Products/Accessories/RAM.webp';
 export default function FeaturedProducts() {
   const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
+  
+  const [productMap, setProductMap] = useState({});
+
+  useEffect(() => {
+    async function fetchIds() {
+      try {
+        const res = await axios.get('/API/products');
+        const list = res.data.products || [];
+        const mapping = {};
+        list.forEach(p => {
+          mapping[p.title] = p.id;
+        });
+        setProductMap(mapping);
+      } catch (err) {
+        console.error("Error fetching product mappings in FeaturedProducts:", err);
+      }
+    }
+    fetchIds();
+  }, []);
+
   const item = [
     {
       title: 'Fixed-Wing Hybrid Surveillance Drone VW',
@@ -156,25 +178,38 @@ export default function FeaturedProducts() {
               </Box>
             </Box>
 
-            <Box sx={{ position: 'relative', height: '60%', width: '100%', bgcolor: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden', p: 2 }}>
-              <Box 
-                className="product-image"
-                component="img" 
-                src={product.image} 
-                alt={product.title}
-                sx={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain', objectPosition: 'center', mixBlendMode: 'multiply', transition: 'transform 0.4s ease' }} 
-              />
-            </Box>
+            {(() => {
+              const resolvedId = productMap[product.title];
+              const targetUrl = resolvedId 
+                ? `/products/${resolvedId}` 
+                : `/products?search=${encodeURIComponent(product.title)}`;
+              return (
+                <Link
+                  href={targetUrl}
+                  style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%', flexGrow: 1 }}
+                >
+                  <Box sx={{ position: 'relative', height: '60%', width: '100%', bgcolor: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden', p: 2 }}>
+                    <Box 
+                      className="product-image"
+                      component="img" 
+                      src={product.image} 
+                      alt={product.title}
+                      sx={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain', objectPosition: 'center', mixBlendMode: 'multiply', transition: 'transform 0.4s ease' }} 
+                    />
+                  </Box>
 
-            <Box sx={{ p: 2, height: '40%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-              <Rating value={product.rating} precision={0.5} size="small" readOnly sx={{ mb: 0.5 }} />
-              <Typography variant="subtitle2" sx={{ fontFamily: 'var(--font-montserrat)', fontWeight: 700, mb: 1, lineHeight: 1.4, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-                {product.title}
-              </Typography>
-              <Typography variant="h6" sx={{ fontFamily: 'var(--font-montserrat)', fontWeight: 800, color: '#2453d4', mt: 'auto', mb: 1 }}>
-                {product.price}
-              </Typography>
-            </Box>
+                  <Box sx={{ p: 2, height: '40%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+                    <Rating value={product.rating} precision={0.5} size="small" readOnly sx={{ mb: 0.5 }} />
+                    <Typography variant="subtitle2" sx={{ fontFamily: 'var(--font-montserrat)', fontWeight: 700, mb: 1, lineHeight: 1.4, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                      {product.title}
+                    </Typography>
+                    <Typography variant="h6" sx={{ fontFamily: 'var(--font-montserrat)', fontWeight: 800, color: '#2453d4', mt: 'auto', mb: 1 }}>
+                      {product.price}
+                    </Typography>
+                  </Box>
+                </Link>
+              );
+            })()}
 
             <Box 
               className="add-to-cart"

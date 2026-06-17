@@ -31,6 +31,7 @@ import SortIcon from "@mui/icons-material/Sort";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import { useSearchParams, useRouter } from "next/navigation";
+import Link from "next/link";
 import axios from "axios";
 
 const categories = ["All", "GPU", "CPU", "RAM", "Laptops", "Monitors", "ACCESSORIES"];
@@ -403,62 +404,67 @@ function ProductsContent() {
                       </Box>
                     </Box>
 
-                    {/* Product Image Panel */}
-                    <Box sx={{ position: "relative", height: "200px", width: "100%", bgcolor: "transparent", display: "flex", justifyContent: "center", alignItems: "center", overflow: "hidden", p: 2, mt: 3 }}>
-                      <Box
-                        className="product-image"
-                        component="img"
-                        src={product.image}
-                        alt={product.title}
-                        sx={{ 
-                          maxHeight: "100%", 
-                          maxWidth: "100%", 
-                          objectFit: "contain", 
-                          objectPosition: "center", 
-                          mixBlendMode: "multiply", 
-                          transition: "transform 0.4s ease" 
-                        }}
-                      />
-                    </Box>
+                    <Link 
+                      href={`/products/${product.id}`}
+                      style={{ textDecoration: "none", color: "inherit", display: "flex", flexDirection: "column", flexGrow: 1, height: "100%" }}
+                    >
+                      {/* Product Image Panel */}
+                      <Box sx={{ position: "relative", height: "200px", width: "100%", bgcolor: "transparent", display: "flex", justifyContent: "center", alignItems: "center", overflow: "hidden", p: 2, mt: 3 }}>
+                        <Box
+                          className="product-image"
+                          component="img"
+                          src={product.image}
+                          alt={product.title}
+                          sx={{ 
+                            maxHeight: "100%", 
+                            maxWidth: "100%", 
+                            objectFit: "contain", 
+                            objectPosition: "center", 
+                            mixBlendMode: "multiply", 
+                            transition: "transform 0.4s ease" 
+                          }}
+                        />
+                      </Box>
 
-                    {/* Info Panel */}
-                    <Box sx={{ p: 2, flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
-                      <Rating value={product.rating} precision={0.1} size="small" readOnly sx={{ mb: 0.5 }} />
-                      <Typography 
-                        variant="subtitle2" 
-                        sx={{ 
-                          fontFamily: "var(--font-montserrat)", 
-                          fontWeight: 800, 
-                          mb: 0.5, 
-                          lineHeight: 1.4, 
-                          display: "-webkit-box", 
-                          WebkitLineClamp: 2, 
-                          WebkitBoxOrient: "vertical", 
-                          overflow: "hidden",
-                          color: "#222"
-                        }}
-                      >
-                        {product.title}
-                      </Typography>
-                      <Typography 
-                        variant="body2" 
-                        sx={{ 
-                          color: "text.secondary", 
-                          fontSize: "0.75rem", 
-                          display: "-webkit-box", 
-                          WebkitLineClamp: 2, 
-                          WebkitBoxOrient: "vertical", 
-                          overflow: "hidden", 
-                          mb: 1.5,
-                          lineHeight: 1.4
-                        }}
-                      >
-                        {product.description || "Premium high performance catalog item from Tech Mart."}
-                      </Typography>
-                      <Typography variant="h6" sx={{ fontFamily: "var(--font-montserrat)", fontWeight: 900, color: "#2453d4", mt: "auto", mb: 2 }}>
-                        ₹{product.price?.toLocaleString("en-IN")}
-                      </Typography>
-                    </Box>
+                      {/* Info Panel */}
+                      <Box sx={{ p: 2, flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
+                        <Rating value={product.rating} precision={0.1} size="small" readOnly sx={{ mb: 0.5 }} />
+                        <Typography 
+                          variant="subtitle2" 
+                          sx={{ 
+                            fontFamily: "var(--font-montserrat)", 
+                            fontWeight: 800, 
+                            mb: 0.5, 
+                            lineHeight: 1.4, 
+                            display: "-webkit-box", 
+                            WebkitLineClamp: 2, 
+                            WebkitBoxOrient: "vertical", 
+                            overflow: "hidden",
+                            color: "#222"
+                          }}
+                        >
+                          {product.title}
+                        </Typography>
+                        <Typography 
+                          variant="body2" 
+                          sx={{ 
+                            color: "text.secondary", 
+                            fontSize: "0.75rem", 
+                            display: "-webkit-box", 
+                            WebkitLineClamp: 2, 
+                            WebkitBoxOrient: "vertical", 
+                            overflow: "hidden", 
+                            mb: 1.5,
+                            lineHeight: 1.4
+                          }}
+                        >
+                          {product.description || "Premium high performance catalog item from Tech Mart."}
+                        </Typography>
+                        <Typography variant="h6" sx={{ fontFamily: "var(--font-montserrat)", fontWeight: 900, color: "#2453d4", mt: "auto", mb: 2 }}>
+                          ₹{product.price?.toLocaleString("en-IN")}
+                        </Typography>
+                      </Box>
+                    </Link>
 
                     {/* Add to Cart Shutter Drawer Button */}
                     <Box

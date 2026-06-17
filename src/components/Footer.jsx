@@ -180,6 +180,11 @@ export default function Footer() {
                 Privacy Policy
               </Typography>
             </Link>
+            <Link href="/page/disclaimer" style={{ textDecoration: 'none' }}>
+              <Typography variant="h6" sx={{ color: "GrayText", "&:hover": { color: "white" }, cursor: 'pointer', textAlign: { xs: 'center', md: 'right' } }}>
+                Resource Disclaimer
+              </Typography>
+            </Link>
           </Box>
           
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
