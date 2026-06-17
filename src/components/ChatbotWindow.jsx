@@ -1,27 +1,19 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import Paper from '@mui/material/Paper';
-import InputBase from '@mui/material/InputBase';
-import Avatar from '@mui/material/Avatar';
-import Zoom from '@mui/material/Zoom';
-import CloseIcon from '@mui/icons-material/Close';
-import SendIcon from '@mui/icons-material/Send';
-import SmartToyIcon from '@mui/icons-material/SmartToy';
-import PersonIcon from '@mui/icons-material/Person';
-import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-import { keyframes } from '@mui/system';
-
-const chatFloat = keyframes`
-  0% { transform: translateY(0px) translateX(0px); }
-  25% { transform: translateY(-5px) translateX(2px); }
-  50% { transform: translateY(-2px) translateX(-2px); }
-  75% { transform: translateY(-7px) translateX(1px); }
-  100% { transform: translateY(0px) translateX(0px); }
-`;
+import React, { useState, useEffect, useRef } from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import Paper from "@mui/material/Paper";
+import InputBase from "@mui/material/InputBase";
+import Avatar from "@mui/material/Avatar";
+import Zoom from "@mui/material/Zoom";
+import CloseIcon from "@mui/icons-material/Close";
+import SendIcon from "@mui/icons-material/Send";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import ForumOutlinedIcon from "@mui/icons-material/ForumOutlined";
+import Tooltip from "@mui/material/Tooltip";
 
 const SUGGESTIONS = [
   "Show me gaming laptops",
@@ -60,7 +52,7 @@ export default function ChatbotWindow({ isOpen, onClose }) {
   };
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -124,7 +116,7 @@ export default function ChatbotWindow({ isOpen, onClose }) {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSend();
     }
@@ -137,21 +129,21 @@ export default function ChatbotWindow({ isOpen, onClose }) {
     const parts = text.split(/(```[\s\S]*?```)/g);
     
     return parts.map((part, index) => {
-      if (part.startsWith('```') && part.endsWith('```')) {
+      if (part.startsWith("```") && part.endsWith("```")) {
         const code = part.slice(3, -3).trim();
         return (
           <Box
             key={index}
             component="pre"
             sx={{
-              bgcolor: 'rgba(0,0,0,0.06)',
+              bgcolor: "rgba(0,0,0,0.04)",
               p: 1.5,
               borderRadius: 2,
-              fontSize: '0.75rem',
-              fontFamily: 'monospace',
-              overflowX: 'auto',
+              fontSize: "0.75rem",
+              fontFamily: "monospace",
+              overflowX: "auto",
               my: 1.5,
-              border: '1px solid rgba(0,0,0,0.08)'
+              border: "1px solid rgba(0,0,0,0.06)"
             }}
           >
             <code>{code}</code>
@@ -159,9 +151,9 @@ export default function ChatbotWindow({ isOpen, onClose }) {
         );
       }
       
-      const lines = part.split('\n');
+      const lines = part.split("\n");
       return lines.map((line, lineIdx) => {
-        const isBullet = line.trim().startsWith('- ') || line.trim().startsWith('* ');
+        const isBullet = line.trim().startsWith("- ") || line.trim().startsWith("* ");
         let cleanLine = line;
         if (isBullet) {
           cleanLine = line.trim().substring(2);
@@ -170,17 +162,17 @@ export default function ChatbotWindow({ isOpen, onClose }) {
         // Parse bold **text**
         const boldParts = cleanLine.split(/(\*\*.*?\*\*)/g);
         const formattedLine = boldParts.map((bPart, bIdx) => {
-          if (bPart.startsWith('**') && bPart.endsWith('**')) {
-            return <strong key={bIdx} style={{ fontWeight: 800 }}>{bPart.slice(2, -2)}</strong>;
+          if (bPart.startsWith("**") && bPart.endsWith("**")) {
+            return <strong key={bIdx} style={{ fontWeight: 850 }}>{bPart.slice(2, -2)}</strong>;
           }
           return bPart;
         });
 
         if (isBullet) {
           return (
-            <Box key={`${lineIdx}-${index}`} sx={{ display: 'flex', alignItems: 'flex-start', ml: 2, my: 0.5 }}>
-              <Box component="span" sx={{ mr: 1, color: '#e91e63', fontWeight: 'bold' }}>•</Box>
-              <Typography variant="body2" sx={{ fontFamily: 'var(--font-montserrat)', fontSize: '0.85rem', color: 'inherit', lineHeight: 1.5 }}>
+            <Box key={`${lineIdx}-${index}`} sx={{ display: "flex", alignItems: "flex-start", ml: 1, my: 0.5 }}>
+              <Box component="span" sx={{ mr: 1.25, color: "#2453d4", fontWeight: "bold" }}>•</Box>
+              <Typography variant="body2" sx={{ fontFamily: "var(--font-montserrat)", fontSize: "0.85rem", color: "inherit", lineHeight: 1.5, fontWeight: 500 }}>
                 {formattedLine}
               </Typography>
             </Box>
@@ -192,12 +184,13 @@ export default function ChatbotWindow({ isOpen, onClose }) {
             key={`${lineIdx}-${index}`} 
             variant="body2" 
             sx={{ 
-              fontFamily: 'var(--font-montserrat)', 
-              fontSize: '0.85rem', 
-              minHeight: line.trim() === '' ? '0.5em' : 'auto',
+              fontFamily: "var(--font-montserrat)", 
+              fontSize: "0.85rem", 
+              minHeight: line.trim() === "" ? "0.5em" : "auto",
               mb: 0.5,
               lineHeight: 1.5,
-              color: 'inherit'
+              color: "inherit",
+              fontWeight: 500
             }}
           >
             {formattedLine}
@@ -208,61 +201,61 @@ export default function ChatbotWindow({ isOpen, onClose }) {
   };
 
   return (
-    <Zoom in={isOpen} style={{ transformOrigin: 'bottom right' }}>
+    <Zoom in={isOpen} style={{ transformOrigin: "bottom right" }}>
       <Box
         sx={{
-          position: 'fixed',
+          position: "fixed",
           bottom: { xs: 80, sm: 95 },
           right: { xs: 20, sm: 30 },
-          zIndex: 9999,
-          animation: `${chatFloat} 8s ease-in-out infinite`
+          zIndex: 9999
         }}
       >
         <Paper
-          elevation={6}
+          elevation={4}
           sx={{
-            width: { xs: 'calc(100vw - 40px)', sm: 380 },
-            height: { xs: '60vh', sm: 520 },
-            borderRadius: '20px',
-            overflow: 'hidden',
-            display: 'flex',
-            flexDirection: 'column',
-            boxShadow: '0 12px 40px rgba(0,0,0,0.15)',
-            border: '1px solid rgba(0,0,0,0.06)',
-            bgcolor: 'white'
+            width: { xs: "calc(100vw - 40px)", sm: 380 },
+            height: { xs: "60vh", sm: 500 },
+            borderRadius: "24px",
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.06)",
+            border: "1px solid rgba(226, 232, 240, 0.8)",
+            bgcolor: "white"
           }}
         >
-          {/* Chat Header */}
+          {/* Minimalist Header */}
           <Box sx={{
-            background: 'linear-gradient(135deg, #2453d4 0%, #e91e63 100%)',
-            p: 2,
-            color: 'white',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+            bgcolor: "white",
+            p: 2.5,
+            borderBottom: "1px solid #e2e8f0",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between"
           }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-              <Avatar sx={{ bgcolor: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.4)', width: 36, height: 36 }}>
-                <SmartToyIcon sx={{ color: 'white' }} />
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+              <Avatar sx={{ bgcolor: "rgba(36,83,212,0.06)", width: 40, height: 40, border: "1px solid rgba(36,83,212,0.1)" }}>
+                <SmartToyIcon sx={{ color: "#2453d4", fontSize: 22 }} />
               </Avatar>
               <Box>
-                <Typography variant="subtitle1" sx={{ fontWeight: 800, fontFamily: 'var(--font-montserrat)', fontSize: '0.95rem', lineHeight: 1.2 }}>
-                  Tech Mart AI
+                <Typography variant="subtitle1" sx={{ fontWeight: 800, fontFamily: "var(--font-montserrat)", fontSize: "0.92rem", color: "#0f172a", lineHeight: 1.2 }}>
+                  Tech Mart Assistant
                 </Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                  <Box sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: '#4caf50' }} />
-                  <Typography variant="caption" sx={{ fontFamily: 'var(--font-montserrat)', fontSize: '0.7rem', opacity: 0.85 }}>
-                    Always Online
+                <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, mt: 0.25 }}>
+                  <Box sx={{ width: 6, height: 6, borderRadius: "50%", bgcolor: "#22c55e" }} />
+                  <Typography variant="caption" sx={{ fontFamily: "var(--font-montserrat)", fontSize: "0.68rem", color: "#64748b", fontWeight: 600 }}>
+                    Online
                   </Typography>
                 </Box>
               </Box>
             </Box>
-            <Box sx={{ display: 'flex', gap: 0.5 }}>
-              <IconButton size="small" onClick={handleClear} title="Clear Conversation" sx={{ color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.15)' } }}>
-                <DeleteOutlinedIcon fontSize="small" />
-              </IconButton>
-              <IconButton size="small" onClick={onClose} sx={{ color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.15)' } }}>
+            <Box sx={{ display: "flex", gap: 0.5 }}>
+              <Tooltip title="Clear Chat">
+                <IconButton size="small" onClick={handleClear} sx={{ color: "#64748b", "&:hover": { color: "#ef4444", bgcolor: "#f8fafc" } }}>
+                  <DeleteOutlinedIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
+              <IconButton size="small" onClick={onClose} sx={{ color: "#64748b", "&:hover": { color: "#0f172a", bgcolor: "#f8fafc" } }}>
                 <CloseIcon fontSize="small" />
               </IconButton>
             </Box>
@@ -271,13 +264,13 @@ export default function ChatbotWindow({ isOpen, onClose }) {
           {/* Message Panel */}
           <Box sx={{
             flex: 1,
-            overflowY: 'auto',
-            p: 2,
-            bgcolor: '#f8fafc',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 2,
-            scrollbarWidth: 'thin'
+            overflowY: "auto",
+            p: 2.5,
+            bgcolor: "#f8fafc",
+            display: "flex",
+            flexDirection: "column",
+            gap: 2.5,
+            scrollbarWidth: "thin"
           }}>
             {messages.map((msg, index) => {
               const isBot = msg.role === "assistant";
@@ -285,34 +278,29 @@ export default function ChatbotWindow({ isOpen, onClose }) {
                 <Box
                   key={index}
                   sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: isBot ? 'flex-start' : 'flex-end',
-                    maxWidth: '85%',
-                    alignSelf: isBot ? 'flex-start' : 'flex-end'
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: 1.25,
+                    maxWidth: "85%",
+                    alignSelf: isBot ? "flex-start" : "flex-end",
+                    flexDirection: isBot ? "row" : "row-reverse"
                   }}
                 >
+                  {isBot && (
+                    <Avatar sx={{ width: 28, height: 28, bgcolor: "#2453d4", fontSize: "0.85rem", mt: 0.25 }}>
+                      <SmartToyIcon sx={{ fontSize: 16, color: "white" }} />
+                    </Avatar>
+                  )}
                   <Box sx={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: 1
+                    bgcolor: isBot ? "white" : "#2453d4",
+                    color: isBot ? "#334155" : "white",
+                    p: 1.75,
+                    borderRadius: isBot ? "4px 16px 16px 16px" : "16px 16px 4px 16px",
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
+                    border: isBot ? "1px solid rgba(226, 232, 240, 0.8)" : "none",
+                    wordBreak: "break-word"
                   }}>
-                    {isBot && (
-                      <Avatar sx={{ width: 28, height: 28, bgcolor: '#e91e63', fontSize: '0.8rem', mt: 0.5 }}>
-                        🤖
-                      </Avatar>
-                    )}
-                    <Box sx={{
-                      bgcolor: isBot ? 'white' : '#2453d4',
-                      color: isBot ? '#1e293b' : 'white',
-                      p: 1.5,
-                      borderRadius: isBot ? '4px 16px 16px 16px' : '16px 16px 4px 16px',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
-                      border: isBot ? '1px solid rgba(0,0,0,0.06)' : 'none',
-                      wordBreak: 'break-word'
-                    }}>
-                      {formatMessage(msg.content)}
-                    </Box>
+                    {formatMessage(msg.content)}
                   </Box>
                 </Box>
               );
@@ -320,55 +308,56 @@ export default function ChatbotWindow({ isOpen, onClose }) {
 
             {/* Typing Indicator */}
             {isLoading && (
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, alignSelf: 'flex-start', maxWidth: '85%' }}>
-                <Avatar sx={{ width: 28, height: 28, bgcolor: '#e91e63', fontSize: '0.8rem' }}>
-                  🤖
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1.25, alignSelf: "flex-start", maxWidth: "85%" }}>
+                <Avatar sx={{ width: 28, height: 28, bgcolor: "#2453d4" }}>
+                  <SmartToyIcon sx={{ fontSize: 16, color: "white" }} />
                 </Avatar>
                 <Box sx={{
-                  bgcolor: 'white',
+                  bgcolor: "white",
                   p: 1.5,
-                  borderRadius: '4px 16px 16px 16px',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
-                  border: '1px solid rgba(0,0,0,0.06)',
-                  display: 'flex',
-                  alignItems: 'center',
+                  borderRadius: "4px 16px 16px 16px",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
+                  border: "1px solid rgba(226, 232, 240, 0.8)",
+                  display: "flex",
+                  alignItems: "center",
                   gap: 0.5
                 }}>
-                  <Box className="typing-dot" sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: '#94a3b8', animation: 'bounce 1.4s infinite ease-in-out', animationDelay: '0s' }} />
-                  <Box className="typing-dot" sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: '#94a3b8', animation: 'bounce 1.4s infinite ease-in-out', animationDelay: '0.2s' }} />
-                  <Box className="typing-dot" sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: '#94a3b8', animation: 'bounce 1.4s infinite ease-in-out', animationDelay: '0.4s' }} />
+                  <Box className="typing-dot" sx={{ width: 6, height: 6, borderRadius: "50%", bgcolor: "#94a3b8", animation: "bounce 1.4s infinite ease-in-out", animationDelay: "0s" }} />
+                  <Box className="typing-dot" sx={{ width: 6, height: 6, borderRadius: "50%", bgcolor: "#94a3b8", animation: "bounce 1.4s infinite ease-in-out", animationDelay: "0.2s" }} />
+                  <Box className="typing-dot" sx={{ width: 6, height: 6, borderRadius: "50%", bgcolor: "#94a3b8", animation: "bounce 1.4s infinite ease-in-out", animationDelay: "0.4s" }} />
                 </Box>
               </Box>
             )}
 
-            {/* Suggestions if context is clear/start */}
+            {/* Suggestion Pills */}
             {messages.length <= 1 && !isLoading && (
-              <Box sx={{ mt: 'auto', display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <Typography variant="caption" sx={{ fontFamily: 'var(--font-montserrat)', fontWeight: 600, color: '#64748b', ml: 0.5 }}>
-                  Suggestions:
+              <Box sx={{ mt: "auto", display: "flex", flexDirection: "column", gap: 1.25 }}>
+                <Typography variant="caption" sx={{ fontFamily: "var(--font-montserrat)", fontWeight: 700, color: "#64748b", ml: 0.5, textTransform: "uppercase", letterSpacing: 0.5 }}>
+                  Common Inquiries
                 </Typography>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
                   {SUGGESTIONS.map((suggestion, idx) => (
                     <Box
                       key={idx}
                       onClick={() => handleSend(suggestion)}
                       sx={{
-                        bgcolor: 'white',
-                        border: '1px solid rgba(36, 83, 212, 0.15)',
-                        color: '#2453d4',
+                        bgcolor: "white",
+                        border: "1px solid #e2e8f0",
+                        color: "#475569",
                         px: 2,
-                        py: 0.8,
-                        borderRadius: '999px',
-                        fontSize: '0.78rem',
-                        fontFamily: 'var(--font-montserrat)',
-                        fontWeight: 600,
-                        cursor: 'pointer',
-                        boxShadow: '0 2px 6px rgba(0,0,0,0.02)',
-                        transition: 'all 0.2s ease',
-                        '&:hover': {
-                          bgcolor: 'rgba(36, 83, 212, 0.06)',
-                          borderColor: '#2453d4',
-                          transform: 'translateY(-1px)'
+                        py: 0.9,
+                        borderRadius: "999px",
+                        fontSize: "0.78rem",
+                        fontFamily: "var(--font-montserrat)",
+                        fontWeight: 700,
+                        cursor: "pointer",
+                        boxShadow: "0 2px 6px rgba(0,0,0,0.01)",
+                        transition: "all 0.2s ease",
+                        "&:hover": {
+                          bgcolor: "rgba(36, 83, 212, 0.04)",
+                          color: "#2453d4",
+                          borderColor: "rgba(36, 83, 212, 0.15)",
+                          transform: "translateY(-1px)"
                         }
                       }}
                     >
@@ -386,27 +375,28 @@ export default function ChatbotWindow({ isOpen, onClose }) {
           <Box
             component="div"
             sx={{
-              p: 1.5,
-              bgcolor: 'white',
-              borderTop: '1px solid rgba(0,0,0,0.06)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 1
+              p: 2,
+              bgcolor: "white",
+              borderTop: "1px solid #e2e8f0",
+              display: "flex",
+              alignItems: "center",
+              gap: 1.25
             }}
           >
             <Box sx={{
               flex: 1,
-              display: 'flex',
-              alignItems: 'center',
-              bgcolor: '#f1f5f9',
-              borderRadius: '999px',
-              px: 2,
-              py: 0.75,
-              border: '1px solid rgba(0,0,0,0.04)',
-              '&:focus-within': {
-                borderColor: '#2453d4',
-                bgcolor: 'white',
-                boxShadow: '0 0 0 2px rgba(36, 83, 212, 0.1)'
+              display: "flex",
+              alignItems: "center",
+              bgcolor: "#f1f5f9",
+              borderRadius: "999px",
+              px: 2.5,
+              py: 0.9,
+              border: "1px solid transparent",
+              transition: "all 0.2s ease",
+              "&:focus-within": {
+                borderColor: "rgba(36, 83, 212, 0.25)",
+                bgcolor: "white",
+                boxShadow: "0 0 0 3px rgba(36, 83, 212, 0.08)"
               }
             }}>
               <InputBase
@@ -414,12 +404,13 @@ export default function ChatbotWindow({ isOpen, onClose }) {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Ask anything about tech..."
+                placeholder="Message assistant..."
                 disabled={isLoading}
                 sx={{
-                  fontSize: '0.875rem',
-                  fontFamily: 'var(--font-montserrat)',
-                  color: '#334155'
+                  fontSize: "0.85rem",
+                  fontFamily: "var(--font-montserrat)",
+                  color: "#334155",
+                  fontWeight: 500
                 }}
               />
             </Box>
@@ -427,17 +418,17 @@ export default function ChatbotWindow({ isOpen, onClose }) {
               onClick={() => handleSend()}
               disabled={!input.trim() || isLoading}
               sx={{
-                bgcolor: input.trim() && !isLoading ? '#2453d4' : '#e2e8f0',
-                color: input.trim() && !isLoading ? 'white' : '#94a3b8',
-                '&:hover': {
-                  bgcolor: input.trim() && !isLoading ? '#1c42a5' : '#e2e8f0',
+                bgcolor: input.trim() && !isLoading ? "#2453d4" : "#e2e8f0",
+                color: input.trim() && !isLoading ? "white" : "#94a3b8",
+                "&:hover": {
+                  bgcolor: input.trim() && !isLoading ? "#1c42a5" : "#e2e8f0"
                 },
-                width: 36,
-                height: 36,
-                transition: 'all 0.2s ease'
+                width: 38,
+                height: 38,
+                transition: "all 0.2s ease"
               }}
             >
-              <SendIcon fontSize="small" />
+              <SendIcon fontSize="small" sx={{ fontSize: 16 }} />
             </IconButton>
           </Box>
 

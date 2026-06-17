@@ -178,43 +178,12 @@ export default function FloatingControls() {
             opacity: 0.22,
             transition: 'all 0.3s ease'
           },
-          '&:hover .normal-eyes': { opacity: 0 },
+           '&:hover .normal-eyes': { opacity: 0 },
           '&:hover .happy-eyes': { opacity: 1 },
           '&:hover .normal-mouth': { opacity: 0 },
-          '&:hover .happy-mouth': { opacity: 1 },
-          '&:hover .robot-speech': {
-            transform: 'scale(1.1) translateY(-3px)',
-            bgcolor: '#e91e63',
-            color: 'white',
-            borderColor: '#e91e63',
-          }
+          '&:hover .happy-mouth': { opacity: 1 }
         }}
       >
-        {/* Speech Bubble */}
-        <Box
-          className="robot-speech"
-          sx={{
-            position: 'absolute',
-            top: '-20px',
-            right: '-10px',
-            bgcolor: 'white',
-            color: '#2453d4',
-            border: '2.5px solid #2453d4',
-            borderRadius: '12px 12px 12px 0px',
-            px: 1.5,
-            py: 0.5,
-            boxShadow: '0 4px 12px rgba(36,83,212,0.18)',
-            fontFamily: 'var(--font-montserrat)',
-            fontWeight: 800,
-            fontSize: '0.75rem',
-            whiteSpace: 'nowrap',
-            animation: `${bubbleFloat} 3s ease-in-out infinite`,
-            transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)',
-            zIndex: 10
-          }}
-        >
-          Hi! 💬
-        </Box>
 
         <svg width="80" height="110" viewBox="0 0 120 170" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ transition: 'transform 0.3s ease' }}>
           <defs>
