@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -11,6 +11,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Rating from '@mui/material/Rating';
+import Link from 'next/link';
+import axios from 'axios';
 
 // Import Contexts
 import { useCart } from "@/context/CartContext";
@@ -64,6 +66,24 @@ export default function Categories() {
   const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
   const [activeTab, setActiveTab] = useState('GPU');
+  const [productMap, setProductMap] = useState({});
+
+  useEffect(() => {
+    async function fetchIds() {
+      try {
+        const res = await axios.get('/API/products');
+        const list = res.data.products || [];
+        const mapping = {};
+        list.forEach(p => {
+          mapping[p.title] = p.id;
+        });
+        setProductMap(mapping);
+      } catch (err) {
+        console.error("Error fetching product mappings in Categories:", err);
+      }
+    }
+    fetchIds();
+  }, []);
 
   const products = {
     GPU: [
@@ -251,117 +271,130 @@ export default function Categories() {
           scrollbarColor: '#2453d4 rgba(0,0,0,0.03)',
         }}
       >
-        {products[activeTab].map((product) => (
-          <Box
-            key={product.id}
-            sx={{
-              flex: '0 0 auto',
-              height: '380px',
-              width: { xs: '260px', sm: '280px', md: '300px' },
-              bgcolor: '#ffffff',
-              position: 'relative',
-              overflow: 'hidden',
-              borderRadius: 4,
-              border: '1px solid #f0f0f0',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.04)',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              '&:hover': {
-                transform: 'translateY(-8px)',
-                boxShadow: '0 16px 32px rgba(0,0,0,0.12)',
-              },
-              '&:hover .add-to-cart': {
-                transform: 'translateY(0)',
-                opacity: 1,
-              },
-              '&:hover .product-image': {
-                transform: 'scale(1.1)',
-              }
-            }}
-          >
-            {/* Category Tag & Icons */}
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, p: 2 }}>
-              <Typography variant="caption" sx={{ fontFamily: 'var(--font-montserrat)', fontWeight: 700, color: 'text.secondary', letterSpacing: 1.5, textTransform: 'uppercase' }}>
-                {activeTab}
-              </Typography>
-              <Box sx={{ display: 'flex', gap: 0.5 }}>
-                <IconButton 
-                  size="small" 
-                  onClick={() => toggleWishlist(product)}
-                  sx={{ 
-                    bgcolor: isInWishlist(product.title) ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.8)', 
-                    color: isInWishlist(product.title) ? '#e91e63' : 'inherit',
-                    '&:hover': { bgcolor: 'white', color: '#e91e63' } 
-                  }}
-                >
-                  {isInWishlist(product.title) ? (
-                    <FavoriteIcon fontSize="small" />
-                  ) : (
-                    <FavoriteBorderIcon fontSize="small" />
-                  )}
-                </IconButton>
-                <IconButton size="small" sx={{ bgcolor: 'rgba(255,255,255,0.8)', '&:hover': { bgcolor: 'white', color: '#2453d4' } }}>
-                  <CompareArrowsIcon fontSize="small" />
-                </IconButton>
-              </Box>
-            </Box>
+        {products[activeTab].map((product) => {
+          const resolvedId = productMap[product.title];
+          const targetUrl = resolvedId 
+            ? `/products/${resolvedId}` 
+            : `/products?search=${encodeURIComponent(product.title)}`;
 
-            {/* Product Image */}
-            <Box sx={{ position: 'relative', height: '60%', width: '100%', bgcolor: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden', p: 2 }}>
-              <Image
-                className="product-image"
-                src={product.image}
-                alt={product.title}
-                fill
-                sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 300px"
-                style={{ objectFit: 'contain', objectPosition: 'center', mixBlendMode: 'multiply', transition: 'transform 0.4s ease' }}
-              />
-            </Box>
-
-            {/* Info */}
-            <Box sx={{ p: 2, height: '40%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-              <Rating value={product.rating} precision={0.1} size="small" readOnly sx={{ mb: 0.5 }} />
-              <Typography variant="subtitle2" sx={{ fontFamily: 'var(--font-montserrat)', fontWeight: 700, mb: 1, lineHeight: 1.4, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-                {product.title}
-              </Typography>
-              <Typography variant="h6" sx={{ fontFamily: 'var(--font-montserrat)', fontWeight: 800, color: '#2453d4', mt: 'auto', mb: 1 }}>
-                {product.price}
-              </Typography>
-            </Box>
-
-            {/* Add to Cart Shutter Button */}
+          return (
             <Box
-              className="add-to-cart"
-              onClick={() => addToCart(product)}
+              key={product.id}
               sx={{
-                fontFamily: 'var(--font-montserrat)',
-                bgcolor: '#2453d4',
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                height: '60px',
-                width: "100%",
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                cursor: 'pointer',
-                transform: 'translateY(100%)',
-                opacity: 0,
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                textTransform: "uppercase",
-                fontWeight: 800,
-                letterSpacing: 1.5,
-                gap: 1,
+                flex: '0 0 auto',
+                height: '380px',
+                width: { xs: '260px', sm: '280px', md: '300px' },
+                bgcolor: '#ffffff',
+                position: 'relative',
+                overflow: 'hidden',
+                borderRadius: 4,
+                border: '1px solid #f0f0f0',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.04)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 '&:hover': {
-                  bgcolor: '#1c42a5'
+                  transform: 'translateY(-8px)',
+                  boxShadow: '0 16px 32px rgba(0,0,0,0.12)',
+                },
+                '&:hover .add-to-cart': {
+                  transform: 'translateY(0)',
+                  opacity: 1,
+                },
+                '&:hover .product-image': {
+                  transform: 'scale(1.1)',
                 }
               }}
             >
-              <ShoppingCartOutlinedIcon fontSize="small" />
-              Add to cart
+              {/* Category Tag & Icons */}
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, p: 2 }}>
+                <Typography variant="caption" sx={{ fontFamily: 'var(--font-montserrat)', fontWeight: 700, color: 'text.secondary', letterSpacing: 1.5, textTransform: 'uppercase' }}>
+                  {activeTab}
+                </Typography>
+                <Box sx={{ display: 'flex', gap: 0.5 }}>
+                  <IconButton 
+                    size="small" 
+                    onClick={() => toggleWishlist(product)}
+                    sx={{ 
+                      bgcolor: isInWishlist(product.title) ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.8)', 
+                      color: isInWishlist(product.title) ? '#e91e63' : 'inherit',
+                      '&:hover': { bgcolor: 'white', color: '#e91e63' } 
+                    }}
+                  >
+                    {isInWishlist(product.title) ? (
+                      <FavoriteIcon fontSize="small" />
+                    ) : (
+                      <FavoriteBorderIcon fontSize="small" />
+                    )}
+                  </IconButton>
+                  <IconButton size="small" sx={{ bgcolor: 'rgba(255,255,255,0.8)', '&:hover': { bgcolor: 'white', color: '#2453d4' } }}>
+                    <CompareArrowsIcon fontSize="small" />
+                  </IconButton>
+                </Box>
+              </Box>
+
+              {/* Product Info Link Wrapper */}
+              <Link
+                href={targetUrl}
+                style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}
+              >
+                {/* Product Image */}
+                <Box sx={{ position: 'relative', height: '60%', width: '100%', bgcolor: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden', p: 2 }}>
+                  <Image
+                    className="product-image"
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 300px"
+                    style={{ objectFit: 'contain', objectPosition: 'center', mixBlendMode: 'multiply', transition: 'transform 0.4s ease' }}
+                  />
+                </Box>
+
+                {/* Info */}
+                <Box sx={{ p: 2, height: '40%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+                  <Rating value={product.rating} precision={0.1} size="small" readOnly sx={{ mb: 0.5 }} />
+                  <Typography variant="subtitle2" sx={{ fontFamily: 'var(--font-montserrat)', fontWeight: 700, mb: 1, lineHeight: 1.4, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                    {product.title}
+                  </Typography>
+                  <Typography variant="h6" sx={{ fontFamily: 'var(--font-montserrat)', fontWeight: 800, color: '#2453d4', mt: 'auto', mb: 1 }}>
+                    {product.price}
+                  </Typography>
+                </Box>
+              </Link>
+
+              {/* Add to Cart Shutter Button */}
+              <Box
+                className="add-to-cart"
+                onClick={() => addToCart(product)}
+                sx={{
+                  fontFamily: 'var(--font-montserrat)',
+                  bgcolor: '#2453d4',
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  height: '60px',
+                  width: "100%",
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  cursor: 'pointer',
+                  transform: 'translateY(100%)',
+                  opacity: 0,
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  textTransform: "uppercase",
+                  fontWeight: 800,
+                  letterSpacing: 1.5,
+                  gap: 1,
+                  '&:hover': {
+                    bgcolor: '#1c42a5'
+                  }
+                }}
+              >
+                <ShoppingCartOutlinedIcon fontSize="small" />
+                Add to cart
+              </Box>
             </Box>
-          </Box>
-        ))}
+          );
+        })}
       </Box>
     </Box>
   );

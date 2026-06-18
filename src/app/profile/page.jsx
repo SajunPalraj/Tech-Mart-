@@ -416,7 +416,7 @@ function ProfileContent() {
       router.replace("/profile?tab=shipping");
       return;
     }
-    setCheckoutOpen(true);
+    confirmCheckout();
   };
 
   const confirmCheckout = () => {
@@ -424,6 +424,18 @@ function ProfileContent() {
     setCheckoutOpen(false);
     showNotification("Order placed successfully! Thank you for purchasing.", "success");
   };
+
+  // Handle automatic checkout parameter from "Buy Now" redirection
+  useEffect(() => {
+    const checkoutParam = searchParams.get("checkout");
+    if (checkoutParam === "true" && !loadingDb && !authLoading && cartItems.length > 0) {
+      // Clean up the URL search parameter to prevent re-execution
+      router.replace("/profile?tab=cart", { scroll: false });
+      
+      // Execute the checkout logic immediately
+      handleCheckoutSubmit();
+    }
+  }, [searchParams, loadingDb, authLoading, cartItems, router]);
 
   // Display spinners while authentication state is resolving
   if (authLoading || (!user && !authLoading)) {
@@ -713,14 +725,16 @@ function ProfileContent() {
                     height: 0,
                   },
                   "& .MuiTab-root": {
-                    py: 2.2,
+                    flexDirection: { xs: "column", sm: "row" },
+                    py: { xs: 1.5, sm: 2.2 },
+                    gap: { xs: 0.5, sm: 1 },
                     fontFamily: "var(--font-montserrat)",
                     fontWeight: 800,
-                    letterSpacing: 0.8,
-                    fontSize: { xs: "0.75rem", sm: "0.85rem" },
+                    letterSpacing: 0.5,
+                    fontSize: { xs: "0.68rem", sm: "0.78rem", md: "0.85rem" },
                     color: "#64748b",
                     textTransform: "uppercase",
-                    margin: "6px",
+                    margin: { xs: "3px", sm: "6px" },
                     borderRadius: "12px",
                     transition: "all 0.2s ease-in-out",
                     "&:hover": {
@@ -1451,43 +1465,6 @@ function ProfileContent() {
         </Box>
       </Box>
 
-      {/* Checkout dialog confirmation */}
-      <Dialog
-        open={checkoutOpen}
-        onClose={() => setCheckoutOpen(false)}
-        aria-labelledby="checkout-dialog-title"
-        aria-describedby="checkout-dialog-description"
-        PaperProps={{ sx: { borderRadius: 4, p: 1 } }}
-      >
-        <DialogTitle id="checkout-dialog-title" sx={{ fontWeight: 800, fontFamily: "var(--font-montserrat)", display: "flex", alignItems: "center", gap: 1 }}>
-          <CheckCircleIcon sx={{ color: "#4caf50", fontSize: 28 }} /> Confirm Order Placement
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="checkout-dialog-description" sx={{ lineHeight: 1.6 }}>
-            You are about to place an order for <strong>{cartCount} item(s)</strong>. 
-            The total cost is <strong>₹{grandTotal.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</strong>.<br /><br />
-            Items will be shipped to:<br />
-            <strong>{fullName || dbUser?.fullName || user.username}</strong><br />
-            {address}, {city}, {state} {zip}, {country}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions sx={{ px: 3, pb: 2 }}>
-          <Button 
-            onClick={() => setCheckoutOpen(false)} 
-            sx={{ textTransform: "none", color: "#666", fontWeight: 600 }}
-          >
-            Go Back
-          </Button>
-          <Button 
-            onClick={confirmCheckout} 
-            variant="contained"
-            sx={{ bgcolor: "#4caf50", color: "white", textTransform: "none", fontWeight: 600, borderRadius: 2, "&:hover": { bgcolor: "#388e3c" } }} 
-            autoFocus
-          >
-            Confirm & Pay
-          </Button>
-        </DialogActions>
-      </Dialog>
 
       {/* Notifications toast */}
       <Snackbar

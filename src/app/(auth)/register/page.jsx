@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
@@ -28,7 +28,7 @@ import Image from "next/image";
 import loginBg from "@/assets/Dashboard/loginbg.jpg";
 import loginavatar from "@/assets/Dashboard/Login-Avatar.png";
 
-import { useSignUp, useSignIn, useClerk } from "@clerk/nextjs";
+import { useSignUp, useSignIn, useClerk, useUser } from "@clerk/nextjs";
 
 // Define smooth zoom animation
 const backgroundZoom = keyframes`
@@ -47,9 +47,15 @@ const RegisterUserPage = () => {
   const { signUp } = useSignUp();
   const { signIn } = useSignIn();
   const { setActive } = useClerk();
+  const { isSignedIn } = useUser();
   const isLoaded = signUp !== null && signIn !== null;
-  console.log("RegisterUserPage render: isLoaded =", isLoaded, "signUp =", signUp);
-  
+
+  useEffect(() => {
+    if (isSignedIn) {
+      window.location.href = "/";
+    }
+  }, [isSignedIn]);
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
@@ -100,6 +106,7 @@ const RegisterUserPage = () => {
         strategy: "oauth_google",
         redirectUrl: "/",
         redirectCallbackUrl: "/sso-callback",
+        oidcPrompt: "select_account",
       });
       if (error) {
         console.error("Clerk Google Register Error:", error);
@@ -107,13 +114,13 @@ const RegisterUserPage = () => {
       }
     } catch (err) {
       console.error("Clerk Google Register Error:", err);
-      showAlert("Failed to initialize Google registration.", "error");
+      showAlert(err.errors?.[0]?.longMessage || err.message || "Failed to initialize Google registration.", "error");
     }
   };
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    if (!isLoaded) return;
+    if (!isLoaded || loading) return;
 
     // Reset error states
     setUsernameError(false);
@@ -176,11 +183,27 @@ const RegisterUserPage = () => {
         emailAddress: email,
         password: password,
         firstName: username,
+        legalAccepted: true,
       });
 
       if (error) {
         showAlert(error.longMessage || error.message || "Failed to initialize registration.", "error");
         return;
+      }
+
+      // Automatically attempt to update the username parameter in Clerk in case the dashboard requires it.
+      // We log but do not block if the dashboard settings have username disabled/optional.
+      try {
+        let cleanUsername = username.toLowerCase().replace(/[^a-z0-9_.-]/g, "");
+        if (cleanUsername.length < 4) {
+          cleanUsername = (cleanUsername + "1234").slice(0, 4);
+        }
+        const { error: updateError } = await signUp.update({ username: cleanUsername });
+        if (updateError) {
+          console.warn("Clerk optional username update info:", updateError);
+        }
+      } catch (e) {
+        console.warn("Clerk optional username update exception:", e);
       }
 
       // Prepare email verification
@@ -202,7 +225,7 @@ const RegisterUserPage = () => {
 
   const handleVerify = async (e) => {
     e.preventDefault();
-    if (!isLoaded) return;
+    if (!isLoaded || loading) return;
 
     if (!verificationCode) {
       showAlert("Please enter the verification code.", "error");
@@ -211,8 +234,9 @@ const RegisterUserPage = () => {
 
     setLoading(true);
     try {
+      const cleanCode = verificationCode.replace(/\s+/g, "");
       const { error } = await signUp.verifications.verifyEmailCode({
-        code: verificationCode,
+        code: cleanCode,
       });
 
       if (error) {
@@ -220,18 +244,27 @@ const RegisterUserPage = () => {
         return;
       }
 
-      if (signUp.status === "complete") {
-        await signUp.finalize();
-        showAlert("Registration verified! Redirecting...", "success");
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 1500);
-      } else {
-        showAlert("Verification incomplete. Please retry.", "error");
+      const { error: finalizeError } = await signUp.finalize();
+      if (finalizeError) {
+        console.error("Clerk finalize error details:", finalizeError);
+        const missingFields = signUp.missingFields || [];
+        const unverifiedFields = signUp.unverifiedFields || [];
+        const fieldDetails = [];
+        if (missingFields.length > 0) fieldDetails.push(`Missing: [${missingFields.join(", ")}]`);
+        if (unverifiedFields.length > 0) fieldDetails.push(`Unverified: [${unverifiedFields.join(", ")}]`);
+        
+        const detailedMsg = `Verification incomplete. ${fieldDetails.join(" | ")}. ${finalizeError.longMessage || finalizeError.message}`;
+        showAlert(detailedMsg, "error");
+        return;
       }
+
+      showAlert("Registration verified! Redirecting...", "success");
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1500);
     } catch (err) {
       console.error("Verification unexpected error:", err);
-      showAlert("Invalid verification code.", "error");
+      showAlert(err.message || "Invalid verification code.", "error");
     } finally {
       setLoading(false);
     }

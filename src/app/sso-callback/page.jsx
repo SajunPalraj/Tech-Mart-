@@ -8,7 +8,12 @@ export default function SSOCallback() {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", minHeight: "80vh", gap: 2 }}>
       <CircularProgress size={50} sx={{ color: "#2453d4" }} />
-      <AuthenticateWithRedirectCallback />
+      <AuthenticateWithRedirectCallback
+        signInUrl="/login"
+        signUpUrl="/register"
+        signInFallbackRedirectUrl="/"
+        signUpFallbackRedirectUrl="/"
+      />
     </Box>
   );
 }

@@ -35,6 +35,7 @@ import Avatar from '@mui/material/Avatar';
 import { useAuth } from "@/context/AuthContext";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
+import { useUser } from "@clerk/nextjs";
 
 const navItems = [
   'Home',
@@ -57,8 +58,16 @@ function Navbar() {
   const { user, logout } = useAuth();
   const { cartCount, cartTotal } = useCart();
   const { wishlistCount } = useWishlist();
+  const { user: clerkUser, isLoaded: clerkLoaded } = useUser();
 
-  const isAdmin = user?.email === "sajunpalraj2004@gmail.com";
+  const displayUser = user || (clerkUser ? {
+    username: clerkUser.username || clerkUser.firstName || clerkUser.primaryEmailAddress?.emailAddress.split('@')[0],
+    email: clerkUser.primaryEmailAddress?.emailAddress,
+    avatar: clerkUser.imageUrl,
+    fullName: clerkUser.fullName
+  } : null);
+
+  const isAdmin = displayUser?.email === "sajunpalraj2004@gmail.com";
 
   // Desktop user menu state
   const [anchorEl, setAnchorEl] = useState(null);
@@ -282,12 +291,14 @@ function Navbar() {
                   <SearchIcon />
                 </IconButton>
               </Box>
-              {user ? (
+              {!clerkLoaded ? (
+                <Box sx={{ width: 40, height: 40 }} />
+              ) : displayUser ? (
                 <>
                   <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '50%', cursor: 'pointer', transition: 'transform 120ms ease', '&:active': { transform: 'scale(0.92)' } }}>
                     <IconButton onClick={handleMenuOpen} sx={{ p: 0 }}>
-                      <Avatar src={user.avatar || ""} sx={{ width: 40, height: 40, bgcolor: 'rgba(255,255,255,0.16)', border: '2px solid white', color: 'white', fontWeight: 'bold', fontFamily: 'var(--font-montserrat)' }}>
-                        {!user.avatar && user.username ? user.username.charAt(0).toUpperCase() : <PersonIcon />}
+                      <Avatar src={displayUser.avatar || ""} sx={{ width: 40, height: 40, bgcolor: 'rgba(255,255,255,0.16)', border: '2px solid white', color: 'white', fontWeight: 'bold', fontFamily: 'var(--font-montserrat)' }}>
+                        {!displayUser.avatar && displayUser.username ? displayUser.username.charAt(0).toUpperCase() : <PersonIcon />}
                       </Avatar>
                     </IconButton>
                   </Box>
@@ -323,10 +334,10 @@ function Navbar() {
                   >
                     <Box sx={{ px: 2, py: 1.5, borderBottom: '1px solid #f0f0f0' }}>
                       <Typography variant="subtitle2" sx={{ fontWeight: 800, fontFamily: 'var(--font-montserrat)' }}>
-                        {user.fullName || user.username}
+                        {displayUser.fullName || displayUser.username}
                       </Typography>
                       <Typography variant="caption" sx={{ color: 'text.secondary', fontFamily: 'var(--font-montserrat)' }}>
-                        {user.email}
+                        {displayUser.email}
                       </Typography>
                     </Box>
                     <MenuItem component={Link} href="/profile" onClick={handleUserMenuClose} sx={{ py: 1.25, px: 2, fontSize: '14px', fontFamily: 'var(--font-montserrat)', fontWeight: 600, '&:hover': { bgcolor: 'rgba(36, 83, 212, 0.08)' } }}>
@@ -376,7 +387,7 @@ function Navbar() {
                     </Box>
                   </Link>
                   <Typography variant="h6" component="div" sx={{ fontSize: '16px', fontWeight: 'bold', fontFamily: 'var(--font-montserrat)' }}>
-                    ${cartTotal.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 })}
+                    ₹{cartTotal.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 })}
                   </Typography>
                 </>
               )}
@@ -502,7 +513,7 @@ function Navbar() {
             })}
 
             {/* Mobile Auth options */}
-            {user ? (
+            {!clerkLoaded ? null : displayUser ? (
               <>
                 <Box sx={{ borderTop: '1px solid rgba(0,0,0,0.08)', my: 2, pt: 2 }} />
                 
@@ -520,12 +531,12 @@ function Navbar() {
                     }}
                   >
                     <Typography variant="body1" sx={{ fontSize: 16 }}>
-                      {isAdmin ? "Admin Dashboard" : `My Profile (${user.fullName || user.username})`}
+                      {isAdmin ? "Admin Dashboard" : `My Profile (${displayUser.fullName || displayUser.username})`}
                     </Typography>
                     <Box sx={{ color: 'inherit', fontSize: 18 }}>&rsaquo;</Box>
                   </Box>
                 </Link>
-
+ 
                 {!isAdmin ? (
                   <Link href="/profile?tab=cart" style={{ textDecoration: 'none' }}>
                     <Box
@@ -567,7 +578,7 @@ function Navbar() {
                     </Box>
                   </Link>
                 )}
-
+ 
                 <Box
                   onClick={handleLogout}
                   sx={{

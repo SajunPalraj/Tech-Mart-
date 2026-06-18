@@ -137,7 +137,7 @@ export default function ProductDetailPage({ params }) {
   const handleBuyNow = () => {
     if (product) {
       addToCart(product);
-      router.push("/profile?tab=cart");
+      router.push("/profile?tab=cart&checkout=true");
     }
   };
 

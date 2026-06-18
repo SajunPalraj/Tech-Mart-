@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
@@ -22,7 +22,7 @@ import Link from "next/link";
 import MailRoundedIcon from '@mui/icons-material/MailRounded';
 import axios from "axios";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useSignIn, useClerk } from "@clerk/nextjs";
+import { useSignIn, useClerk, useUser } from "@clerk/nextjs";
 import Divider from "@mui/material/Divider";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
@@ -42,8 +42,15 @@ const backgroundZoom = keyframes`
 const LoginPage = () => {
   const { signIn } = useSignIn();
   const { setActive } = useClerk();
+  const { isSignedIn } = useUser();
   const isLoaded = signIn !== null;
-  console.log("LoginPage render: isLoaded =", isLoaded, "signIn =", signIn);
+
+  useEffect(() => {
+    if (isSignedIn) {
+      window.location.href = "/";
+    }
+  }, [isSignedIn]);
+
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -79,6 +86,7 @@ const LoginPage = () => {
         strategy: "oauth_google",
         redirectUrl: "/",
         redirectCallbackUrl: "/sso-callback",
+        oidcPrompt: "select_account",
       });
       if (error) {
         console.error("Clerk Google Login Error:", error);
@@ -92,14 +100,14 @@ const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (!isLoaded) return;
+    if (!isLoaded || loading) return;
 
     setEmailError(false);
     setPasswordError(false);
 
     if (!email) {
       setEmailError(true);
-      showAlert("Enter an email or phone number", "error");
+      showAlert("Enter your email address.", "error");
       return;
     }
 
@@ -119,7 +127,7 @@ const LoginPage = () => {
     setLoading(true);
     try {
       const { error } = await signIn.password({
-        identifier: email,
+        identifier: email.trim(),
         password: password,
       });
 
@@ -128,15 +136,16 @@ const LoginPage = () => {
         return;
       }
 
-      if (signIn.status === "complete") {
-        await signIn.finalize();
-        showAlert("Login successful! Redirecting...", "success");
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 1500);
-      } else {
-        showAlert("Secondary verification factor required.", "warning");
+      const { error: finalizeError } = await signIn.finalize();
+      if (finalizeError) {
+        showAlert(finalizeError.longMessage || "Secondary verification factor required.", "warning");
+        return;
       }
+
+      showAlert("Login successful! Redirecting...", "success");
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1500);
     } catch (err) {
       console.error("Login unexpected error:", err);
       showAlert("An unexpected error occurred. Please try again.", "error");
@@ -289,7 +298,7 @@ const LoginPage = () => {
           {/* Email Field */}
           <TextField
             id="email"
-            label="Email or phone"
+            label="Email"
             variant="outlined"
             fullWidth
             size="medium"
