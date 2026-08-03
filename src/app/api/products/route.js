@@ -86,15 +86,6 @@ export async function GET(req) {
       });
     }
 
-    // Build filter criteria
-    const where = {};
-    if (category && category !== "All" && category.trim() !== "") {
-      where.category = { equals: category, mode: "insensitive" };
-    }
-    if (search && search.trim() !== "") {
-      where.title = { contains: search, mode: "insensitive" };
-    }
-
     // Build sort criteria
     const orderBy = {};
     if (sortBy === "price") {
@@ -105,10 +96,25 @@ export async function GET(req) {
       orderBy.createdAt = "desc";
     }
 
-    const products = await prisma.product.findMany({
-      where,
+    let products = await prisma.product.findMany({
       orderBy,
     });
+
+    // In-memory case-insensitive category & search filter (100% MongoDB compatible)
+    if (category && category !== "All" && category.trim() !== "") {
+      const catLower = category.toLowerCase();
+      products = products.filter((p) => p.category && p.category.toLowerCase() === catLower);
+    }
+
+    if (search && search.trim() !== "") {
+      const searchLower = search.toLowerCase();
+      products = products.filter(
+        (p) =>
+          (p.title && p.title.toLowerCase().includes(searchLower)) ||
+          (p.category && p.category.toLowerCase().includes(searchLower)) ||
+          (p.description && p.description.toLowerCase().includes(searchLower))
+      );
+    }
 
     return NextResponse.json({ products }, { status: 200 });
   } catch (error) {
