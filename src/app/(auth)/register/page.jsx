@@ -244,24 +244,21 @@ const RegisterUserPage = () => {
         return;
       }
 
-      const { error: finalizeError } = await signUp.finalize();
-      if (finalizeError) {
-        console.error("Clerk finalize error details:", finalizeError);
-        const missingFields = signUp.missingFields || [];
-        const unverifiedFields = signUp.unverifiedFields || [];
-        const fieldDetails = [];
-        if (missingFields.length > 0) fieldDetails.push(`Missing: [${missingFields.join(", ")}]`);
-        if (unverifiedFields.length > 0) fieldDetails.push(`Unverified: [${unverifiedFields.join(", ")}]`);
-        
-        const detailedMsg = `Verification incomplete. ${fieldDetails.join(" | ")}. ${finalizeError.longMessage || finalizeError.message}`;
-        showAlert(detailedMsg, "error");
-        return;
+      if (signUp.createdSessionId) {
+        await setActive({ session: signUp.createdSessionId });
+      } else {
+        const { error: finalizeError } = await signUp.finalize();
+        if (finalizeError) {
+          console.error("Clerk finalize error details:", finalizeError);
+          showAlert(finalizeError.longMessage || finalizeError.message || "Verification incomplete.", "error");
+          return;
+        }
       }
 
       showAlert("Registration verified! Redirecting...", "success");
       setTimeout(() => {
         window.location.href = "/";
-      }, 1500);
+      }, 800);
     } catch (err) {
       console.error("Verification unexpected error:", err);
       showAlert(err.message || "Invalid verification code.", "error");

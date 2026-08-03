@@ -5,7 +5,7 @@ export const config = {
     // Skip Next.js internals and all static assets, unless found in search params
     '/((?!_next|[^?]*\\.(?:html|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
     // Always run for API routes
-    '/(api|trpc)(.*)',
+    '/(API|api|trpc)(.*)',
   ],
 };
 
@@ -15,7 +15,14 @@ const clerkHandler = clerkMiddleware(async (auth, request) => {
     const path = req.nextUrl.pathname;
     
     // Explicit list of public base paths
-    if (path === '/' || path === '/login' || path === '/register' || path === '/sso-callback' || path.startsWith('/products')) {
+    if (
+      path === '/' || 
+      path === '/login' || 
+      path === '/register' || 
+      path === '/sso-callback' || 
+      path.startsWith('/products') ||
+      path.startsWith('/wishlist')
+    ) {
       return true;
     }
     
@@ -28,11 +35,15 @@ const clerkHandler = clerkMiddleware(async (auth, request) => {
   };
 
   if (!isPublicRoute(request)) {
-    await auth.protect(); // Protects all other routes (like /profile)
+    await auth.protect(); // Protects only private user routes like /profile
   }
 });
 
-// Next.js 16 named export for proxy routing
+// Next.js 16 export for proxy routing
 export function proxy(request, event) {
+  return clerkHandler(request, event);
+}
+
+export default function defaultProxy(request, event) {
   return clerkHandler(request, event);
 }

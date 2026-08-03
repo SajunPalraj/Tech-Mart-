@@ -136,18 +136,18 @@ const LoginPage = () => {
         return;
       }
 
-      // Only finalize when the sign-in is fully complete (no MFA pending)
-      if (signIn.status === 'complete') {
-        const { error: finalizeError } = await signIn.finalize();
-        if (finalizeError) {
-          showAlert(finalizeError.longMessage || "Could not complete sign-in.", "warning");
-          return;
+      // Only finalize and set active session when the sign-in is fully complete
+      if (signIn.status === 'complete' || signIn.createdSessionId) {
+        if (signIn.createdSessionId) {
+          await setActive({ session: signIn.createdSessionId });
+        } else {
+          await signIn.finalize();
         }
 
         showAlert("Login successful! Redirecting...", "success");
         setTimeout(() => {
           window.location.href = "/";
-        }, 1500);
+        }, 800);
       } else {
         showAlert("Additional verification is required. Please check your email.", "warning");
       }
