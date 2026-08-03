@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import ImageSlider from '@/components/ImageSlider.jsx';
 import Categories from '@/components/Categories.jsx';

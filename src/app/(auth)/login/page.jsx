@@ -84,8 +84,8 @@ const LoginPage = () => {
     try {
       const { error } = await signIn.sso({
         strategy: "oauth_google",
-        redirectUrl: "/",
-        redirectCallbackUrl: "/sso-callback",
+        redirectUrl: "/sso-callback",
+        redirectCallbackUrl: "/",
         oidcPrompt: "select_account",
       });
       if (error) {
@@ -136,16 +136,21 @@ const LoginPage = () => {
         return;
       }
 
-      const { error: finalizeError } = await signIn.finalize();
-      if (finalizeError) {
-        showAlert(finalizeError.longMessage || "Secondary verification factor required.", "warning");
-        return;
-      }
+      // Only finalize when the sign-in is fully complete (no MFA pending)
+      if (signIn.status === 'complete') {
+        const { error: finalizeError } = await signIn.finalize();
+        if (finalizeError) {
+          showAlert(finalizeError.longMessage || "Could not complete sign-in.", "warning");
+          return;
+        }
 
-      showAlert("Login successful! Redirecting...", "success");
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 1500);
+        showAlert("Login successful! Redirecting...", "success");
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1500);
+      } else {
+        showAlert("Additional verification is required. Please check your email.", "warning");
+      }
     } catch (err) {
       console.error("Login unexpected error:", err);
       showAlert("An unexpected error occurred. Please try again.", "error");

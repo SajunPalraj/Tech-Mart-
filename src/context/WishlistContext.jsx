@@ -2,11 +2,13 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useAuth } from './AuthContext';
+import { useClerk } from '@clerk/nextjs';
 
 const WishlistContext = createContext(undefined);
 
 export function WishlistProvider({ children }) {
   const { user } = useAuth();
+  const { openSignIn } = useClerk();
   const [wishlistItems, setWishlistItems] = useState([]);
   const [isInitialized, setIsInitialized] = useState(false);
 
@@ -32,8 +34,7 @@ export function WishlistProvider({ children }) {
 
   const addToWishlist = (item) => {
     if (!user) {
-      alert("Only logged-in users can add items to their wishlist. Redirecting to login...");
-      window.location.href = "/login";
+      openSignIn({ redirectUrl: window.location.href });
       return;
     }
     setWishlistItems((prevItems) => {
@@ -51,8 +52,7 @@ export function WishlistProvider({ children }) {
 
   const toggleWishlist = (item) => {
     if (!user) {
-      alert("Only logged-in users can use the wishlist. Redirecting to login...");
-      window.location.href = "/login";
+      openSignIn({ redirectUrl: window.location.href });
       return;
     }
     setWishlistItems((prevItems) => {

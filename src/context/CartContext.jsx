@@ -2,11 +2,13 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useAuth } from './AuthContext';
+import { useClerk } from '@clerk/nextjs';
 
 const CartContext = createContext(undefined);
 
 export function CartProvider({ children }) {
   const { user, loading } = useAuth();
+  const { openSignIn } = useClerk();
   const [cartItems, setCartItems] = useState([]);
   const [isInitialized, setIsInitialized] = useState(false);
 
@@ -40,8 +42,7 @@ export function CartProvider({ children }) {
 
   const addToCart = (item) => {
     if (!user) {
-      alert("Only logged-in users can add items to the cart. Redirecting to login...");
-      window.location.href = "/login";
+      openSignIn({ redirectUrl: window.location.href });
       return;
     }
     // Standardize price as a number, removing '$', '₹' and commas

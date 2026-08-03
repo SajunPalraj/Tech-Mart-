@@ -104,8 +104,8 @@ const RegisterUserPage = () => {
     try {
       const { error } = await signUp.sso({
         strategy: "oauth_google",
-        redirectUrl: "/",
-        redirectCallbackUrl: "/sso-callback",
+        redirectUrl: "/sso-callback",
+        redirectCallbackUrl: "/",
         oidcPrompt: "select_account",
       });
       if (error) {
