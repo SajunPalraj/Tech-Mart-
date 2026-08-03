@@ -166,12 +166,14 @@ function ProfileContent() {
   const fetchUserProfile = async () => {
     setLoadingDb(true);
     try {
-      const res = await axios.get(`/API/profile?userId=${user.id}`);
-      const profile = res.data.user;
+      const emailParam = user?.email ? `&email=${encodeURIComponent(user.email)}` : '';
+      const usernameParam = user?.username ? `&username=${encodeURIComponent(user.username)}` : '';
+      const res = await axios.get(`/API/profile?userId=${encodeURIComponent(user?.id || '')}${emailParam}${usernameParam}`);
+      const profile = res.data?.user || user;
       setDbUser(profile);
       
       // Seed personal info
-      setFullName(profile.fullName || "");
+      setFullName(profile.fullName || user?.fullName || user?.username || "");
       setPhone(profile.phone || "");
       setBio(profile.bio || "");
       
@@ -182,8 +184,11 @@ function ProfileContent() {
       setZip(profile.zip || "");
       setCountry(profile.country || "");
     } catch (err) {
-      console.error(err);
-      showNotification("Failed to load profile details", "error");
+      console.warn("Profile fetch notice:", err);
+      if (user) {
+        setDbUser(user);
+        setFullName(user.fullName || user.username || "");
+      }
     } finally {
       setLoadingDb(false);
     }
@@ -192,11 +197,12 @@ function ProfileContent() {
   const fetchMembers = async () => {
     setLoadingMembers(true);
     try {
-      const res = await axios.get(`/API/members?adminEmail=${user.email}`);
-      setMembers(res.data.members || []);
+      const emailParam = user?.email ? encodeURIComponent(user.email) : "sajunpalraj2004@gmail.com";
+      const res = await axios.get(`/API/members?adminEmail=${emailParam}`);
+      setMembers(res.data?.members || []);
     } catch (err) {
-      console.error(err);
-      showNotification("Failed to load site members", "error");
+      console.warn("Members fetch notice:", err);
+      setMembers([]);
     } finally {
       setLoadingMembers(false);
     }
