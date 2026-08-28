@@ -136,6 +136,6 @@ A dynamic route page ([page.jsx](file:///d:/Backend/NEXT/my-project/src/app/prod
 
 ### 4. User Profile & Admin Dashboard (`/profile`)
 The central user account page:
-- Dynamically renders dashboard panels depending on whether the user is a standard customer or the system administrator (`*********2004@gmail.com`).
+- Dynamically renders dashboard panels depending on whether the user is a standard customer or the system administrator (`**********@gmail.com`).
 - Connects to `/API/members` to show registered accounts (Admin only).
 - Allows editing names, bios, avatars, and shipping details which submit modifications via the `PUT /API/profile` endpoint.
