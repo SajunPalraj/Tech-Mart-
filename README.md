@@ -70,7 +70,7 @@ Administration rights in Tech Mart are determined by checking the authenticated 
 ### The Admin Verification Check
 Throughout components like [Navbar.jsx](file:///d:/Backend/NEXT/my-project/src/components/Navbar.jsx), [profile/page.jsx](file:///d:/Backend/NEXT/my-project/src/app/profile/page.jsx), and [FloatingControls.jsx](file:///d:/Backend/NEXT/my-project/src/Helper/FloatingControls.jsx), the admin condition is defined:
 ```javascript
-const isAdmin = user?.email === "sajunpalraj2004@gmail.com";
+const isAdmin = user?.email === "*****@gmail.com";
 ```
 When `isAdmin` resolves to `true`:
 1. **Navigation Changes**: The user's menu shifts from pointing to "My Profile" to displaying "Admin Dashboard" with customized panel interfaces.
@@ -80,7 +80,7 @@ When `isAdmin` resolves to `true`:
    - **Site Members List**: A table showing all registered users queried from MongoDB.
 3. **API Level Guard**: In [products/route.js](file:///d:/Backend/NEXT/my-project/src/app/API/products/route.js) (POST method for creating items), a validation check blocks any operations unless they are initiated by the verified administrator email:
    ```javascript
-   if (adminEmail !== "sajunpalraj2004@gmail.com") {
+   if (adminEmail !== "*****@gmail.com") {
      return NextResponse.json({ error: "Access Denied" }, { status: 403 });
    }
    ```
@@ -136,6 +136,6 @@ A dynamic route page ([page.jsx](file:///d:/Backend/NEXT/my-project/src/app/prod
 
 ### 4. User Profile & Admin Dashboard (`/profile`)
 The central user account page:
-- Dynamically renders dashboard panels depending on whether the user is a standard customer or the system administrator (`sajunpalraj2004@gmail.com`).
+- Dynamically renders dashboard panels depending on whether the user is a standard customer or the system administrator (`*********2004@gmail.com`).
 - Connects to `/API/members` to show registered accounts (Admin only).
 - Allows editing names, bios, avatars, and shipping details which submit modifications via the `PUT /API/profile` endpoint.
