@@ -16,10 +16,12 @@ const clerkHandler = clerkMiddleware(async (auth, request) => {
     
     // Explicit list of public base paths
     if (
-      path === '/' || 
-      path === '/login' || 
-      path === '/register' || 
-      path === '/sso-callback' || 
+      path === '/' ||
+      path === '/login' ||
+      path === '/register' ||
+      path === '/forgot-password' ||
+      path === '/reset-password' ||
+      path === '/sso-callback' ||
       path.startsWith('/products') ||
       path.startsWith('/wishlist')
     ) {
