@@ -90,11 +90,6 @@ const ForgotPasswordPage = () => {
         identifier: email.trim(),
       });
 
-      // Send the verification code to the user's email
-      await signIn.prepareFirstFactor({
-        strategy: "reset_password_email_code",
-      });
-
       showAlert("Verification code sent to your email!", "success");
 
       // Move to the reset area page where the user enters the code & new password
