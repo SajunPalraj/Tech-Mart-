@@ -91,7 +91,7 @@ const RegisterUserPage = () => {
     let score = 0;
     if (pass.length >= 8) score += 1;
     if (/[A-Z]/.test(pass)) score += 1;
-    if (/[!@#$%^&*(),.?":{}|<>]/.test(pass)) score += 1;
+    if (/[^A-Za-z0-9]/.test(pass)) score += 1;
     return score;
   };
   const passwordStrength = getPasswordStrength(password);
@@ -771,7 +771,8 @@ const RegisterUserPage = () => {
             size="medium"
             type={showConfirmPassword ? "text" : "password"}
             value={confirmPassword}
-            error={confirmPasswordError}
+            error={confirmPasswordError || (confirmPassword.length > 0 && password !== confirmPassword)}
+            helperText={confirmPassword.length > 0 && password !== confirmPassword ? "Passwords do not match" : ""}
             onChange={(e) => {
               setConfirmPassword(e.target.value);
               if (confirmPasswordError) setConfirmPasswordError(false);

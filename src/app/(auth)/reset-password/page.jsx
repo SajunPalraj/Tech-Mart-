@@ -115,7 +115,7 @@ function ResetPasswordContent() {
     let score = 0;
     if (pass.length >= 8) score += 1;
     if (/[A-Z]/.test(pass)) score += 1;
-    if (/[!@#$%^&*(),.?":{}|<>]/.test(pass)) score += 1;
+    if (/[^A-Za-z0-9]/.test(pass)) score += 1;
     return score;
   };
   const passwordStrength = getPasswordStrength(newPassword);
@@ -494,7 +494,8 @@ function ResetPasswordContent() {
                 size="medium"
                 type={showPassword ? "text" : "password"}
                 value={confirmPassword}
-                error={confirmError}
+                error={confirmError || (confirmPassword.length > 0 && newPassword !== confirmPassword)}
+                helperText={confirmPassword.length > 0 && newPassword !== confirmPassword ? "Passwords do not match" : ""}
                 onChange={(e) => {
                   setConfirmPassword(e.target.value);
                   if (confirmError) setConfirmError(false);
