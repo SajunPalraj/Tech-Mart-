@@ -518,7 +518,7 @@ function ResetPasswordContent() {
               <Button
                 type="submit"
                 variant="contained"
-                disabled={loading || !isLoaded || !codeVerified || passwordStrength < 3 || newPassword !== confirmPassword}
+                disabled={loading || !signIn || !codeVerified || passwordStrength < 3 || newPassword !== confirmPassword}
                 sx={{
                   background: "linear-gradient(135deg, #2453d4 0%, #4f46e5 100%)",
                   color: "white",
@@ -537,6 +537,12 @@ function ResetPasswordContent() {
                   },
                   ":active": {
                     transform: "translateY(0px)",
+                  },
+                  "&.Mui-disabled": {
+                    background: "#e0e0e0",
+                    color: "#9e9e9e",
+                    boxShadow: "none",
+                    transform: "none",
                   }
                 }}
               >

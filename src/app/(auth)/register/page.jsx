@@ -879,7 +879,7 @@ const RegisterUserPage = () => {
             <Button
               type="submit"
               variant="contained"
-              disabled={loading || !isLoaded || passwordStrength < 3 || password !== confirmPassword || !agreedToTerms}
+              disabled={loading || !signUp || passwordStrength < 3 || password !== confirmPassword || !agreedToTerms}
               sx={{
                 background: "linear-gradient(135deg, #2453d4 0%, #4f46e5 100%)",
                 color: "white",
@@ -898,6 +898,12 @@ const RegisterUserPage = () => {
                 },
                 ":active": {
                   transform: "translateY(0px)",
+                },
+                "&.Mui-disabled": {
+                  background: "#e0e0e0",
+                  color: "#9e9e9e",
+                  boxShadow: "none",
+                  transform: "none",
                 }
               }}
             >
