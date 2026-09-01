@@ -59,6 +59,7 @@ function ResetPasswordContent() {
   const [codeError, setCodeError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [confirmError, setConfirmError] = useState(false);
+  const [codeVerified, setCodeVerified] = useState(false);
 
   // Snackbar States
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -90,16 +91,40 @@ function ResetPasswordContent() {
         strategy: "reset_password_email_code",
         identifier: email,
       });
-      await signIn.prepareFirstFactor({
-        strategy: "reset_password_email_code",
-      });
       showAlert("A new verification code has been sent to your email.", "success");
+      setCodeVerified(false);
     } catch (err) {
       console.error("Resend code error:", err);
       showAlert("Failed to resend code. Please try again.", "error");
     } finally {
       setResending(false);
     }
+  };
+
+  const handleCheckCode = () => {
+    if (!code || code.length < 6) {
+      setCodeError(true);
+      showAlert("Please enter a valid verification code.", "error");
+      return;
+    }
+    setCodeError(false);
+    setCodeVerified(true);
+  };
+
+  const getPasswordStrength = (pass) => {
+    let score = 0;
+    if (pass.length >= 8) score += 1;
+    if (/[A-Z]/.test(pass)) score += 1;
+    if (/[!@#$%^&*(),.?":{}|<>]/.test(pass)) score += 1;
+    return score;
+  };
+  const passwordStrength = getPasswordStrength(newPassword);
+
+  const getStrengthColor = () => {
+    if (passwordStrength === 1) return "#ff4d4f";
+    if (passwordStrength === 2) return "#faad14";
+    if (passwordStrength === 3) return "#52c41a";
+    return "#e0e0e0";
   };
 
   const handleResetPassword = async (e) => {
@@ -122,9 +147,9 @@ function ResetPasswordContent() {
       return;
     }
 
-    if (newPassword.length < 8) {
+    if (passwordStrength < 3) {
       setPasswordError(true);
-      showAlert("Password must be at least 8 characters long.", "error");
+      showAlert("Password does not meet all requirements.", "error");
       return;
     }
 
@@ -375,6 +400,7 @@ function ResetPasswordContent() {
                   setCode(e.target.value);
                   if (codeError) setCodeError(false);
                 }}
+                disabled={codeVerified}
                 slotProps={{
                   input: {
                     startAdornment: (
@@ -382,12 +408,36 @@ function ResetPasswordContent() {
                         <PasswordIcon sx={{ color: "rgba(36, 83, 212, 0.5)", mr: 0.5 }} />
                       </InputAdornment>
                     ),
+                    endAdornment: !codeVerified ? (
+                      <InputAdornment position="end">
+                        <Button
+                          variant="contained"
+                          size="small"
+                          onClick={handleCheckCode}
+                          sx={{
+                            borderRadius: "8px",
+                            textTransform: "none",
+                            bgcolor: "#2453d4",
+                            "&:hover": { bgcolor: "#1a3eb3" },
+                            boxShadow: "none"
+                          }}
+                        >
+                          Check
+                        </Button>
+                      </InputAdornment>
+                    ) : (
+                      <InputAdornment position="end">
+                        <CheckCircleOutlinedIcon color="success" />
+                      </InputAdornment>
+                    ),
                   }
                 }}
                 sx={inputSx}
               />
 
-              {/* New Password Field */}
+              {codeVerified && (
+                <>
+                  {/* New Password Field */}
               <TextField
                 id="newPassword"
                 label="New Password"
@@ -424,6 +474,17 @@ function ResetPasswordContent() {
                 }}
               />
 
+              <Box sx={{ width: "100%", mt: -1, mb: 1 }}>
+                <Box sx={{ display: 'flex', gap: 0.5, mb: 0.5 }}>
+                  {[1, 2, 3].map((index) => (
+                    <Box key={index} sx={{ height: 4, flex: 1, borderRadius: 1, bgcolor: passwordStrength >= index ? getStrengthColor() : '#e0e0e0', transition: 'all 0.3s' }} />
+                  ))}
+                </Box>
+                <Typography variant="caption" sx={{ color: "#666", display: "block", fontFamily: "var(--font-montserrat)" }}>
+                  Must contain: 8+ chars, 1 uppercase, 1 special character (@$!%*?&)
+                </Typography>
+              </Box>
+
               {/* Confirm Password Field */}
               <TextField
                 id="confirmPassword"
@@ -449,12 +510,14 @@ function ResetPasswordContent() {
                   }
                 }}
               />
+              </>
+              )}
 
               {/* Reset Button */}
               <Button
                 type="submit"
                 variant="contained"
-                disabled={loading || !isLoaded}
+                disabled={loading || !isLoaded || !codeVerified || passwordStrength < 3 || newPassword !== confirmPassword}
                 sx={{
                   background: "linear-gradient(135deg, #2453d4 0%, #4f46e5 100%)",
                   color: "white",

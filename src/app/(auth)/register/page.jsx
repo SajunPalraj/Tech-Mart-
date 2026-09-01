@@ -87,6 +87,22 @@ const RegisterUserPage = () => {
     setSnackbarOpen(true);
   };
 
+  const getPasswordStrength = (pass) => {
+    let score = 0;
+    if (pass.length >= 8) score += 1;
+    if (/[A-Z]/.test(pass)) score += 1;
+    if (/[!@#$%^&*(),.?":{}|<>]/.test(pass)) score += 1;
+    return score;
+  };
+  const passwordStrength = getPasswordStrength(password);
+
+  const getStrengthColor = () => {
+    if (passwordStrength === 1) return "#ff4d4f";
+    if (passwordStrength === 2) return "#faad14";
+    if (passwordStrength === 3) return "#52c41a";
+    return "#e0e0e0";
+  };
+
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
@@ -153,10 +169,9 @@ const RegisterUserPage = () => {
       return;
     }
 
-    // Google-like minimum password length condition
-    if (password.length < 8) {
+    if (passwordStrength < 3) {
       setPasswordError(true);
-      showAlert("Use 8 characters or more for your password", "error");
+      showAlert("Password does not meet all requirements.", "error");
       return;
     }
 
@@ -736,6 +751,17 @@ const RegisterUserPage = () => {
             }}
           />
 
+          <Box sx={{ width: "100%", mt: -1, mb: 1 }}>
+            <Box sx={{ display: 'flex', gap: 0.5, mb: 0.5 }}>
+              {[1, 2, 3].map((index) => (
+                <Box key={index} sx={{ height: 4, flex: 1, borderRadius: 1, bgcolor: passwordStrength >= index ? getStrengthColor() : '#e0e0e0', transition: 'all 0.3s' }} />
+              ))}
+            </Box>
+            <Typography variant="caption" sx={{ color: "#666", display: "block", fontFamily: "var(--font-montserrat)" }}>
+              Must contain: 8+ chars, 1 uppercase, 1 special character (@$!%*?&)
+            </Typography>
+          </Box>
+
           {/* Confirm Password Field */}
           <TextField
             id="confirm_password"
@@ -852,7 +878,7 @@ const RegisterUserPage = () => {
             <Button
               type="submit"
               variant="contained"
-              disabled={loading || !isLoaded}
+              disabled={loading || !isLoaded || passwordStrength < 3 || password !== confirmPassword || !agreedToTerms}
               sx={{
                 background: "linear-gradient(135deg, #2453d4 0%, #4f46e5 100%)",
                 color: "white",
