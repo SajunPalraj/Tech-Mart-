@@ -1,0 +1,3250 @@
+[
+  {
+    "_id": {
+      "$oid": "6a28178c240f6ca6e9077b99"
+    },
+    "id": 1,
+    "title": "ASUS Odyssey Gaming Laptop 17.3\" (AMD Ryzen 9 7945HX, 16GB DDR5, NVIDIA GeForce RTX 4090 16GB)",
+    "category": "Laptops",
+    "brand": "ASUS",
+    "price": 1269,
+    "price_formatted": "$1,269",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the ASUS Odyssey Gaming Laptop. Featuring a high-refresh-rate 17.3\" display, the powerful AMD Ryzen 9 7945HX processor, and advanced NVIDIA GeForce RTX 4090 16GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 50,
+    "specifications": {
+      "Processor": "AMD Ryzen 9 7945HX",
+      "Graphics Card": "NVIDIA GeForce RTX 4090 16GB",
+      "Memory": "16GB DDR5",
+      "Storage": "512GB NVMe PCIe 4.0 SSD",
+      "Screen Size": "17.3\"",
+      "Refresh Rate": "240Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "asus",
+      "pc"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c06a384357da8d420"
+    },
+    "id": 2,
+    "title": "HP Vengeance Gaming Laptop 16\" (Intel Core i9-14900HX, 16GB DDR5, NVIDIA GeForce RTX 4080 12GB)",
+    "category": "Laptops",
+    "brand": "HP",
+    "price": 1412,
+    "price_formatted": "$1,412",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the HP Vengeance Gaming Laptop. Featuring a high-refresh-rate 16\" display, the powerful Intel Core i9-14900HX processor, and advanced NVIDIA GeForce RTX 4080 12GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 47,
+    "specifications": {
+      "Processor": "Intel Core i9-14900HX",
+      "Graphics Card": "NVIDIA GeForce RTX 4080 12GB",
+      "Memory": "16GB DDR5",
+      "Storage": "2TB NVMe PCIe 4.0 SSD",
+      "Screen Size": "16\"",
+      "Refresh Rate": "165Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "hp",
+      "pc"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178ca485a26cf13e645f"
+    },
+    "id": 3,
+    "title": "Intel Core i9-13900KS Desktop Processor",
+    "category": "CPU",
+    "brand": "Intel",
+    "price": 323,
+    "price_formatted": "$323",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80",
+    "description": "The Intel Core i9-13900KS processor is the ultimate gaming and productivity CPU. With 16 Cores and 32 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket LGA 1700.",
+    "stock": 10,
+    "specifications": {
+      "Socket": "LGA 1700",
+      "Cores": 16,
+      "Threads": 32,
+      "Base Clock": "3.2 GHz",
+      "Max Boost Clock": "5.8 GHz",
+      "TDP": "125W",
+      "Cache": "128MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "intel",
+      "upgrade"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c8805be2b3e7d68f9"
+    },
+    "id": 4,
+    "title": "NZXT Wireless Gaming Mouse",
+    "category": "Accessories",
+    "brand": "NZXT",
+    "price": 57,
+    "price_formatted": "$57",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade NZXT Wireless Gaming Mouse. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 123,
+    "specifications": {
+      "Sensor": "26K DPI Optical Sensor",
+      "Weight": "60g - 75g Ultra-lightweight",
+      "Battery Life": "Up to 150 hours",
+      "Buttons": "6 Programmable Buttons",
+      "Connectivity": "2.4GHz HyperSpeed Wireless & USB Wired"
+    },
+    "tags": [
+      "accessories",
+      "mouse",
+      "nzxt",
+      "peripheral"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c98b68a92b5193fda"
+    },
+    "id": 5,
+    "title": "SteelSeries Liquid CPU Cooler",
+    "category": "Accessories",
+    "brand": "SteelSeries",
+    "price": 195,
+    "price_formatted": "$195",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade SteelSeries Liquid CPU Cooler. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 131,
+    "specifications": {
+      "Radiator Size": "240mm / 360mm",
+      "Fan Speed": "500 - 2000 RPM (PWM)",
+      "Pump Type": "High-Performance Asetek Pump",
+      "Socket Support": "Intel LGA 1700/1200, AMD AM5/AM4",
+      "Features": "LCD Screen on Pump Head, ARGB Fans"
+    },
+    "tags": [
+      "accessories",
+      "cooler",
+      "steelseries",
+      "peripheral"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c5ea51d2cb384fa25"
+    },
+    "id": 6,
+    "title": "ASUS Ultra Gaming Laptop 17.3\" (Intel Core i7-14700HX, 64GB DDR5, NVIDIA GeForce RTX 4080 12GB)",
+    "category": "Laptops",
+    "brand": "ASUS",
+    "price": 1654,
+    "price_formatted": "$1,654",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the ASUS Ultra Gaming Laptop. Featuring a high-refresh-rate 17.3\" display, the powerful Intel Core i7-14700HX processor, and advanced NVIDIA GeForce RTX 4080 12GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 28,
+    "specifications": {
+      "Processor": "Intel Core i7-14700HX",
+      "Graphics Card": "NVIDIA GeForce RTX 4080 12GB",
+      "Memory": "64GB DDR5",
+      "Storage": "1TB NVMe PCIe 4.0 SSD",
+      "Screen Size": "17.3\"",
+      "Refresh Rate": "144Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "asus",
+      "pc"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c07701b02228e0b2c"
+    },
+    "id": 7,
+    "title": "MSI Apex Gaming Laptop 14\" (AMD Ryzen 9 7945HX, 16GB DDR5, NVIDIA GeForce RTX 4070 8GB)",
+    "category": "Laptops",
+    "brand": "MSI",
+    "price": 1315,
+    "price_formatted": "$1,315",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the MSI Apex Gaming Laptop. Featuring a high-refresh-rate 14\" display, the powerful AMD Ryzen 9 7945HX processor, and advanced NVIDIA GeForce RTX 4070 8GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 16,
+    "specifications": {
+      "Processor": "AMD Ryzen 9 7945HX",
+      "Graphics Card": "NVIDIA GeForce RTX 4070 8GB",
+      "Memory": "16GB DDR5",
+      "Storage": "1TB NVMe PCIe 4.0 SSD",
+      "Screen Size": "14\"",
+      "Refresh Rate": "360Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "msi",
+      "pc"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c333f1ae431c8d8b3"
+    },
+    "id": 8,
+    "title": "Patriot Delta RGB 16GB (2x8GB) DDR5 6400MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "Patriot",
+    "price": 176,
+    "price_formatted": "$176",
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium Patriot Delta RGB DDR5 RAM kit. Offering massive speed bandwidth of 6400MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load with vibrant custom addressable RGB lighting.",
+    "stock": 40,
+    "specifications": {
+      "Capacity": "16GB (2x8GB)",
+      "Memory Type": "DDR5",
+      "Speed": "6400MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "Yes, Addressable RGB",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "patriot",
+      "upgrade",
+      "rgb"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178ca01bd0ad569a3ab2"
+    },
+    "id": 9,
+    "title": "HyperX Mid-Tower Computer Case",
+    "category": "Accessories",
+    "brand": "HyperX",
+    "price": 219,
+    "price_formatted": "$219",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1563720223185-11003d516935?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade HyperX Mid-Tower Computer Case. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 24,
+    "specifications": {
+      "Form Factor": "ATX Mid-Tower Case",
+      "Materials": "Steel, Tempered Glass",
+      "Fan Support": "Up to 10x 120mm Fans",
+      "GPU Clearance": "Up to 400mm",
+      "Included Fans": "4x 120mm ARGB PWM Fans"
+    },
+    "tags": [
+      "accessories",
+      "case",
+      "hyperx",
+      "peripheral"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c482ec6e2f286aabb"
+    },
+    "id": 10,
+    "title": "Acer Swift 24\" VA Gaming Monitor",
+    "category": "Monitors",
+    "brand": "Acer",
+    "price": 786,
+    "price_formatted": "$786",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1616763355548-1b606f439f86?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the Acer Swift Gaming Monitor. Boasting a responsive 24\" VA display with a blazingly fast 144Hz refresh rate and 1ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 4,
+    "specifications": {
+      "Screen Size": "24\"",
+      "Panel Type": "VA",
+      "Resolution": "1920 x 1080 (FHD)",
+      "Refresh Rate": "144Hz",
+      "Response Time": "1ms",
+      "Aspect Ratio": "16:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "DisplayHDR 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "acer",
+      "gaming",
+      "va"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c1ab5ba24e9004db2"
+    },
+    "id": 11,
+    "title": "Gigabyte Optix 24\" VA Gaming Monitor",
+    "category": "Monitors",
+    "brand": "Gigabyte",
+    "price": 1452,
+    "price_formatted": "$1,452",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the Gigabyte Optix Gaming Monitor. Boasting a responsive 24\" VA display with a blazingly fast 144Hz refresh rate and 1ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 10,
+    "specifications": {
+      "Screen Size": "24\"",
+      "Panel Type": "VA",
+      "Resolution": "1920 x 1080 (FHD)",
+      "Refresh Rate": "144Hz",
+      "Response Time": "1ms",
+      "Aspect Ratio": "16:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "DisplayHDR 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "gigabyte",
+      "gaming",
+      "va"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cc6fd78700a205108"
+    },
+    "id": 12,
+    "title": "Intel GeForce RTX 4060 Ti 8GB Graphics Card",
+    "category": "GPU",
+    "brand": "Intel",
+    "price": 1060,
+    "price_formatted": "$1,060",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1555617766-c94804975da3?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the Intel version of the GeForce RTX 4060 Ti. Featuring 8GB GDDR6 memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 17,
+    "specifications": {
+      "Graphics Processor": "GeForce RTX 4060 Ti",
+      "Video Memory": "8GB GDDR6",
+      "Memory Bus": "192-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "750W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "intel",
+      "nvidia",
+      "gaming"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178ccfe3e801dbcf954b"
+    },
+    "id": 13,
+    "title": "Intel Core i9-13900KS Desktop Processor",
+    "category": "CPU",
+    "brand": "Intel",
+    "price": 255,
+    "price_formatted": "$255",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80",
+    "description": "The Intel Core i9-13900KS processor is the ultimate gaming and productivity CPU. With 16 Cores and 32 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket LGA 1700.",
+    "stock": 82,
+    "specifications": {
+      "Socket": "LGA 1700",
+      "Cores": 16,
+      "Threads": 32,
+      "Base Clock": "3.2 GHz",
+      "Max Boost Clock": "5.8 GHz",
+      "TDP": "125W",
+      "Cache": "128MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "intel",
+      "upgrade"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c58d0a2dc0c42a0ff"
+    },
+    "id": 14,
+    "title": "Gigabyte Odyssey 32\" OLED Gaming Monitor",
+    "category": "Monitors",
+    "brand": "Gigabyte",
+    "price": 1345,
+    "price_formatted": "$1,345",
+    "rating": 4.2,
+    "image": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the Gigabyte Odyssey Gaming Monitor. Boasting a responsive 32\" OLED display with a blazingly fast 144Hz refresh rate and 0.03ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 35,
+    "specifications": {
+      "Screen Size": "32\"",
+      "Panel Type": "OLED",
+      "Resolution": "3840 x 2160 (4K UHD)",
+      "Refresh Rate": "144Hz",
+      "Response Time": "0.03ms",
+      "Aspect Ratio": "16:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "HDR True Black 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "gigabyte",
+      "gaming",
+      "oled"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c44293c64aae3390a"
+    },
+    "id": 15,
+    "title": "Intel Core i5-14600K Desktop Processor",
+    "category": "CPU",
+    "brand": "Intel",
+    "price": 339,
+    "price_formatted": "$339",
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=600&auto=format&fit=crop&q=80",
+    "description": "The Intel Core i5-14600K processor is the ultimate gaming and productivity CPU. With 6 Cores and 12 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket LGA 1700.",
+    "stock": 75,
+    "specifications": {
+      "Socket": "LGA 1700",
+      "Cores": 6,
+      "Threads": 12,
+      "Base Clock": "3.2 GHz",
+      "Max Boost Clock": "5.8 GHz",
+      "TDP": "125W",
+      "Cache": "96MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "intel",
+      "upgrade"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c927bcdaf6cfdc1e4"
+    },
+    "id": 16,
+    "title": "AMD GeForce RTX 4070 Ti Super 16GB Graphics Card",
+    "category": "GPU",
+    "brand": "AMD",
+    "price": 1896,
+    "price_formatted": "$1,896",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the AMD version of the GeForce RTX 4070 Ti Super. Featuring 16GB GDDR6X memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 7,
+    "specifications": {
+      "Graphics Processor": "GeForce RTX 4070 Ti Super",
+      "Video Memory": "16GB GDDR6X",
+      "Memory Bus": "256-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "750W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "amd",
+      "nvidia",
+      "gaming"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c699a7967a1e3b9c8"
+    },
+    "id": 17,
+    "title": "AMD Radeon RX 7900 XTX 24GB Graphics Card",
+    "category": "GPU",
+    "brand": "AMD",
+    "price": 1446,
+    "price_formatted": "$1,446",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the AMD version of the Radeon RX 7900 XTX. Featuring 24GB GDDR6X memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 12,
+    "specifications": {
+      "Graphics Processor": "Radeon RX 7900 XTX",
+      "Video Memory": "24GB GDDR6X",
+      "Memory Bus": "384-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "850W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "amd",
+      "amd",
+      "gaming"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c4e92c4f62b492af9"
+    },
+    "id": 18,
+    "title": "Gigabyte GeForce RTX 4080 Super 16GB Graphics Card",
+    "category": "GPU",
+    "brand": "Gigabyte",
+    "price": 442,
+    "price_formatted": "$442",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1555617766-c94804975da3?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the Gigabyte version of the GeForce RTX 4080 Super. Featuring 16GB GDDR6X memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 10,
+    "specifications": {
+      "Graphics Processor": "GeForce RTX 4080 Super",
+      "Video Memory": "16GB GDDR6X",
+      "Memory Bus": "256-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "750W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "gigabyte",
+      "nvidia",
+      "gaming"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cc108aa149bd7500f"
+    },
+    "id": 19,
+    "title": "ASUS Radeon RX 7600 XT 8GB Graphics Card",
+    "category": "GPU",
+    "brand": "ASUS",
+    "price": 1200,
+    "price_formatted": "$1,200",
+    "rating": 4.3,
+    "image": "https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the ASUS version of the Radeon RX 7600 XT. Featuring 8GB GDDR6 memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 9,
+    "specifications": {
+      "Graphics Processor": "Radeon RX 7600 XT",
+      "Video Memory": "8GB GDDR6",
+      "Memory Bus": "192-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "750W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "asus",
+      "amd",
+      "gaming"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cd5bc96aebfd5b87e"
+    },
+    "id": 20,
+    "title": "SteelSeries Liquid CPU Cooler",
+    "category": "Accessories",
+    "brand": "SteelSeries",
+    "price": 235,
+    "price_formatted": "$235",
+    "rating": 4.1,
+    "image": "https://images.unsplash.com/photo-1563720223185-11003d516935?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade SteelSeries Liquid CPU Cooler. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 53,
+    "specifications": {
+      "Radiator Size": "240mm / 360mm",
+      "Fan Speed": "500 - 2000 RPM (PWM)",
+      "Pump Type": "High-Performance Asetek Pump",
+      "Socket Support": "Intel LGA 1700/1200, AMD AM5/AM4",
+      "Features": "LCD Screen on Pump Head, ARGB Fans"
+    },
+    "tags": [
+      "accessories",
+      "cooler",
+      "steelseries",
+      "peripheral"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c3e06083b5404efb3"
+    },
+    "id": 21,
+    "title": "Intel Core i9-14900K Desktop Processor",
+    "category": "CPU",
+    "brand": "Intel",
+    "price": 357,
+    "price_formatted": "$357",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&auto=format&fit=crop&q=80",
+    "description": "The Intel Core i9-14900K processor is the ultimate gaming and productivity CPU. With 16 Cores and 32 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket LGA 1700.",
+    "stock": 78,
+    "specifications": {
+      "Socket": "LGA 1700",
+      "Cores": 16,
+      "Threads": 32,
+      "Base Clock": "3.2 GHz",
+      "Max Boost Clock": "5.8 GHz",
+      "TDP": "125W",
+      "Cache": "128MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "intel",
+      "upgrade"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c46d74db355632368"
+    },
+    "id": 22,
+    "title": "Intel GeForce RTX 4080 Super 16GB Graphics Card",
+    "category": "GPU",
+    "brand": "Intel",
+    "price": 1031,
+    "price_formatted": "$1,031",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the Intel version of the GeForce RTX 4080 Super. Featuring 16GB GDDR6X memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 37,
+    "specifications": {
+      "Graphics Processor": "GeForce RTX 4080 Super",
+      "Video Memory": "16GB GDDR6X",
+      "Memory Bus": "256-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "750W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "intel",
+      "nvidia",
+      "gaming"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cefd291c5bfc020b3"
+    },
+    "id": 23,
+    "title": "Acer UltraSharp 24\" IPS Gaming Monitor",
+    "category": "Monitors",
+    "brand": "Acer",
+    "price": 944,
+    "price_formatted": "$944",
+    "rating": 4.1,
+    "image": "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the Acer UltraSharp Gaming Monitor. Boasting a responsive 24\" IPS display with a blazingly fast 360Hz refresh rate and 1ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 19,
+    "specifications": {
+      "Screen Size": "24\"",
+      "Panel Type": "IPS",
+      "Resolution": "1920 x 1080 (FHD)",
+      "Refresh Rate": "360Hz",
+      "Response Time": "1ms",
+      "Aspect Ratio": "16:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "DisplayHDR 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "acer",
+      "gaming",
+      "ips"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cab5d951c7272937f"
+    },
+    "id": 24,
+    "title": "Dell Swift 34\" Ultrawide OLED Gaming Monitor",
+    "category": "Monitors",
+    "brand": "Dell",
+    "price": 555,
+    "price_formatted": "$555",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the Dell Swift Gaming Monitor. Boasting a responsive 34\" Ultrawide OLED display with a blazingly fast 165Hz refresh rate and 0.03ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 37,
+    "specifications": {
+      "Screen Size": "34\" Ultrawide",
+      "Panel Type": "OLED",
+      "Resolution": "3840 x 2160 (4K UHD)",
+      "Refresh Rate": "165Hz",
+      "Response Time": "0.03ms",
+      "Aspect Ratio": "21:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "HDR True Black 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "dell",
+      "gaming",
+      "oled"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c7008ed436f6b40e0"
+    },
+    "id": 25,
+    "title": "Logitech Modular PSU",
+    "category": "Accessories",
+    "brand": "Logitech",
+    "price": 118,
+    "price_formatted": "$118",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade Logitech Modular PSU. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 78,
+    "specifications": {
+      "Wattage": "1000W",
+      "Efficiency Rating": "80 PLUS Gold or Platinum",
+      "Modularity": "Fully Modular Cables",
+      "ATX Version": "ATX 3.0 Compatible (12VHPWR connector)",
+      "Warranty": "10 Years"
+    },
+    "tags": [
+      "accessories",
+      "psu",
+      "logitech",
+      "peripheral"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c3604b01b75d46937"
+    },
+    "id": 26,
+    "title": "AMD GeForce RTX 4070 Super 12GB Graphics Card",
+    "category": "GPU",
+    "brand": "AMD",
+    "price": 650,
+    "price_formatted": "$650",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the AMD version of the GeForce RTX 4070 Super. Featuring 12GB GDDR6X memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 3,
+    "specifications": {
+      "Graphics Processor": "GeForce RTX 4070 Super",
+      "Video Memory": "12GB GDDR6X",
+      "Memory Bus": "192-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "750W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "amd",
+      "nvidia",
+      "gaming"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c362c1568423ccdfc"
+    },
+    "id": 27,
+    "title": "NVIDIA Radeon RX 7900 XTX 24GB Graphics Card",
+    "category": "GPU",
+    "brand": "NVIDIA",
+    "price": 864,
+    "price_formatted": "$864",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the NVIDIA version of the Radeon RX 7900 XTX. Featuring 24GB GDDR6X memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 25,
+    "specifications": {
+      "Graphics Processor": "Radeon RX 7900 XTX",
+      "Video Memory": "24GB GDDR6X",
+      "Memory Bus": "384-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "850W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "nvidia",
+      "amd",
+      "gaming"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c42532e834271190c"
+    },
+    "id": 28,
+    "title": "NVIDIA Radeon RX 7800 XT 16GB Graphics Card",
+    "category": "GPU",
+    "brand": "NVIDIA",
+    "price": 1688,
+    "price_formatted": "$1,688",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the NVIDIA version of the Radeon RX 7800 XT. Featuring 16GB GDDR6 memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 21,
+    "specifications": {
+      "Graphics Processor": "Radeon RX 7800 XT",
+      "Video Memory": "16GB GDDR6",
+      "Memory Bus": "256-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "750W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "nvidia",
+      "amd",
+      "gaming"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c95321c5ae5f06ee5"
+    },
+    "id": 29,
+    "title": "HyperX Wireless Gaming Mouse",
+    "category": "Accessories",
+    "brand": "HyperX",
+    "price": 90,
+    "price_formatted": "$90",
+    "rating": 4,
+    "image": "https://images.unsplash.com/photo-1600541519468-4a9121dc70b5?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade HyperX Wireless Gaming Mouse. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 126,
+    "specifications": {
+      "Sensor": "26K DPI Optical Sensor",
+      "Weight": "60g - 75g Ultra-lightweight",
+      "Battery Life": "Up to 150 hours",
+      "Buttons": "6 Programmable Buttons",
+      "Connectivity": "2.4GHz HyperSpeed Wireless & USB Wired"
+    },
+    "tags": [
+      "accessories",
+      "mouse",
+      "hyperx",
+      "peripheral"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c30b60bf2e88e23f0"
+    },
+    "id": 30,
+    "title": "MSI Radeon RX 7900 XTX 24GB Graphics Card",
+    "category": "GPU",
+    "brand": "MSI",
+    "price": 710,
+    "price_formatted": "$710",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1555617766-c94804975da3?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the MSI version of the Radeon RX 7900 XTX. Featuring 24GB GDDR6X memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 6,
+    "specifications": {
+      "Graphics Processor": "Radeon RX 7900 XTX",
+      "Video Memory": "24GB GDDR6X",
+      "Memory Bus": "384-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "850W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "msi",
+      "amd",
+      "gaming"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c7ab778bf9d17fa01"
+    },
+    "id": 31,
+    "title": "Crucial Vengeance RGB 64GB (2x32GB) DDR5 6000MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "Crucial",
+    "price": 151,
+    "price_formatted": "$151",
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1562976540-1502c2145186?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium Crucial Vengeance RGB DDR5 RAM kit. Offering massive speed bandwidth of 6000MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load.",
+    "stock": 134,
+    "specifications": {
+      "Capacity": "64GB (2x32GB)",
+      "Memory Type": "DDR5",
+      "Speed": "6000MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "No",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "crucial",
+      "upgrade",
+      "stealth"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cae0cbbad2b26c72a"
+    },
+    "id": 32,
+    "title": "SteelSeries RGB Gaming Headset",
+    "category": "Accessories",
+    "brand": "SteelSeries",
+    "price": 166,
+    "price_formatted": "$166",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1563720223185-11003d516935?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade SteelSeries RGB Gaming Headset. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 88,
+    "specifications": {
+      "Driver Size": "50mm Neodymium Drivers",
+      "Frequency Response": "20Hz - 40kHz",
+      "Surround Sound": "7.1 Spatial Audio Support",
+      "Microphone": "Detachable Cardioid Mic",
+      "Connectivity": "Wireless 2.4GHz / Bluetooth / 3.5mm Jack"
+    },
+    "tags": [
+      "accessories",
+      "headset",
+      "steelseries",
+      "peripheral"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178ce10ff705f57906e6"
+    },
+    "id": 33,
+    "title": "MSI Titan Gaming Laptop 16\" (Intel Core i9-14900HX, 64GB DDR5, NVIDIA GeForce RTX 4070 8GB)",
+    "category": "Laptops",
+    "brand": "MSI",
+    "price": 1994,
+    "price_formatted": "$1,994",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the MSI Titan Gaming Laptop. Featuring a high-refresh-rate 16\" display, the powerful Intel Core i9-14900HX processor, and advanced NVIDIA GeForce RTX 4070 8GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 36,
+    "specifications": {
+      "Processor": "Intel Core i9-14900HX",
+      "Graphics Card": "NVIDIA GeForce RTX 4070 8GB",
+      "Memory": "64GB DDR5",
+      "Storage": "1TB NVMe PCIe 4.0 SSD",
+      "Screen Size": "16\"",
+      "Refresh Rate": "360Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "msi",
+      "pc"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c951db7ab0f9cb42a"
+    },
+    "id": 34,
+    "title": "Intel Core i5-14600K Desktop Processor",
+    "category": "CPU",
+    "brand": "Intel",
+    "price": 323,
+    "price_formatted": "$323",
+    "rating": 4.3,
+    "image": "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=600&auto=format&fit=crop&q=80",
+    "description": "The Intel Core i5-14600K processor is the ultimate gaming and productivity CPU. With 6 Cores and 12 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket LGA 1700.",
+    "stock": 35,
+    "specifications": {
+      "Socket": "LGA 1700",
+      "Cores": 6,
+      "Threads": 12,
+      "Base Clock": "3.2 GHz",
+      "Max Boost Clock": "5.8 GHz",
+      "TDP": "125W",
+      "Cache": "96MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "intel",
+      "upgrade"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cbe94fd99c76ed73a"
+    },
+    "id": 35,
+    "title": "Crucial Trident Z5 RGB 16GB (2x8GB) DDR5 6400MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "Crucial",
+    "price": 174,
+    "price_formatted": "$174",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1601524909162-be87252be298?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium Crucial Trident Z5 RGB DDR5 RAM kit. Offering massive speed bandwidth of 6400MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load.",
+    "stock": 88,
+    "specifications": {
+      "Capacity": "16GB (2x8GB)",
+      "Memory Type": "DDR5",
+      "Speed": "6400MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "No",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "crucial",
+      "upgrade",
+      "stealth"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c1f629815750187aa"
+    },
+    "id": 36,
+    "title": "Samsung UltraGear 27\" OLED Gaming Monitor",
+    "category": "Monitors",
+    "brand": "Samsung",
+    "price": 519,
+    "price_formatted": "$519",
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1616763355548-1b606f439f86?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the Samsung UltraGear Gaming Monitor. Boasting a responsive 27\" OLED display with a blazingly fast 144Hz refresh rate and 0.03ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 25,
+    "specifications": {
+      "Screen Size": "27\"",
+      "Panel Type": "OLED",
+      "Resolution": "2560 x 1440 (QHD)",
+      "Refresh Rate": "144Hz",
+      "Response Time": "0.03ms",
+      "Aspect Ratio": "16:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "HDR True Black 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "samsung",
+      "gaming",
+      "oled"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c57a5b58a2763d795"
+    },
+    "id": 37,
+    "title": "Razer Modular PSU",
+    "category": "Accessories",
+    "brand": "Razer",
+    "price": 165,
+    "price_formatted": "$165",
+    "rating": 4,
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade Razer Modular PSU. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 169,
+    "specifications": {
+      "Wattage": "750W",
+      "Efficiency Rating": "80 PLUS Gold or Platinum",
+      "Modularity": "Fully Modular Cables",
+      "ATX Version": "ATX 3.0 Compatible (12VHPWR connector)",
+      "Warranty": "10 Years"
+    },
+    "tags": [
+      "accessories",
+      "psu",
+      "razer",
+      "peripheral"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c74f80ba948cbc19b"
+    },
+    "id": 38,
+    "title": "NZXT Mechanical Keyboard",
+    "category": "Accessories",
+    "brand": "NZXT",
+    "price": 181,
+    "price_formatted": "$181",
+    "rating": 4.2,
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade NZXT Mechanical Keyboard. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 188,
+    "specifications": {
+      "Switch Type": "Hot-swappable Mechanical Switches",
+      "Layout": "TKL (80%) or Full-size",
+      "Connectivity": "USB-C Wired, Bluetooth 5.1, 2.4GHz Wireless",
+      "Keycaps": "Double-shot PBT Keycaps",
+      "RGB": "Per-key Addressable RGB"
+    },
+    "tags": [
+      "accessories",
+      "keyboard",
+      "nzxt",
+      "peripheral"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178ceacbb9accf0acb5e"
+    },
+    "id": 39,
+    "title": "Corsair Dominator Titanium 32GB (2x16GB) DDR5 5600MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "Corsair",
+    "price": 80,
+    "price_formatted": "$80",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium Corsair Dominator Titanium DDR5 RAM kit. Offering massive speed bandwidth of 5600MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load.",
+    "stock": 47,
+    "specifications": {
+      "Capacity": "32GB (2x16GB)",
+      "Memory Type": "DDR5",
+      "Speed": "5600MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "No",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "corsair",
+      "upgrade",
+      "stealth"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c61a4cc4dce5515a4"
+    },
+    "id": 40,
+    "title": "Teamgroup Fury Beast 32GB (2x16GB) DDR5 7200MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "Teamgroup",
+    "price": 167,
+    "price_formatted": "$167",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1601524909162-be87252be298?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium Teamgroup Fury Beast DDR5 RAM kit. Offering massive speed bandwidth of 7200MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load.",
+    "stock": 39,
+    "specifications": {
+      "Capacity": "32GB (2x16GB)",
+      "Memory Type": "DDR5",
+      "Speed": "7200MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "No",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "teamgroup",
+      "upgrade",
+      "stealth"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c6236a11c3c78c5dd"
+    },
+    "id": 41,
+    "title": "Corsair Mechanical Keyboard",
+    "category": "Accessories",
+    "brand": "Corsair",
+    "price": 120,
+    "price_formatted": "$120",
+    "rating": 4.2,
+    "image": "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade Corsair Mechanical Keyboard. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 182,
+    "specifications": {
+      "Switch Type": "Hot-swappable Mechanical Switches",
+      "Layout": "TKL (80%) or Full-size",
+      "Connectivity": "USB-C Wired, Bluetooth 5.1, 2.4GHz Wireless",
+      "Keycaps": "Double-shot PBT Keycaps",
+      "RGB": "Per-key Addressable RGB"
+    },
+    "tags": [
+      "accessories",
+      "keyboard",
+      "corsair",
+      "peripheral"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cd4ba4fd5d842d62e"
+    },
+    "id": 42,
+    "title": "LG Swift 32\" OLED Gaming Monitor",
+    "category": "Monitors",
+    "brand": "LG",
+    "price": 1433,
+    "price_formatted": "$1,433",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the LG Swift Gaming Monitor. Boasting a responsive 32\" OLED display with a blazingly fast 144Hz refresh rate and 0.03ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 19,
+    "specifications": {
+      "Screen Size": "32\"",
+      "Panel Type": "OLED",
+      "Resolution": "3840 x 2160 (4K UHD)",
+      "Refresh Rate": "144Hz",
+      "Response Time": "0.03ms",
+      "Aspect Ratio": "16:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "HDR True Black 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "lg",
+      "gaming",
+      "oled"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c93ede47e0facd3e3"
+    },
+    "id": 43,
+    "title": "Intel Core i7-14700K Desktop Processor",
+    "category": "CPU",
+    "brand": "Intel",
+    "price": 501,
+    "price_formatted": "$501",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80",
+    "description": "The Intel Core i7-14700K processor is the ultimate gaming and productivity CPU. With 8 Cores and 16 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket LGA 1700.",
+    "stock": 109,
+    "specifications": {
+      "Socket": "LGA 1700",
+      "Cores": 8,
+      "Threads": 16,
+      "Base Clock": "3.2 GHz",
+      "Max Boost Clock": "5.8 GHz",
+      "TDP": "125W",
+      "Cache": "96MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "intel",
+      "upgrade"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c233bd8f92599a175"
+    },
+    "id": 44,
+    "title": "Lian Li Mechanical Keyboard",
+    "category": "Accessories",
+    "brand": "Lian Li",
+    "price": 171,
+    "price_formatted": "$171",
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade Lian Li Mechanical Keyboard. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 192,
+    "specifications": {
+      "Switch Type": "Hot-swappable Mechanical Switches",
+      "Layout": "TKL (80%) or Full-size",
+      "Connectivity": "USB-C Wired, Bluetooth 5.1, 2.4GHz Wireless",
+      "Keycaps": "Double-shot PBT Keycaps",
+      "RGB": "Per-key Addressable RGB"
+    },
+    "tags": [
+      "accessories",
+      "keyboard",
+      "lian li",
+      "peripheral"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c62c795e5abfa1c18"
+    },
+    "id": 45,
+    "title": "ASUS Raider Gaming Laptop 14\" (Intel Core i7-14700HX, 64GB DDR5, NVIDIA GeForce RTX 4080 12GB)",
+    "category": "Laptops",
+    "brand": "ASUS",
+    "price": 2796,
+    "price_formatted": "$2,796",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the ASUS Raider Gaming Laptop. Featuring a high-refresh-rate 14\" display, the powerful Intel Core i7-14700HX processor, and advanced NVIDIA GeForce RTX 4080 12GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 5,
+    "specifications": {
+      "Processor": "Intel Core i7-14700HX",
+      "Graphics Card": "NVIDIA GeForce RTX 4080 12GB",
+      "Memory": "64GB DDR5",
+      "Storage": "512GB NVMe PCIe 4.0 SSD",
+      "Screen Size": "14\"",
+      "Refresh Rate": "360Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "asus",
+      "pc"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c9235817326cfb29d"
+    },
+    "id": 46,
+    "title": "NVIDIA GeForce RTX 4070 Ti Super 16GB Graphics Card",
+    "category": "GPU",
+    "brand": "NVIDIA",
+    "price": 724,
+    "price_formatted": "$724",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the NVIDIA version of the GeForce RTX 4070 Ti Super. Featuring 16GB GDDR6X memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 27,
+    "specifications": {
+      "Graphics Processor": "GeForce RTX 4070 Ti Super",
+      "Video Memory": "16GB GDDR6X",
+      "Memory Bus": "256-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "750W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "nvidia",
+      "nvidia",
+      "gaming"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cb8d69646774790cf"
+    },
+    "id": 47,
+    "title": "MSI Extreme Gaming Laptop 17.3\" (AMD Ryzen 9 7945HX, 16GB DDR5, NVIDIA GeForce RTX 4060 8GB)",
+    "category": "Laptops",
+    "brand": "MSI",
+    "price": 1204,
+    "price_formatted": "$1,204",
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the MSI Extreme Gaming Laptop. Featuring a high-refresh-rate 17.3\" display, the powerful AMD Ryzen 9 7945HX processor, and advanced NVIDIA GeForce RTX 4060 8GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 13,
+    "specifications": {
+      "Processor": "AMD Ryzen 9 7945HX",
+      "Graphics Card": "NVIDIA GeForce RTX 4060 8GB",
+      "Memory": "16GB DDR5",
+      "Storage": "2TB NVMe PCIe 4.0 SSD",
+      "Screen Size": "17.3\"",
+      "Refresh Rate": "144Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "msi",
+      "pc"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c361ab4cdb1047dbd"
+    },
+    "id": 48,
+    "title": "Teamgroup Trident Z5 RGB 32GB (2x16GB) DDR5 5200MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "Teamgroup",
+    "price": 221,
+    "price_formatted": "$221",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1562976540-1502c2145186?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium Teamgroup Trident Z5 RGB DDR5 RAM kit. Offering massive speed bandwidth of 5200MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load with vibrant custom addressable RGB lighting.",
+    "stock": 100,
+    "specifications": {
+      "Capacity": "32GB (2x16GB)",
+      "Memory Type": "DDR5",
+      "Speed": "5200MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "Yes, Addressable RGB",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "teamgroup",
+      "upgrade",
+      "rgb"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c51e83f6be5af8bc0"
+    },
+    "id": 49,
+    "title": "Kingston Vengeance RGB 32GB (2x16GB) DDR5 5200MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "Kingston",
+    "price": 188,
+    "price_formatted": "$188",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1562976540-1502c2145186?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium Kingston Vengeance RGB DDR5 RAM kit. Offering massive speed bandwidth of 5200MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load with vibrant custom addressable RGB lighting.",
+    "stock": 113,
+    "specifications": {
+      "Capacity": "32GB (2x16GB)",
+      "Memory Type": "DDR5",
+      "Speed": "5200MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "Yes, Addressable RGB",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "kingston",
+      "upgrade",
+      "rgb"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cb110c19a349eceb4"
+    },
+    "id": 50,
+    "title": "MSI Extreme Gaming Laptop 15.6\" (Intel Core i9-14900HX, 16GB DDR5, NVIDIA GeForce RTX 4060 8GB)",
+    "category": "Laptops",
+    "brand": "MSI",
+    "price": 2985,
+    "price_formatted": "$2,985",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the MSI Extreme Gaming Laptop. Featuring a high-refresh-rate 15.6\" display, the powerful Intel Core i9-14900HX processor, and advanced NVIDIA GeForce RTX 4060 8GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 77,
+    "specifications": {
+      "Processor": "Intel Core i9-14900HX",
+      "Graphics Card": "NVIDIA GeForce RTX 4060 8GB",
+      "Memory": "16GB DDR5",
+      "Storage": "1TB NVMe PCIe 4.0 SSD",
+      "Screen Size": "15.6\"",
+      "Refresh Rate": "240Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "msi",
+      "pc"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cc3f4ccb9b6f31248"
+    },
+    "id": 51,
+    "title": "AMD Ryzen 7 5700X3D Desktop Processor",
+    "category": "CPU",
+    "brand": "AMD",
+    "price": 616,
+    "price_formatted": "$616",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1624701928517-44c8ac49d93c?w=600&auto=format&fit=crop&q=80",
+    "description": "The AMD Ryzen 7 5700X3D processor is the ultimate gaming and productivity CPU. With 6 Cores and 12 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket AM4.",
+    "stock": 30,
+    "specifications": {
+      "Socket": "AM4",
+      "Cores": 6,
+      "Threads": 12,
+      "Base Clock": "4.2 GHz",
+      "Max Boost Clock": "5.0 GHz",
+      "TDP": "120W",
+      "Cache": "96MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "amd",
+      "upgrade"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c048683aa7d53b9d1"
+    },
+    "id": 52,
+    "title": "NVIDIA Radeon RX 7900 XT 16GB Graphics Card",
+    "category": "GPU",
+    "brand": "NVIDIA",
+    "price": 1555,
+    "price_formatted": "$1,555",
+    "rating": 4.3,
+    "image": "https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the NVIDIA version of the Radeon RX 7900 XT. Featuring 16GB GDDR6X memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 10,
+    "specifications": {
+      "Graphics Processor": "Radeon RX 7900 XT",
+      "Video Memory": "16GB GDDR6X",
+      "Memory Bus": "256-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "750W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "nvidia",
+      "amd",
+      "gaming"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c5a9f2d1a379bf6fb"
+    },
+    "id": 53,
+    "title": "Dell Predator Gaming Laptop 17.3\" (Intel Core i9-14900HX, 64GB DDR5, NVIDIA GeForce RTX 4080 12GB)",
+    "category": "Laptops",
+    "brand": "Dell",
+    "price": 1255,
+    "price_formatted": "$1,255",
+    "rating": 4.2,
+    "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the Dell Predator Gaming Laptop. Featuring a high-refresh-rate 17.3\" display, the powerful Intel Core i9-14900HX processor, and advanced NVIDIA GeForce RTX 4080 12GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 28,
+    "specifications": {
+      "Processor": "Intel Core i9-14900HX",
+      "Graphics Card": "NVIDIA GeForce RTX 4080 12GB",
+      "Memory": "64GB DDR5",
+      "Storage": "1TB NVMe PCIe 4.0 SSD",
+      "Screen Size": "17.3\"",
+      "Refresh Rate": "165Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "dell",
+      "pc"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cea30c390137ba41d"
+    },
+    "id": 54,
+    "title": "G.Skill Fury Beast 64GB (2x32GB) DDR5 5200MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "G.Skill",
+    "price": 75,
+    "price_formatted": "$75",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium G.Skill Fury Beast DDR5 RAM kit. Offering massive speed bandwidth of 5200MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load with vibrant custom addressable RGB lighting.",
+    "stock": 105,
+    "specifications": {
+      "Capacity": "64GB (2x32GB)",
+      "Memory Type": "DDR5",
+      "Speed": "5200MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "Yes, Addressable RGB",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "g.skill",
+      "upgrade",
+      "rgb"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c34e46c8702b442ad"
+    },
+    "id": 55,
+    "title": "ASUS UltraSharp 34\" Ultrawide IPS Gaming Monitor",
+    "category": "Monitors",
+    "brand": "ASUS",
+    "price": 1472,
+    "price_formatted": "$1,472",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the ASUS UltraSharp Gaming Monitor. Boasting a responsive 34\" Ultrawide IPS display with a blazingly fast 144Hz refresh rate and 1ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 21,
+    "specifications": {
+      "Screen Size": "34\" Ultrawide",
+      "Panel Type": "IPS",
+      "Resolution": "3840 x 2160 (4K UHD)",
+      "Refresh Rate": "144Hz",
+      "Response Time": "1ms",
+      "Aspect Ratio": "21:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "DisplayHDR 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "asus",
+      "gaming",
+      "ips"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c8e4a8f028b9884c9"
+    },
+    "id": 56,
+    "title": "AMD Ryzen 9 7950X3D Desktop Processor",
+    "category": "CPU",
+    "brand": "AMD",
+    "price": 560,
+    "price_formatted": "$560",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&auto=format&fit=crop&q=80",
+    "description": "The AMD Ryzen 9 7950X3D processor is the ultimate gaming and productivity CPU. With 16 Cores and 32 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket AM4.",
+    "stock": 119,
+    "specifications": {
+      "Socket": "AM4",
+      "Cores": 16,
+      "Threads": 32,
+      "Base Clock": "4.2 GHz",
+      "Max Boost Clock": "5.0 GHz",
+      "TDP": "120W",
+      "Cache": "128MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "amd",
+      "upgrade"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c320c6785a9b9bf57"
+    },
+    "id": 57,
+    "title": "Dell Swift 34\" Ultrawide IPS Gaming Monitor",
+    "category": "Monitors",
+    "brand": "Dell",
+    "price": 981,
+    "price_formatted": "$981",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the Dell Swift Gaming Monitor. Boasting a responsive 34\" Ultrawide IPS display with a blazingly fast 360Hz refresh rate and 1ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 23,
+    "specifications": {
+      "Screen Size": "34\" Ultrawide",
+      "Panel Type": "IPS",
+      "Resolution": "3840 x 2160 (4K UHD)",
+      "Refresh Rate": "360Hz",
+      "Response Time": "1ms",
+      "Aspect Ratio": "21:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "DisplayHDR 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "dell",
+      "gaming",
+      "ips"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c48ffaa8b73130b31"
+    },
+    "id": 58,
+    "title": "Lenovo X-Treme Gaming Laptop 16\" (AMD Ryzen 7 7840HS, 32GB DDR5, NVIDIA GeForce RTX 4090 16GB)",
+    "category": "Laptops",
+    "brand": "Lenovo",
+    "price": 1406,
+    "price_formatted": "$1,406",
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the Lenovo X-Treme Gaming Laptop. Featuring a high-refresh-rate 16\" display, the powerful AMD Ryzen 7 7840HS processor, and advanced NVIDIA GeForce RTX 4090 16GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 57,
+    "specifications": {
+      "Processor": "AMD Ryzen 7 7840HS",
+      "Graphics Card": "NVIDIA GeForce RTX 4090 16GB",
+      "Memory": "32GB DDR5",
+      "Storage": "512GB NVMe PCIe 4.0 SSD",
+      "Screen Size": "16\"",
+      "Refresh Rate": "144Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "lenovo",
+      "pc"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c3f9b30c72571ba8a"
+    },
+    "id": 59,
+    "title": "Acer UltraSharp 49\" Curved OLED Gaming Monitor",
+    "category": "Monitors",
+    "brand": "Acer",
+    "price": 1226,
+    "price_formatted": "$1,226",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the Acer UltraSharp Gaming Monitor. Boasting a responsive 49\" Curved OLED display with a blazingly fast 240Hz refresh rate and 0.03ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 38,
+    "specifications": {
+      "Screen Size": "49\" Curved",
+      "Panel Type": "OLED",
+      "Resolution": "3840 x 2160 (4K UHD)",
+      "Refresh Rate": "240Hz",
+      "Response Time": "0.03ms",
+      "Aspect Ratio": "32:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "HDR True Black 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "acer",
+      "gaming",
+      "oled"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c65d843044d91860f"
+    },
+    "id": 60,
+    "title": "Samsung Optix 24\" IPS Gaming Monitor",
+    "category": "Monitors",
+    "brand": "Samsung",
+    "price": 637,
+    "price_formatted": "$637",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the Samsung Optix Gaming Monitor. Boasting a responsive 24\" IPS display with a blazingly fast 165Hz refresh rate and 1ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 10,
+    "specifications": {
+      "Screen Size": "24\"",
+      "Panel Type": "IPS",
+      "Resolution": "1920 x 1080 (FHD)",
+      "Refresh Rate": "165Hz",
+      "Response Time": "1ms",
+      "Aspect Ratio": "16:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "DisplayHDR 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "samsung",
+      "gaming",
+      "ips"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178ce9d162bbc453a673"
+    },
+    "id": 61,
+    "title": "Teamgroup Fury Beast 64GB (2x32GB) DDR5 6000MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "Teamgroup",
+    "price": 61,
+    "price_formatted": "$61",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium Teamgroup Fury Beast DDR5 RAM kit. Offering massive speed bandwidth of 6000MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load.",
+    "stock": 81,
+    "specifications": {
+      "Capacity": "64GB (2x32GB)",
+      "Memory Type": "DDR5",
+      "Speed": "6000MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "No",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "teamgroup",
+      "upgrade",
+      "stealth"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c61d8ea42cb4aeb0e"
+    },
+    "id": 62,
+    "title": "AMD Ryzen 9 7950X3D Desktop Processor",
+    "category": "CPU",
+    "brand": "AMD",
+    "price": 522,
+    "price_formatted": "$522",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&auto=format&fit=crop&q=80",
+    "description": "The AMD Ryzen 9 7950X3D processor is the ultimate gaming and productivity CPU. With 16 Cores and 32 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket AM4.",
+    "stock": 24,
+    "specifications": {
+      "Socket": "AM4",
+      "Cores": 16,
+      "Threads": 32,
+      "Base Clock": "4.2 GHz",
+      "Max Boost Clock": "5.0 GHz",
+      "TDP": "120W",
+      "Cache": "128MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "amd",
+      "upgrade"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c1809b7b4bdd80222"
+    },
+    "id": 63,
+    "title": "Intel Core i9-14900K Desktop Processor",
+    "category": "CPU",
+    "brand": "Intel",
+    "price": 435,
+    "price_formatted": "$435",
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&auto=format&fit=crop&q=80",
+    "description": "The Intel Core i9-14900K processor is the ultimate gaming and productivity CPU. With 16 Cores and 32 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket LGA 1700.",
+    "stock": 116,
+    "specifications": {
+      "Socket": "LGA 1700",
+      "Cores": 16,
+      "Threads": 32,
+      "Base Clock": "3.2 GHz",
+      "Max Boost Clock": "5.8 GHz",
+      "TDP": "125W",
+      "Cache": "128MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "intel",
+      "upgrade"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cac0c7bc451f2c2a4"
+    },
+    "id": 64,
+    "title": "Teamgroup Fury Beast 16GB (2x8GB) DDR5 6000MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "Teamgroup",
+    "price": 244,
+    "price_formatted": "$244",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1601524909162-be87252be298?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium Teamgroup Fury Beast DDR5 RAM kit. Offering massive speed bandwidth of 6000MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load.",
+    "stock": 119,
+    "specifications": {
+      "Capacity": "16GB (2x8GB)",
+      "Memory Type": "DDR5",
+      "Speed": "6000MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "No",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "teamgroup",
+      "upgrade",
+      "stealth"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c8fb19afc10151fa2"
+    },
+    "id": 65,
+    "title": "ASUS Odyssey Gaming Laptop 16\" (Intel Core i9-14900HX, 32GB DDR5, NVIDIA GeForce RTX 4080 12GB)",
+    "category": "Laptops",
+    "brand": "ASUS",
+    "price": 2896,
+    "price_formatted": "$2,896",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the ASUS Odyssey Gaming Laptop. Featuring a high-refresh-rate 16\" display, the powerful Intel Core i9-14900HX processor, and advanced NVIDIA GeForce RTX 4080 12GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 7,
+    "specifications": {
+      "Processor": "Intel Core i9-14900HX",
+      "Graphics Card": "NVIDIA GeForce RTX 4080 12GB",
+      "Memory": "32GB DDR5",
+      "Storage": "2TB NVMe PCIe 4.0 SSD",
+      "Screen Size": "16\"",
+      "Refresh Rate": "240Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "asus",
+      "pc"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c1fb9aef405fc09e1"
+    },
+    "id": 66,
+    "title": "Acer Odyssey 27\" VA Gaming Monitor",
+    "category": "Monitors",
+    "brand": "Acer",
+    "price": 200,
+    "price_formatted": "$200",
+    "rating": 4.1,
+    "image": "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the Acer Odyssey Gaming Monitor. Boasting a responsive 27\" VA display with a blazingly fast 240Hz refresh rate and 1ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 49,
+    "specifications": {
+      "Screen Size": "27\"",
+      "Panel Type": "VA",
+      "Resolution": "2560 x 1440 (QHD)",
+      "Refresh Rate": "240Hz",
+      "Response Time": "1ms",
+      "Aspect Ratio": "16:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "DisplayHDR 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "acer",
+      "gaming",
+      "va"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cd0ff0c0fb6b0b5a0"
+    },
+    "id": 67,
+    "title": "G.Skill Vengeance RGB 64GB (2x32GB) DDR5 5600MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "G.Skill",
+    "price": 99,
+    "price_formatted": "$99",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1601524909162-be87252be298?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium G.Skill Vengeance RGB DDR5 RAM kit. Offering massive speed bandwidth of 5600MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load.",
+    "stock": 52,
+    "specifications": {
+      "Capacity": "64GB (2x32GB)",
+      "Memory Type": "DDR5",
+      "Speed": "5600MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "No",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "g.skill",
+      "upgrade",
+      "stealth"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cc57fa0168a8900e0"
+    },
+    "id": 68,
+    "title": "ASUS Swift 32\" IPS Gaming Monitor",
+    "category": "Monitors",
+    "brand": "ASUS",
+    "price": 785,
+    "price_formatted": "$785",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1616763355548-1b606f439f86?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the ASUS Swift Gaming Monitor. Boasting a responsive 32\" IPS display with a blazingly fast 165Hz refresh rate and 1ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 31,
+    "specifications": {
+      "Screen Size": "32\"",
+      "Panel Type": "IPS",
+      "Resolution": "3840 x 2160 (4K UHD)",
+      "Refresh Rate": "165Hz",
+      "Response Time": "1ms",
+      "Aspect Ratio": "16:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "DisplayHDR 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "asus",
+      "gaming",
+      "ips"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c620b0b5ae1755dec"
+    },
+    "id": 69,
+    "title": "Acer Elite Gaming Laptop 14\" (AMD Ryzen 9 7945HX, 16GB DDR5, NVIDIA GeForce RTX 4070 8GB)",
+    "category": "Laptops",
+    "brand": "Acer",
+    "price": 1148,
+    "price_formatted": "$1,148",
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the Acer Elite Gaming Laptop. Featuring a high-refresh-rate 14\" display, the powerful AMD Ryzen 9 7945HX processor, and advanced NVIDIA GeForce RTX 4070 8GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 63,
+    "specifications": {
+      "Processor": "AMD Ryzen 9 7945HX",
+      "Graphics Card": "NVIDIA GeForce RTX 4070 8GB",
+      "Memory": "16GB DDR5",
+      "Storage": "512GB NVMe PCIe 4.0 SSD",
+      "Screen Size": "14\"",
+      "Refresh Rate": "240Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "acer",
+      "pc"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c34fd861439279827"
+    },
+    "id": 70,
+    "title": "SteelSeries Wireless Gaming Mouse",
+    "category": "Accessories",
+    "brand": "SteelSeries",
+    "price": 87,
+    "price_formatted": "$87",
+    "rating": 4.2,
+    "image": "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade SteelSeries Wireless Gaming Mouse. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 124,
+    "specifications": {
+      "Sensor": "26K DPI Optical Sensor",
+      "Weight": "60g - 75g Ultra-lightweight",
+      "Battery Life": "Up to 150 hours",
+      "Buttons": "6 Programmable Buttons",
+      "Connectivity": "2.4GHz HyperSpeed Wireless & USB Wired"
+    },
+    "tags": [
+      "accessories",
+      "mouse",
+      "steelseries",
+      "peripheral"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c21e72623be763b53"
+    },
+    "id": 71,
+    "title": "LG Swift 24\" IPS Gaming Monitor",
+    "category": "Monitors",
+    "brand": "LG",
+    "price": 782,
+    "price_formatted": "$782",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the LG Swift Gaming Monitor. Boasting a responsive 24\" IPS display with a blazingly fast 144Hz refresh rate and 1ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 12,
+    "specifications": {
+      "Screen Size": "24\"",
+      "Panel Type": "IPS",
+      "Resolution": "1920 x 1080 (FHD)",
+      "Refresh Rate": "144Hz",
+      "Response Time": "1ms",
+      "Aspect Ratio": "16:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "DisplayHDR 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "lg",
+      "gaming",
+      "ips"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c6b47b7260b93e163"
+    },
+    "id": 72,
+    "title": "NZXT RGB Gaming Headset",
+    "category": "Accessories",
+    "brand": "NZXT",
+    "price": 163,
+    "price_formatted": "$163",
+    "rating": 4.3,
+    "image": "https://images.unsplash.com/photo-1600541519468-4a9121dc70b5?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade NZXT RGB Gaming Headset. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 77,
+    "specifications": {
+      "Driver Size": "50mm Neodymium Drivers",
+      "Frequency Response": "20Hz - 40kHz",
+      "Surround Sound": "7.1 Spatial Audio Support",
+      "Microphone": "Detachable Cardioid Mic",
+      "Connectivity": "Wireless 2.4GHz / Bluetooth / 3.5mm Jack"
+    },
+    "tags": [
+      "accessories",
+      "headset",
+      "nzxt",
+      "peripheral"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178ce9b89f3f71953419"
+    },
+    "id": 73,
+    "title": "Gigabyte Optix 27\" OLED Gaming Monitor",
+    "category": "Monitors",
+    "brand": "Gigabyte",
+    "price": 975,
+    "price_formatted": "$975",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1616763355548-1b606f439f86?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the Gigabyte Optix Gaming Monitor. Boasting a responsive 27\" OLED display with a blazingly fast 144Hz refresh rate and 0.03ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 25,
+    "specifications": {
+      "Screen Size": "27\"",
+      "Panel Type": "OLED",
+      "Resolution": "2560 x 1440 (QHD)",
+      "Refresh Rate": "144Hz",
+      "Response Time": "0.03ms",
+      "Aspect Ratio": "16:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "HDR True Black 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "gigabyte",
+      "gaming",
+      "oled"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c3c447d211c42b1a0"
+    },
+    "id": 74,
+    "title": "Acer UltraGear 27\" VA Gaming Monitor",
+    "category": "Monitors",
+    "brand": "Acer",
+    "price": 646,
+    "price_formatted": "$646",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&auto=format&fit=crop&q=80",
+    "description": "Immerse yourself in fluid gameplay and true-to-life colors with the Acer UltraGear Gaming Monitor. Boasting a responsive 27\" VA display with a blazingly fast 165Hz refresh rate and 1ms response time, this display completely eliminates ghosting and screen tearing. Features premium HDR support and rich connectivity ports.",
+    "stock": 34,
+    "specifications": {
+      "Screen Size": "27\"",
+      "Panel Type": "VA",
+      "Resolution": "2560 x 1440 (QHD)",
+      "Refresh Rate": "165Hz",
+      "Response Time": "1ms",
+      "Aspect Ratio": "16:9",
+      "Inputs": "2x HDMI 2.1, 1x DisplayPort 1.4, USB Hub",
+      "HDR Standard": "DisplayHDR 400"
+    },
+    "tags": [
+      "monitor",
+      "display",
+      "screen",
+      "acer",
+      "gaming",
+      "va"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178ce3da161b1a3ef2f9"
+    },
+    "id": 75,
+    "title": "Keychron Liquid CPU Cooler",
+    "category": "Accessories",
+    "brand": "Keychron",
+    "price": 278,
+    "price_formatted": "$278",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade Keychron Liquid CPU Cooler. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 49,
+    "specifications": {
+      "Radiator Size": "240mm / 360mm",
+      "Fan Speed": "500 - 2000 RPM (PWM)",
+      "Pump Type": "High-Performance Asetek Pump",
+      "Socket Support": "Intel LGA 1700/1200, AMD AM5/AM4",
+      "Features": "LCD Screen on Pump Head, ARGB Fans"
+    },
+    "tags": [
+      "accessories",
+      "cooler",
+      "keychron",
+      "peripheral"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c4c84a7fe8b12eb15"
+    },
+    "id": 76,
+    "title": "Corsair Fury Beast 64GB (2x32GB) DDR5 7200MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "Corsair",
+    "price": 296,
+    "price_formatted": "$296",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1562976540-1502c2145186?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium Corsair Fury Beast DDR5 RAM kit. Offering massive speed bandwidth of 7200MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load with vibrant custom addressable RGB lighting.",
+    "stock": 93,
+    "specifications": {
+      "Capacity": "64GB (2x32GB)",
+      "Memory Type": "DDR5",
+      "Speed": "7200MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "Yes, Addressable RGB",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "corsair",
+      "upgrade",
+      "rgb"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cb42aa931c78b6dbb"
+    },
+    "id": 77,
+    "title": "Logitech Mid-Tower Computer Case",
+    "category": "Accessories",
+    "brand": "Logitech",
+    "price": 270,
+    "price_formatted": "$270",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1600541519468-4a9121dc70b5?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade Logitech Mid-Tower Computer Case. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 46,
+    "specifications": {
+      "Form Factor": "ATX Mid-Tower Case",
+      "Materials": "Steel, Tempered Glass",
+      "Fan Support": "Up to 10x 120mm Fans",
+      "GPU Clearance": "Up to 400mm",
+      "Included Fans": "4x 120mm ARGB PWM Fans"
+    },
+    "tags": [
+      "accessories",
+      "case",
+      "logitech",
+      "peripheral"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c477ffb591ef3c7b4"
+    },
+    "id": 78,
+    "title": "Logitech Mid-Tower Computer Case",
+    "category": "Accessories",
+    "brand": "Logitech",
+    "price": 213,
+    "price_formatted": "$213",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade Logitech Mid-Tower Computer Case. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 101,
+    "specifications": {
+      "Form Factor": "ATX Mid-Tower Case",
+      "Materials": "Steel, Tempered Glass",
+      "Fan Support": "Up to 10x 120mm Fans",
+      "GPU Clearance": "Up to 400mm",
+      "Included Fans": "4x 120mm ARGB PWM Fans"
+    },
+    "tags": [
+      "accessories",
+      "case",
+      "logitech",
+      "peripheral"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c2e6d631b969a43ac"
+    },
+    "id": 79,
+    "title": "Patriot Trident Z5 RGB 16GB (2x8GB) DDR5 5600MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "Patriot",
+    "price": 97,
+    "price_formatted": "$97",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1562976540-1502c2145186?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium Patriot Trident Z5 RGB DDR5 RAM kit. Offering massive speed bandwidth of 5600MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load with vibrant custom addressable RGB lighting.",
+    "stock": 139,
+    "specifications": {
+      "Capacity": "16GB (2x8GB)",
+      "Memory Type": "DDR5",
+      "Speed": "5600MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "Yes, Addressable RGB",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "patriot",
+      "upgrade",
+      "rgb"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cd25a457a8eb745ef"
+    },
+    "id": 80,
+    "title": "Patriot Delta RGB 32GB (2x16GB) DDR5 5200MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "Patriot",
+    "price": 132,
+    "price_formatted": "$132",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1601524909162-be87252be298?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium Patriot Delta RGB DDR5 RAM kit. Offering massive speed bandwidth of 5200MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load.",
+    "stock": 49,
+    "specifications": {
+      "Capacity": "32GB (2x16GB)",
+      "Memory Type": "DDR5",
+      "Speed": "5200MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "No",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "patriot",
+      "upgrade",
+      "stealth"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cdefd81276171a470"
+    },
+    "id": 81,
+    "title": "Lenovo Extreme Gaming Laptop 16\" (AMD Ryzen 7 7840HS, 64GB DDR5, NVIDIA GeForce RTX 4060 8GB)",
+    "category": "Laptops",
+    "brand": "Lenovo",
+    "price": 1739,
+    "price_formatted": "$1,739",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the Lenovo Extreme Gaming Laptop. Featuring a high-refresh-rate 16\" display, the powerful AMD Ryzen 7 7840HS processor, and advanced NVIDIA GeForce RTX 4060 8GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 37,
+    "specifications": {
+      "Processor": "AMD Ryzen 7 7840HS",
+      "Graphics Card": "NVIDIA GeForce RTX 4060 8GB",
+      "Memory": "64GB DDR5",
+      "Storage": "2TB NVMe PCIe 4.0 SSD",
+      "Screen Size": "16\"",
+      "Refresh Rate": "165Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "lenovo",
+      "pc"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cfc55a542dd1614ad"
+    },
+    "id": 82,
+    "title": "Corsair Trident Z5 RGB 32GB (2x16GB) DDR5 5600MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "Corsair",
+    "price": 220,
+    "price_formatted": "$220",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium Corsair Trident Z5 RGB DDR5 RAM kit. Offering massive speed bandwidth of 5600MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load with vibrant custom addressable RGB lighting.",
+    "stock": 36,
+    "specifications": {
+      "Capacity": "32GB (2x16GB)",
+      "Memory Type": "DDR5",
+      "Speed": "5600MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "Yes, Addressable RGB",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "corsair",
+      "upgrade",
+      "rgb"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c2f7e64ef4eddbd03"
+    },
+    "id": 83,
+    "title": "AMD Radeon RX 7900 XT 16GB Graphics Card",
+    "category": "GPU",
+    "brand": "AMD",
+    "price": 1852,
+    "price_formatted": "$1,852",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the AMD version of the Radeon RX 7900 XT. Featuring 16GB GDDR6X memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 5,
+    "specifications": {
+      "Graphics Processor": "Radeon RX 7900 XT",
+      "Video Memory": "16GB GDDR6X",
+      "Memory Bus": "256-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "750W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "amd",
+      "amd",
+      "gaming"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c96de8c9f969927e6"
+    },
+    "id": 84,
+    "title": "Intel Core i5-14600K Desktop Processor",
+    "category": "CPU",
+    "brand": "Intel",
+    "price": 629,
+    "price_formatted": "$629",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=600&auto=format&fit=crop&q=80",
+    "description": "The Intel Core i5-14600K processor is the ultimate gaming and productivity CPU. With 6 Cores and 12 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket LGA 1700.",
+    "stock": 46,
+    "specifications": {
+      "Socket": "LGA 1700",
+      "Cores": 6,
+      "Threads": 12,
+      "Base Clock": "3.2 GHz",
+      "Max Boost Clock": "5.8 GHz",
+      "TDP": "125W",
+      "Cache": "96MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "intel",
+      "upgrade"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cf6ec2c7e5f21332d"
+    },
+    "id": 85,
+    "title": "AMD GeForce RTX 4060 Ti 8GB Graphics Card",
+    "category": "GPU",
+    "brand": "AMD",
+    "price": 352,
+    "price_formatted": "$352",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the AMD version of the GeForce RTX 4060 Ti. Featuring 8GB GDDR6 memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 7,
+    "specifications": {
+      "Graphics Processor": "GeForce RTX 4060 Ti",
+      "Video Memory": "8GB GDDR6",
+      "Memory Bus": "192-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "750W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "amd",
+      "nvidia",
+      "gaming"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178caed7be2224ba737d"
+    },
+    "id": 86,
+    "title": "ASUS Pro Gaming Laptop 14\" (AMD Ryzen 9 7945HX, 32GB DDR5, NVIDIA GeForce RTX 4070 8GB)",
+    "category": "Laptops",
+    "brand": "ASUS",
+    "price": 2468,
+    "price_formatted": "$2,468",
+    "rating": 4.3,
+    "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the ASUS Pro Gaming Laptop. Featuring a high-refresh-rate 14\" display, the powerful AMD Ryzen 9 7945HX processor, and advanced NVIDIA GeForce RTX 4070 8GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 30,
+    "specifications": {
+      "Processor": "AMD Ryzen 9 7945HX",
+      "Graphics Card": "NVIDIA GeForce RTX 4070 8GB",
+      "Memory": "32GB DDR5",
+      "Storage": "1TB NVMe PCIe 4.0 SSD",
+      "Screen Size": "14\"",
+      "Refresh Rate": "165Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "asus",
+      "pc"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178ca55cc87bbdcb8935"
+    },
+    "id": 87,
+    "title": "AMD Ryzen 7 5700X3D Desktop Processor",
+    "category": "CPU",
+    "brand": "AMD",
+    "price": 375,
+    "price_formatted": "$375",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1624701928517-44c8ac49d93c?w=600&auto=format&fit=crop&q=80",
+    "description": "The AMD Ryzen 7 5700X3D processor is the ultimate gaming and productivity CPU. With 6 Cores and 12 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket AM4.",
+    "stock": 52,
+    "specifications": {
+      "Socket": "AM4",
+      "Cores": 6,
+      "Threads": 12,
+      "Base Clock": "4.2 GHz",
+      "Max Boost Clock": "5.0 GHz",
+      "TDP": "120W",
+      "Cache": "96MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "amd",
+      "upgrade"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c75b8c3cc7875c06b"
+    },
+    "id": 88,
+    "title": "Acer Odyssey Gaming Laptop 17.3\" (AMD Ryzen 9 7945HX, 32GB DDR5, NVIDIA GeForce RTX 4070 8GB)",
+    "category": "Laptops",
+    "brand": "Acer",
+    "price": 2356,
+    "price_formatted": "$2,356",
+    "rating": 4.3,
+    "image": "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the Acer Odyssey Gaming Laptop. Featuring a high-refresh-rate 17.3\" display, the powerful AMD Ryzen 9 7945HX processor, and advanced NVIDIA GeForce RTX 4070 8GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 65,
+    "specifications": {
+      "Processor": "AMD Ryzen 9 7945HX",
+      "Graphics Card": "NVIDIA GeForce RTX 4070 8GB",
+      "Memory": "32GB DDR5",
+      "Storage": "1TB NVMe PCIe 4.0 SSD",
+      "Screen Size": "17.3\"",
+      "Refresh Rate": "360Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "acer",
+      "pc"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c7514e62168f22052"
+    },
+    "id": 89,
+    "title": "AMD Ryzen 7 7800X3D Desktop Processor",
+    "category": "CPU",
+    "brand": "AMD",
+    "price": 412,
+    "price_formatted": "$412",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80",
+    "description": "The AMD Ryzen 7 7800X3D processor is the ultimate gaming and productivity CPU. With 8 Cores and 16 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket AM5.",
+    "stock": 93,
+    "specifications": {
+      "Socket": "AM5",
+      "Cores": 8,
+      "Threads": 16,
+      "Base Clock": "4.2 GHz",
+      "Max Boost Clock": "5.0 GHz",
+      "TDP": "120W",
+      "Cache": "96MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "amd",
+      "upgrade"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c1476d0d37b4a68d6"
+    },
+    "id": 90,
+    "title": "AMD Ryzen 7 5700X3D Desktop Processor",
+    "category": "CPU",
+    "brand": "AMD",
+    "price": 589,
+    "price_formatted": "$589",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1624701928517-44c8ac49d93c?w=600&auto=format&fit=crop&q=80",
+    "description": "The AMD Ryzen 7 5700X3D processor is the ultimate gaming and productivity CPU. With 6 Cores and 12 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket AM4.",
+    "stock": 92,
+    "specifications": {
+      "Socket": "AM4",
+      "Cores": 6,
+      "Threads": 12,
+      "Base Clock": "4.2 GHz",
+      "Max Boost Clock": "5.0 GHz",
+      "TDP": "120W",
+      "Cache": "96MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "amd",
+      "upgrade"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cd66d6836469ad12a"
+    },
+    "id": 91,
+    "title": "AMD Ryzen 9 7900X Desktop Processor",
+    "category": "CPU",
+    "brand": "AMD",
+    "price": 533,
+    "price_formatted": "$533",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80",
+    "description": "The AMD Ryzen 9 7900X processor is the ultimate gaming and productivity CPU. With 8 Cores and 16 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket AM5.",
+    "stock": 35,
+    "specifications": {
+      "Socket": "AM5",
+      "Cores": 8,
+      "Threads": 16,
+      "Base Clock": "4.2 GHz",
+      "Max Boost Clock": "5.0 GHz",
+      "TDP": "120W",
+      "Cache": "96MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "amd",
+      "upgrade"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178ce4af3b0b17f5bf23"
+    },
+    "id": 92,
+    "title": "Gigabyte Radeon RX 7600 XT 8GB Graphics Card",
+    "category": "GPU",
+    "brand": "Gigabyte",
+    "price": 359,
+    "price_formatted": "$359",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1555617766-c94804975da3?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the Gigabyte version of the Radeon RX 7600 XT. Featuring 8GB GDDR6 memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 25,
+    "specifications": {
+      "Graphics Processor": "Radeon RX 7600 XT",
+      "Video Memory": "8GB GDDR6",
+      "Memory Bus": "192-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "750W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "gigabyte",
+      "amd",
+      "gaming"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c44243e0f22137fd6"
+    },
+    "id": 93,
+    "title": "MSI Radeon RX 7900 XTX 24GB Graphics Card",
+    "category": "GPU",
+    "brand": "MSI",
+    "price": 1621,
+    "price_formatted": "$1,621",
+    "rating": 4.3,
+    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the MSI version of the Radeon RX 7900 XTX. Featuring 24GB GDDR6X memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 17,
+    "specifications": {
+      "Graphics Processor": "Radeon RX 7900 XTX",
+      "Video Memory": "24GB GDDR6X",
+      "Memory Bus": "384-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "850W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "msi",
+      "amd",
+      "gaming"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c83c9d89941c82896"
+    },
+    "id": 94,
+    "title": "AMD Radeon RX 7700 XT 16GB Graphics Card",
+    "category": "GPU",
+    "brand": "AMD",
+    "price": 481,
+    "price_formatted": "$481",
+    "rating": 4.3,
+    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80",
+    "description": "Supercharge your gaming setup with the AMD version of the Radeon RX 7700 XT. Featuring 16GB GDDR6 memory, advanced ray tracing performance, and cutting-edge cooling systems, this graphics card runs the latest games at ultra settings with smooth, fluid frame rates. Great for creative workloads and artificial intelligence workloads too.",
+    "stock": 34,
+    "specifications": {
+      "Graphics Processor": "Radeon RX 7700 XT",
+      "Video Memory": "16GB GDDR6",
+      "Memory Bus": "256-bit",
+      "Interface": "PCI Express 4.0 x16",
+      "Outputs": "3x DisplayPort 1.4a, 1x HDMI 2.1a",
+      "Recommended PSU": "750W",
+      "Form Factor": "Triple Slot ATX"
+    },
+    "tags": [
+      "gpu",
+      "graphics card",
+      "video card",
+      "amd",
+      "amd",
+      "gaming"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178cf7395edc90b3f50c"
+    },
+    "id": 95,
+    "title": "Dell Odyssey Gaming Laptop 17.3\" (Intel Core i9-14900HX, 16GB DDR5, NVIDIA GeForce RTX 4060 8GB)",
+    "category": "Laptops",
+    "brand": "Dell",
+    "price": 3130,
+    "price_formatted": "$3,130",
+    "rating": 4.2,
+    "image": "https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the Dell Odyssey Gaming Laptop. Featuring a high-refresh-rate 17.3\" display, the powerful Intel Core i9-14900HX processor, and advanced NVIDIA GeForce RTX 4060 8GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 55,
+    "specifications": {
+      "Processor": "Intel Core i9-14900HX",
+      "Graphics Card": "NVIDIA GeForce RTX 4060 8GB",
+      "Memory": "16GB DDR5",
+      "Storage": "512GB NVMe PCIe 4.0 SSD",
+      "Screen Size": "17.3\"",
+      "Refresh Rate": "240Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "dell",
+      "pc"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c4c7cb60f442426a6"
+    },
+    "id": 96,
+    "title": "Intel Core i7-14700K Desktop Processor",
+    "category": "CPU",
+    "brand": "Intel",
+    "price": 224,
+    "price_formatted": "$224",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80",
+    "description": "The Intel Core i7-14700K processor is the ultimate gaming and productivity CPU. With 8 Cores and 16 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket LGA 1700.",
+    "stock": 97,
+    "specifications": {
+      "Socket": "LGA 1700",
+      "Cores": 8,
+      "Threads": 16,
+      "Base Clock": "3.2 GHz",
+      "Max Boost Clock": "5.8 GHz",
+      "TDP": "125W",
+      "Cache": "96MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "intel",
+      "upgrade"
+    ],
+    "featured": true
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c6c7b5dc12b076ce7"
+    },
+    "id": 97,
+    "title": "Intel Core i7-14700K Desktop Processor",
+    "category": "CPU",
+    "brand": "Intel",
+    "price": 245,
+    "price_formatted": "$245",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80",
+    "description": "The Intel Core i7-14700K processor is the ultimate gaming and productivity CPU. With 8 Cores and 16 Threads, it offers lightning-fast single-core speeds and massive multi-threaded capacity for gaming, rendering, streaming, and heavily parallel workflows. Compatible with socket LGA 1700.",
+    "stock": 77,
+    "specifications": {
+      "Socket": "LGA 1700",
+      "Cores": 8,
+      "Threads": 16,
+      "Base Clock": "3.2 GHz",
+      "Max Boost Clock": "5.8 GHz",
+      "TDP": "125W",
+      "Cache": "96MB L3",
+      "PCIe Version": "PCIe 5.0"
+    },
+    "tags": [
+      "cpu",
+      "processor",
+      "component",
+      "intel",
+      "upgrade"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c176ca64eca04efac"
+    },
+    "id": 98,
+    "title": "ASUS Raider Gaming Laptop 15.6\" (Intel Core i7-14700HX, 16GB DDR5, NVIDIA GeForce RTX 4080 12GB)",
+    "category": "Laptops",
+    "brand": "ASUS",
+    "price": 3015,
+    "price_formatted": "$3,015",
+    "rating": 4.3,
+    "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&auto=format&fit=crop&q=80",
+    "description": "Experience cutting-edge performance with the ASUS Raider Gaming Laptop. Featuring a high-refresh-rate 15.6\" display, the powerful Intel Core i7-14700HX processor, and advanced NVIDIA GeForce RTX 4080 12GB graphics, this laptop is engineered for enthusiasts and pro-level gaming. Advanced cooling design guarantees sustained peak performance during long gaming sessions.",
+    "stock": 74,
+    "specifications": {
+      "Processor": "Intel Core i7-14700HX",
+      "Graphics Card": "NVIDIA GeForce RTX 4080 12GB",
+      "Memory": "16GB DDR5",
+      "Storage": "1TB NVMe PCIe 4.0 SSD",
+      "Screen Size": "15.6\"",
+      "Refresh Rate": "240Hz",
+      "Operating System": "Windows 11 Home",
+      "Weight": "2.1 kg - 2.8 kg"
+    },
+    "tags": [
+      "laptop",
+      "gaming",
+      "portable",
+      "asus",
+      "pc"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c0813b0d36fec59c5"
+    },
+    "id": 99,
+    "title": "Patriot Trident Z5 RGB 16GB (2x8GB) DDR5 7200MHz Desktop Memory",
+    "category": "RAM",
+    "brand": "Patriot",
+    "price": 125,
+    "price_formatted": "$125",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1562976540-1502c2145186?w=600&auto=format&fit=crop&q=80",
+    "description": "Upgrade your multitasking and gaming speeds with the premium Patriot Trident Z5 RGB DDR5 RAM kit. Offering massive speed bandwidth of 7200MHz and low latency, it provides incredible stability for modern motherboards. Custom aluminum heatspreaders keep memory running cool under load with vibrant custom addressable RGB lighting.",
+    "stock": 46,
+    "specifications": {
+      "Capacity": "16GB (2x8GB)",
+      "Memory Type": "DDR5",
+      "Speed": "7200MHz",
+      "Latency": "CL30 - CL40",
+      "Voltage": "1.25V - 1.4V",
+      "RGB Lighting": "Yes, Addressable RGB",
+      "Warranty": "Lifetime"
+    },
+    "tags": [
+      "ram",
+      "memory",
+      "component",
+      "patriot",
+      "upgrade",
+      "rgb"
+    ],
+    "featured": false
+  },
+  {
+    "_id": {
+      "$oid": "6a28178c231e88913b2b5ba5"
+    },
+    "id": 100,
+    "title": "HyperX RGB Gaming Headset",
+    "category": "Accessories",
+    "brand": "HyperX",
+    "price": 216,
+    "price_formatted": "$216",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=600&auto=format&fit=crop&q=80",
+    "description": "Enhance your setup with the professional-grade HyperX RGB Gaming Headset. Built with durable materials, high-performance electronics, and state-of-the-art aesthetics, this accessory brings class, premium performance, and maximum responsiveness to your work and gaming experience.",
+    "stock": 121,
+    "specifications": {
+      "Driver Size": "50mm Neodymium Drivers",
+      "Frequency Response": "20Hz - 40kHz",
+      "Surround Sound": "7.1 Spatial Audio Support",
+      "Microphone": "Detachable Cardioid Mic",
+      "Connectivity": "Wireless 2.4GHz / Bluetooth / 3.5mm Jack"
+    },
+    "tags": [
+      "accessories",
+      "headset",
+      "hyperx",
+      "peripheral"
+    ],
+    "featured": false
+  }
+]
