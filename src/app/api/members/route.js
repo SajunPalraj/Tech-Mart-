@@ -29,7 +29,7 @@ export async function GET(req) {
         }
       });
     } catch (dbErr) {
-      console.warn("MongoDB connection notice in GET /API/members:", dbErr.message);
+      console.warn("MongoDB connection notice in GET /api/members:", dbErr.message);
       // Fallback sample admin member
       members = [
         {
@@ -47,7 +47,7 @@ export async function GET(req) {
 
     return NextResponse.json({ members }, { status: 200 });
   } catch (error) {
-    console.error("Error in GET /API/members:", error);
+    console.error("Error in GET /api/members:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

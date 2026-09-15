@@ -71,7 +71,7 @@ export default function Categories() {
   useEffect(() => {
     async function fetchIds() {
       try {
-        const res = await axios.get('/API/products');
+        const res = await axios.get('/api/products');
         const list = res.data.products || [];
         const mapping = {};
         list.forEach(p => {

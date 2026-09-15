@@ -33,7 +33,7 @@ export function AuthProvider({ children }) {
         try {
           if (email) {
             const res = await axios.get(
-              `/API/profile?email=${encodeURIComponent(email)}&username=${encodeURIComponent(username)}&avatarUrl=${encodeURIComponent(avatarUrl)}`
+              `/api/profile?email=${encodeURIComponent(email)}&username=${encodeURIComponent(username)}&avatarUrl=${encodeURIComponent(avatarUrl)}`
             );
             setUser(res.data?.user || fallbackUser);
           } else {

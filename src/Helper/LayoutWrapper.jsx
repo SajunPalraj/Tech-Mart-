@@ -13,4 +13,4 @@ function LayoutWrapper({ children }) {
   );
 }
 
-export default LayoutWrapper;
+export default LayoutWrapper;

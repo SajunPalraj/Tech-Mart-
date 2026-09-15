@@ -78,7 +78,7 @@ function ProductsContent() {
         }
 
         const res = await axios.get(
-          `/API/products?category=${selectedCategory === "All" ? "" : encodeURIComponent(selectedCategory)}&search=${encodeURIComponent(searchQuery)}&sortBy=${sortParam}&sortOrder=${orderParam}`
+          `/api/products?category=${selectedCategory === "All" ? "" : encodeURIComponent(selectedCategory)}&search=${encodeURIComponent(searchQuery)}&sortBy=${sortParam}&sortOrder=${orderParam}`
         );
         setProducts(res.data.products || []);
       } catch (err) {

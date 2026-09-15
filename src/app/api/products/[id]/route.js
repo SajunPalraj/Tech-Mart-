@@ -25,7 +25,7 @@ export async function GET(req, { params }) {
     if (!product) {
       try {
         const origin = new URL(req.url).origin;
-        const res = await fetch(`${origin}/API/products`, { cache: "no-store" });
+        const res = await fetch(`${origin}/api/products`, { cache: "no-store" });
         if (res.ok) {
           const data = await res.json();
           const list = data.products || [];

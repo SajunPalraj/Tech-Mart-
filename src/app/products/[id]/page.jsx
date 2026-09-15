@@ -65,7 +65,7 @@ export default function ProductDetailPage({ params }) {
       setLoading(true);
       setError(null);
       try {
-        const res = await axios.get(`/API/products/${id}`);
+        const res = await axios.get(`/api/products/${id}`);
         if (res.data && res.data.product) {
           setProduct(res.data.product);
           // Load related products of the same category
@@ -83,7 +83,7 @@ export default function ProductDetailPage({ params }) {
 
     async function loadRelated(category, currentId) {
       try {
-        const res = await axios.get(`/API/products?category=${encodeURIComponent(category)}`);
+        const res = await axios.get(`/api/products?category=${encodeURIComponent(category)}`);
         const list = res.data.products || [];
         // Filter out current product
         setRelatedProducts(list.filter((p) => p.id !== currentId).slice(0, 4));

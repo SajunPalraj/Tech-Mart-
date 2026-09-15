@@ -54,7 +54,7 @@ export default function Footer() {
 
     setLoading(true);
     try {
-      const response = await axios.post('/API/subscribe', { email });
+      const response = await axios.post('/api/subscribe', { email });
       setSnackbar({
         open: true,
         message: response.data.message || 'Thank you for subscribing!',

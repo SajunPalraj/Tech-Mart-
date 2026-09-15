@@ -168,7 +168,7 @@ function ProfileContent() {
     try {
       const emailParam = user?.email ? `&email=${encodeURIComponent(user.email)}` : '';
       const usernameParam = user?.username ? `&username=${encodeURIComponent(user.username)}` : '';
-      const res = await axios.get(`/API/profile?userId=${encodeURIComponent(user?.id || '')}${emailParam}${usernameParam}`);
+      const res = await axios.get(`/api/profile?userId=${encodeURIComponent(user?.id || '')}${emailParam}${usernameParam}`);
       const profile = res.data?.user || user;
       setDbUser(profile);
       
@@ -198,7 +198,7 @@ function ProfileContent() {
     setLoadingMembers(true);
     try {
       const emailParam = user?.email ? encodeURIComponent(user.email) : "sajunpalraj2004@gmail.com";
-      const res = await axios.get(`/API/members?adminEmail=${emailParam}`);
+      const res = await axios.get(`/api/members?adminEmail=${emailParam}`);
       setMembers(res.data?.members || []);
     } catch (err) {
       console.warn("Members fetch notice:", err);
@@ -268,7 +268,7 @@ function ProfileContent() {
 
   const saveAvatar = async (base64Str) => {
     try {
-      const res = await axios.put("/API/profile", {
+      const res = await axios.put("/api/profile", {
         userId: user.id,
         avatar: base64Str,
       });
@@ -290,7 +290,7 @@ function ProfileContent() {
   const handleSaveInfo = async () => {
     setSavingInfo(true);
     try {
-      const res = await axios.put("/API/profile", {
+      const res = await axios.put("/api/profile", {
         userId: user.id,
         fullName,
         phone,
@@ -313,7 +313,7 @@ function ProfileContent() {
   const handleSaveShipping = async () => {
     setSavingShipping(true);
     try {
-      const res = await axios.put("/API/profile", {
+      const res = await axios.put("/api/profile", {
         userId: user.id,
         address,
         city,
@@ -342,7 +342,7 @@ function ProfileContent() {
 
     setSubmittingProduct(true);
     try {
-      const res = await axios.post("/API/products", {
+      const res = await axios.post("/api/products", {
         title: prodTitle,
         description: prodDescription,
         price: prodPrice,

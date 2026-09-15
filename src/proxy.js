@@ -30,7 +30,7 @@ const clerkHandler = clerkMiddleware(async (auth, request) => {
     
     // Wildcard paths for standard content and APIs
     if (path.startsWith('/page/')) return true;
-    if (path.startsWith('/API/')) return true;
+    if (path.startsWith('/api/')) return true;
     if (path.startsWith('/api/webhooks')) return true;
     
     return false;

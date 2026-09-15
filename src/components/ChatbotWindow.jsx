@@ -73,7 +73,7 @@ export default function ChatbotWindow({ isOpen, onClose }) {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/API/chatbot", {
+      const response = await fetch("/api/chatbot", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

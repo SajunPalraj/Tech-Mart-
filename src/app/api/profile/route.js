@@ -94,7 +94,7 @@ export async function GET(req) {
       }
     }
   } catch (error) {
-    console.warn("MongoDB connection notice in GET /API/profile:", error.message || error);
+    console.warn("MongoDB connection notice in GET /api/profile:", error.message || error);
   }
 
   // Fallback user object if DB is unreachable or user not yet in DB
@@ -184,7 +184,7 @@ export async function PUT(req) {
         });
       }
     } catch (dbErr) {
-      console.warn("DB update notice in PUT /API/profile:", dbErr.message);
+      console.warn("DB update notice in PUT /api/profile:", dbErr.message);
     }
 
     if (!updatedUser) {
@@ -197,7 +197,7 @@ export async function PUT(req) {
 
     return NextResponse.json({ message: "Profile updated successfully", user: updatedUser }, { status: 200 });
   } catch (error) {
-    console.error("Error in PUT /API/profile:", error);
+    console.error("Error in PUT /api/profile:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
