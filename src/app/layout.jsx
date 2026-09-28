@@ -6,6 +6,7 @@ import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import LayoutWrapper from "@/Helper/LayoutWrapper";
 import FloatingControls from "@/Helper/FloatingControls";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -62,6 +63,7 @@ export default function RootLayout({ children }) {
             </CartProvider>
           </AuthProvider>
         </ClerkProvider>
+        <Analytics />
       </body>
     </html>
   );
