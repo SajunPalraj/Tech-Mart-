@@ -18,6 +18,7 @@
     "@mui/material-nextjs": "^9.0.1",
     "@mui/system": "^9.1.1",
     "@prisma/client": "^6.8.0",
+    "@vercel/analytics": "^2.0.1",
     "axios": "^1.17.0",
     "framer-motion": "^12.40.0",
     "next": "16.2.6",
